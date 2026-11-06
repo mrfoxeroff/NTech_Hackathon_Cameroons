@@ -65,6 +65,11 @@ def main(argv=None):
             if settings.model.exists():
                 print(f"Already exists: {settings.model}")
             else:
+                if not settings.model.name.startswith("yolo"):
+                    raise FileNotFoundError(
+                        "Custom trained weights must be copied locally. See docs/finetuning_report.md; "
+                        "for official weights use configs/cameras.pretrained.yaml"
+                    )
                 YOLO(str(settings.model))
                 if not settings.model.is_file():
                     raise RuntimeError(f"Model download did not produce {settings.model}")

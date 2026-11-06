@@ -3,7 +3,7 @@ recording_id: office_01
 # Local OSD clock; timezone has not been established. See docs/clock_alignment.json.
 timeline_origin: '2026-10-08T17:38:39'
 output_root: ../outputs
-model: ../weights/yolo11s-seg.pt
+model: ../weights/person-office-v1.pt
 device: auto
 imgsz: 640
 fp16: true
