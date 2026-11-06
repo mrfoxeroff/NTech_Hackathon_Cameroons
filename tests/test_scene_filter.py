@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import pytest
 from ultralytics.engine.results import Results
 
 from local_tracking.scene_filter import SceneFilter
@@ -10,13 +11,14 @@ def result(image, masks):
     return Results(image, path="test", names={0: "person"}, boxes=boxes, masks=np.asarray(masks))
 
 
-def test_screen_containment_preserves_person_extending_outside_screen():
+@pytest.mark.parametrize("mode", ["screen", "reflection"])
+def test_screen_containment_preserves_person_extending_outside_screen(mode):
     im = np.zeros((40, 40, 3), np.uint8)
     masks = np.zeros((2, 40, 40), np.uint8)
     masks[0, 2:18, 2:18] = 1
     masks[1, 2:38, 22:35] = 1
     filt = SceneFilter(
-        [dict(name="tv", mode="screen", polygon=[[0, 0], [1, 0], [1, 0.5], [0, 0.5]], min_overlap=0.9)],
+        [dict(name="tv", mode=mode, polygon=[[0, 0], [1, 0], [1, 0.5], [0, 0.5]], min_overlap=0.9)],
         40,
         40,
     )

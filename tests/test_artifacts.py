@@ -184,3 +184,15 @@ def test_source_gap_splits_visibility_even_when_id_survives():
         {"start_sec": 0.0, "end_sec": 0.0},
         {"start_sec": 0.8, "end_sec": 0.8},
     ]
+
+
+def test_lamp_gap_in_mask_does_not_create_two_people(tmp_path):
+    mask = np.zeros((12, 16), np.uint8)
+    mask[1:4, 5:11] = 1
+    mask[7:11, 5:11] = 1
+    observations = ObservationWriter(tmp_path, 0.5, True).build(
+        result([[4, 0, 12, 12]], [mask]), {0: 7}, frame(), "r", "c"
+    )
+    assert len(observations) == 1
+    assert observations[0]["local_track_id"] == 7
+    assert len(observations[0]["silhouette_polygons"]) == 2

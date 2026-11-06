@@ -22,6 +22,7 @@ class CameraConfig:
     time_offset_sec: float = 0.0
     clock_anchors: list[dict] = field(default_factory=list)
     scene_regions: list[dict] = field(default_factory=list)
+    occluder_polygons: list = field(default_factory=list)
 
     def common_time(self, video_time_sec: float) -> float:
         """Interpolate measured OSD clock anchors, extrapolate at boundaries."""
@@ -72,8 +73,15 @@ class Settings:
         if len(set(ids)) != len(ids):
             raise ValueError("Camera identifiers must be unique")
         for camera in self.cameras:
+            for points in camera.occluder_polygons:
+                if len(points) < 3 or not all(
+                    len(p) == 2 and all(math.isfinite(v) and 0 <= v <= 1 for v in p) for p in points
+                ):
+                    raise ValueError("Occluder polygons require normalized coordinates")
             for region in camera.scene_regions:
-                if region.get("mode") not in ("screen", "static_object") or not region.get("name"):
+                if region.get("mode") not in ("screen", "reflection", "static_object") or not region.get(
+                    "name"
+                ):
                     raise ValueError("Scene region requires name and valid mode")
                 points = region.get("polygon", [])
                 if len(points) < 3 or not all(
@@ -158,6 +166,7 @@ def load_settings(path: Path) -> Settings:
             "time_offset_sec",
             "clock_anchors",
             "scene_regions",
+            "occluder_polygons",
         }:
             raise ValueError("Invalid camera mapping or unknown camera field")
     cameras = [
@@ -166,6 +175,7 @@ def load_settings(path: Path) -> Settings:
             video=resolve(c["video"]),
             time_offset_sec=float(c.get("time_offset_sec", 0)),
             clock_anchors=c.get("clock_anchors", []),
+            occluder_polygons=c.get("occluder_polygons", []),
             scene_regions=[
                 {**r, **({"reference": str(resolve(r["reference"]))} if "reference" in r else {})}
                 for r in c.get("scene_regions", [])

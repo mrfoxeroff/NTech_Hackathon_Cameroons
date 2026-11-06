@@ -1,14 +1,13 @@
-# All paths are relative to this YAML file, not the current working directory.
+# Scene regions and occluders use normalized source-frame coordinates.
 recording_id: office_01
-# Local OSD clock; timezone has not been established. See docs/clock_alignment.json.
 timeline_origin: '2026-10-08T17:38:39'
 output_root: ../outputs
 model: ../weights/person-office-v1.pt
 device: auto
 imgsz: 640
 fp16: true
-confidence: 0.50
-iou: 0.70
+confidence: 0.5
+iou: 0.7
 stride: 1
 lost_track_sec: 1.0
 crop_interval_sec: 0.5
@@ -17,80 +16,313 @@ save_masks: true
 save_preview: true
 preview_max_width: 1280
 tracker:
-  track_high_thresh: 0.50
-  track_low_thresh: 0.50
+  track_high_thresh: 0.5
+  track_low_thresh: 0.5
   new_track_thresh: 0.55
-  match_thresh: 0.80
+  match_thresh: 0.8
   fuse_score: true
 cameras:
-  - camera_id: camera_1
-    video: ../data/video/camera_1.mkv
-    scene_regions:
-      - name: foosball_static
-        mode: static_object
-        reference: ../data/samples/camera_1.jpg
-        min_overlap: 0.85
-        min_changed_fraction: 0.15
-        pixel_difference: 30
-        polygon: [[0, 0.309], [0.0694, 0.309], [0.0926, 0.5144], [0, 0.5401]]
-    time_offset_sec: 0.0
-    clock_anchors:
-      - {video_time_sec: 0.781, timestamp_sec: 1}
-      - {video_time_sec: 1.720, timestamp_sec: 2}
-      - {video_time_sec: 30.881, timestamp_sec: 32}
-      - {video_time_sec: 600.751, timestamp_sec: 603}
-      - {video_time_sec: 1190.675, timestamp_sec: 1195}
-      - {video_time_sec: 1193.813, timestamp_sec: 1198}
-  - camera_id: camera_2
-    video: ../data/video/camera_2.mkv
-    time_offset_sec: 0.0
-    clock_anchors:
-      - {video_time_sec: 0.549, timestamp_sec: 2}
-      - {video_time_sec: 1.803, timestamp_sec: 3}
-      - {video_time_sec: 30.153, timestamp_sec: 32}
-      - {video_time_sec: 600.860, timestamp_sec: 604}
-      - {video_time_sec: 1190.883, timestamp_sec: 1196}
-      - {video_time_sec: 1193.076, timestamp_sec: 1198}
-  - camera_id: camera_3
-    video: ../data/video/camera_3.mkv
-    scene_regions:
-      - name: tv_main
-        mode: screen
-        min_overlap: 0.90
-        polygon: [[0.6867, 0.2119], [0.8364, 0.2356], [0.8109, 0.3529], [0.6636, 0.3488]]
-      - name: tv_right
-        mode: screen
-        min_overlap: 0.90
-        polygon: [[0.8387, 0.2377], [0.9336, 0.2603], [0.9113, 0.3580], [0.8194, 0.3519]]
-      - name: tv_vertical
-        mode: screen
-        min_overlap: 0.90
-        polygon: [[0.5702, 0.1698], [0.6713, 0.1739], [0.6420, 0.3837], [0.5471, 0.3981]]
-    time_offset_sec: 0.0
-    clock_anchors:
-      - {video_time_sec: 1.213, timestamp_sec: 2}
-      - {video_time_sec: 2.156, timestamp_sec: 3}
-      - {video_time_sec: 30.471, timestamp_sec: 32}
-      - {video_time_sec: 600.971, timestamp_sec: 604}
-      - {video_time_sec: 1190.332, timestamp_sec: 1195}
-      - {video_time_sec: 1193.155, timestamp_sec: 1198}
-  - camera_id: camera_4
-    video: ../data/video/camera_4.mkv
-    time_offset_sec: 0.0
-    clock_anchors:
-      - {video_time_sec: 0.550, timestamp_sec: 5}
-      - {video_time_sec: 1.600, timestamp_sec: 6}
-      - {video_time_sec: 30.602, timestamp_sec: 35}
-      - {video_time_sec: 600.603, timestamp_sec: 605}
-      - {video_time_sec: 1190.601, timestamp_sec: 1195}
-      - {video_time_sec: 1193.551, timestamp_sec: 1198}
-  - camera_id: camera_5
-    video: ../data/video/camera_5.mkv
-    time_offset_sec: 0.0
-    clock_anchors:
-      - {video_time_sec: 0.197, timestamp_sec: 4}
-      - {video_time_sec: 1.136, timestamp_sec: 5}
-      - {video_time_sec: 30.598, timestamp_sec: 35}
-      - {video_time_sec: 600.366, timestamp_sec: 606}
-      - {video_time_sec: 1190.520, timestamp_sec: 1198}
-      - {video_time_sec: 1193.343, timestamp_sec: 1201}
+- camera_id: camera_1
+  video: ../data/video/camera_1.mkv
+  scene_regions:
+  - name: foosball_static
+    mode: static_object
+    reference: ../data/samples/camera_1.jpg
+    min_overlap: 0.85
+    min_changed_fraction: 0.15
+    pixel_difference: 30
+    polygon:
+    - - 0
+      - 0.309
+    - - 0.0694
+      - 0.309
+    - - 0.0926
+      - 0.5144
+    - - 0
+      - 0.5401
+  time_offset_sec: 0.0
+  clock_anchors:
+  - video_time_sec: 0.781
+    timestamp_sec: 1
+  - video_time_sec: 1.72
+    timestamp_sec: 2
+  - video_time_sec: 30.881
+    timestamp_sec: 32
+  - video_time_sec: 600.751
+    timestamp_sec: 603
+  - video_time_sec: 1190.675
+    timestamp_sec: 1195
+  - video_time_sec: 1193.813
+    timestamp_sec: 1198
+  occluder_polygons:
+  - - - 0.2662037037037037
+      - 0.3148148148148148
+    - - 0.6172839506172839
+      - 0.25411522633744854
+    - - 0.7283950617283951
+      - 0.4279835390946502
+    - - 0.2916666666666667
+      - 0.5534979423868313
+  - - - 0.158179
+      - 0.0730453
+    - - 0.5007716
+      - 0.037037
+    - - 0.5015432
+      - 0.0504115
+    - - 0.1604938
+      - 0.0874486
+  - - - 0.6087963
+      - 0.0432099
+    - - 0.8410494
+      - 0.0987654
+    - - 0.837963
+      - 0.1111111
+    - - 0.6049383
+      - 0.0576132
+  - - - 0.4228395
+      - 0.0823045
+    - - 0.4398148
+      - 0.0833333
+    - - 0.4405864
+      - 0.1193416
+    - - 0.4212963
+      - 0.1193416
+- camera_id: camera_2
+  video: ../data/video/camera_2.mkv
+  time_offset_sec: 0.0
+  clock_anchors:
+  - video_time_sec: 0.549
+    timestamp_sec: 2
+  - video_time_sec: 1.803
+    timestamp_sec: 3
+  - video_time_sec: 30.153
+    timestamp_sec: 32
+  - video_time_sec: 600.86
+    timestamp_sec: 604
+  - video_time_sec: 1190.883
+    timestamp_sec: 1196
+  - video_time_sec: 1193.076
+    timestamp_sec: 1198
+  occluder_polygons:
+  - - - 0.5324074074074074
+      - 0.48148148148148145
+    - - 0.7885802469135802
+      - 0.39711934156378603
+    - - 0.9074074074074074
+      - 0.5308641975308642
+    - - 0.6851851851851852
+      - 0.7191358024691358
+  - - - 0.3101852
+      - 0.3281893
+    - - 0.7114198
+      - 0.2736626
+    - - 0.720679
+      - 0.2901235
+    - - 0.3194444
+      - 0.3580247
+  - - - 0.5316358
+      - 0.3261317
+    - - 0.5516975
+      - 0.3281893
+    - - 0.5632716
+      - 0.350823
+    - - 0.5570988
+      - 0.4269547
+    - - 0.5277778
+      - 0.4290123
+    - - 0.5239198
+      - 0.4156379
+  - - - 0.8032407
+      - 0.2674897
+    - - 0.9791667
+      - 0.2736626
+    - - 0.9791667
+      - 0.2839506
+    - - 0.8024691
+      - 0.2808642
+  scene_regions:
+  - name: mirror_right_of_door
+    mode: reflection
+    min_overlap: 0.85
+    polygon:
+    - - 0.5987654320987654
+      - 0.0
+    - - 0.6797839506172839
+      - 0.0
+    - - 0.6666666666666666
+      - 0.07716049382716049
+    - - 0.6342592592592593
+      - 0.2839506172839506
+    - - 0.5563271604938271
+      - 0.2890946502057613
+    - - 0.5817901234567902
+      - 0.06172839506172839
+- camera_id: camera_3
+  video: ../data/video/camera_3.mkv
+  scene_regions:
+  - name: tv_main
+    mode: screen
+    min_overlap: 0.9
+    polygon:
+    - - 0.6867
+      - 0.2119
+    - - 0.8364
+      - 0.2356
+    - - 0.8109
+      - 0.3529
+    - - 0.6636
+      - 0.3488
+  - name: tv_right
+    mode: screen
+    min_overlap: 0.9
+    polygon:
+    - - 0.8387
+      - 0.2377
+    - - 0.9336
+      - 0.2603
+    - - 0.9113
+      - 0.358
+    - - 0.8194
+      - 0.3519
+  - name: tv_vertical
+    mode: screen
+    min_overlap: 0.9
+    polygon:
+    - - 0.5702
+      - 0.1698
+    - - 0.6713
+      - 0.1739
+    - - 0.642
+      - 0.3837
+    - - 0.5471
+      - 0.3981
+  - name: curved_mirror
+    mode: reflection
+    min_overlap: 0.85
+    polygon:
+    - - 0.12885802469135801
+      - 0.49588477366255146
+    - - 0.13734567901234568
+      - 0.4845679012345679
+    - - 0.14737654320987653
+      - 0.4825102880658436
+    - - 0.1574074074074074
+      - 0.49691358024691357
+    - - 0.1728395061728395
+      - 0.5442386831275721
+    - - 0.19907407407407407
+      - 0.6213991769547325
+    - - 0.22376543209876543
+      - 0.6893004115226338
+    - - 0.2507716049382716
+      - 0.7479423868312757
+    - - 0.2777777777777778
+      - 0.7829218106995884
+    - - 0.28858024691358025
+      - 0.8076131687242798
+    - - 0.29012345679012347
+      - 0.8271604938271605
+    - - 0.2800925925925926
+      - 0.8497942386831275
+    - - 0.2662037037037037
+      - 0.8611111111111112
+    - - 0.2515432098765432
+      - 0.8631687242798354
+    - - 0.23842592592592593
+      - 0.8559670781893004
+    - - 0.2199074074074074
+      - 0.8333333333333334
+    - - 0.19907407407407407
+      - 0.7911522633744856
+    - - 0.17746913580246915
+      - 0.7294238683127572
+    - - 0.16049382716049382
+      - 0.668724279835391
+    - - 0.1427469135802469
+      - 0.5967078189300411
+    - - 0.12808641975308643
+      - 0.5308641975308642
+    - - 0.12422839506172839
+      - 0.5082304526748971
+  time_offset_sec: 0.0
+  clock_anchors:
+  - video_time_sec: 1.213
+    timestamp_sec: 2
+  - video_time_sec: 2.156
+    timestamp_sec: 3
+  - video_time_sec: 30.471
+    timestamp_sec: 32
+  - video_time_sec: 600.971
+    timestamp_sec: 604
+  - video_time_sec: 1190.332
+    timestamp_sec: 1195
+  - video_time_sec: 1193.155
+    timestamp_sec: 1198
+  occluder_polygons:
+  - - - 0.621141975308642
+      - 0.49794238683127573
+    - - 0.7932098765432098
+      - 0.4711934156378601
+    - - 0.8395061728395061
+      - 0.5720164609053497
+    - - 0.6689814814814815
+      - 0.6378600823045267
+  - - - 0.6527778
+      - 0.0
+    - - 0.6875
+      - 0.0
+    - - 0.6882716
+      - 0.0596708
+    - - 0.6682099
+      - 0.0648148
+    - - 0.654321
+      - 0.0493827
+- camera_id: camera_4
+  video: ../data/video/camera_4.mkv
+  time_offset_sec: 0.0
+  clock_anchors:
+  - video_time_sec: 0.55
+    timestamp_sec: 5
+  - video_time_sec: 1.6
+    timestamp_sec: 6
+  - video_time_sec: 30.602
+    timestamp_sec: 35
+  - video_time_sec: 600.603
+    timestamp_sec: 605
+  - video_time_sec: 1190.601
+    timestamp_sec: 1195
+  - video_time_sec: 1193.551
+    timestamp_sec: 1198
+  scene_regions:
+  - name: reflective_glass_panels
+    mode: reflection
+    min_overlap: 0.9
+    polygon:
+    - - 0.7839506172839507
+      - 0.029835390946502057
+    - - 1
+      - 0.1368312757201646
+    - - 1
+      - 0.6820987654320988
+    - - 0.9089506172839507
+      - 0.7078189300411523
+    - - 0.779320987654321
+      - 0.7283950617283951
+    - - 0.6558641975308642
+      - 0.7314814814814815
+- camera_id: camera_5
+  video: ../data/video/camera_5.mkv
+  time_offset_sec: 0.0
+  clock_anchors:
+  - video_time_sec: 0.197
+    timestamp_sec: 4
+  - video_time_sec: 1.136
+    timestamp_sec: 5
+  - video_time_sec: 30.598
+    timestamp_sec: 35
+  - video_time_sec: 600.366
+    timestamp_sec: 606
+  - video_time_sec: 1190.52
+    timestamp_sec: 1198
+  - video_time_sec: 1193.343
+    timestamp_sec: 1201

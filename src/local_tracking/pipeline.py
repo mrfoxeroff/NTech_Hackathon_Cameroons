@@ -12,6 +12,7 @@ from pathlib import Path
 from .artifacts import ObservationWriter, PreviewWriter, TrackSummary, write_json
 from .config import CameraConfig, Settings, tracker_parameters
 from .scene_filter import SceneFilter
+from .stabilization import GeometryStabilizer
 from .tracker import LocalTracker
 from .video import iter_video, probe_video
 
@@ -138,6 +139,9 @@ def process_camera(
         manifest["weights_sha256"] = file_hash(settings.model)
         tracker = LocalTracker(settings, info.fps)
         scene_filter = SceneFilter(camera.scene_regions, info.width, info.height)
+        stabilizer = GeometryStabilizer(
+            info.width, info.height, camera.occluder_polygons, reset_gap_sec=settings.lost_track_sec
+        )
         manifest["tracker_buffer_steps"] = tracker.buffer_steps
         if runtime["device"] != "cpu":
             torch.cuda.reset_peak_memory_stats(int(runtime["device"].removeprefix("cuda:")))
@@ -175,6 +179,7 @@ def process_camera(
                 observations = writer.build(
                     result, assignments, frame, settings.recording_id, camera.camera_id
                 )
+                stabilizer.update(observations, frame.timestamp_sec)
                 record = {
                     "recording_id": settings.recording_id,
                     "camera_id": camera.camera_id,

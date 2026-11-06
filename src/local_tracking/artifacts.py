@@ -182,13 +182,39 @@ class PreviewWriter:
             if polygons:
                 cv2.fillPoly(overlay, polygons, color)
                 image = cv2.addWeighted(overlay, 0.25, image, 0.75, 0)
-            x1, y1, x2, y2 = (np.asarray(obs["bbox_xyxy"]) * np.tile(scale, 2)).astype(int)
-            cv2.rectangle(image, (x1, y1), (x2, y2), color, 2)
+            display_box = obs.get("bbox_stabilized_xyxy", obs["bbox_xyxy"])
+            x1, y1, x2, y2 = (np.asarray(display_box) * np.tile(scale, 2)).astype(int)
+            estimated = obs.get("bbox_stabilization_status") == "estimated"
+            if estimated:
+                for a, b in [
+                    ((x1, y1), (x2, y1)),
+                    ((x2, y1), (x2, y2)),
+                    ((x2, y2), (x1, y2)),
+                    ((x1, y2), (x1, y1)),
+                ]:
+                    length = max(abs(b[0] - a[0]), abs(b[1] - a[1]))
+                    for distance in range(0, length, 14):
+                        p = tuple(int(a[i] + (b[i] - a[i]) * distance / max(length, 1)) for i in (0, 1))
+                        q = tuple(
+                            int(a[i] + (b[i] - a[i]) * min(distance + 7, length) / max(length, 1))
+                            for i in (0, 1)
+                        )
+                        cv2.line(image, p, q, color, 2)
+            else:
+                cv2.rectangle(image, (x1, y1), (x2, y2), color, 2)
             label = f"local={local_id if local_id is not None else '?'} {obs['detection_confidence']:.2f}"
+            if estimated:
+                label += " estimated"
             cv2.putText(image, label, (x1, max(20, y1 - 6)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
-            cv2.circle(
-                image, tuple((np.asarray(obs["footpoint_px"]) * scale).astype(int)), 4, (0, 0, 255), -1
-            )
+            if obs["footpoint_px"] is not None:
+                point = tuple((np.asarray(obs["footpoint_px"]) * scale).astype(int))
+                cv2.circle(
+                    image,
+                    point,
+                    4,
+                    (0, 200, 255) if obs.get("footpoint_status") == "estimated" else (0, 0, 255),
+                    -1,
+                )
         cv2.rectangle(image, (0, self.size[1] - 40), (self.size[0], self.size[1]), (0, 0, 0), -1)
         cv2.putText(
             image,

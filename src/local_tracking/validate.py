@@ -68,6 +68,26 @@ def validate_output(root: Path) -> dict:
                 require(0 <= x1 < x2 <= width and 0 <= y1 < y2 <= height, "Invalid source box")
                 require(0 <= obs["detection_confidence"] <= 1, "Invalid confidence")
                 local_id = obs["local_track_id"]
+                if "bbox_stabilized_xyxy" in obs:
+                    sx1, sy1, sx2, sy2 = obs["bbox_stabilized_xyxy"]
+                    require(0 <= sx1 < sx2 <= width and 0 <= sy1 < sy2 <= height, "Invalid stabilized box")
+                    point = obs["footpoint_px"]
+                    require(
+                        obs["footpoint_status"] in ("observed", "estimated", "unknown"),
+                        "Invalid footpoint status",
+                    )
+                    require(
+                        (point is None) == (obs["footpoint_status"] == "unknown"),
+                        "Unknown feet must not have fabricated coordinates",
+                    )
+                    if point is not None:
+                        require(
+                            len(point) == 2
+                            and all(math.isfinite(v) for v in point)
+                            and 0 <= point[0] <= width
+                            and 0 <= point[1] <= height,
+                            "Invalid footpoint coordinates",
+                        )
                 if local_id is not None:
                     require(
                         type(local_id) is int and local_id > 0 and local_id not in ids,

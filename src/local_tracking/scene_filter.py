@@ -35,7 +35,7 @@ class SceneFilter:
                 inside = candidate & zone
                 if not area or inside.sum() / area < region.get("min_overlap", 0.85):
                     continue
-                if region["mode"] == "screen":
+                if region["mode"] in ("screen", "reflection"):
                     reason = region["name"]
                     break
                 # A person in front of the furniture changes its appearance. Compare
