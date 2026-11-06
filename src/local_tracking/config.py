@@ -21,6 +21,7 @@ class CameraConfig:
     video: Path
     time_offset_sec: float = 0.0
     clock_anchors: list[dict] = field(default_factory=list)
+    scene_regions: list[dict] = field(default_factory=list)
 
     def common_time(self, video_time_sec: float) -> float:
         """Interpolate measured OSD clock anchors, extrapolate at boundaries."""
@@ -71,6 +72,19 @@ class Settings:
         if len(set(ids)) != len(ids):
             raise ValueError("Camera identifiers must be unique")
         for camera in self.cameras:
+            for region in camera.scene_regions:
+                if region.get("mode") not in ("screen", "static_object") or not region.get("name"):
+                    raise ValueError("Scene region requires name and valid mode")
+                points = region.get("polygon", [])
+                if len(points) < 3 or not all(
+                    len(p) == 2 and all(math.isfinite(v) and 0 <= v <= 1 for v in p) for p in points
+                ):
+                    raise ValueError("Scene polygons require normalized coordinates in [0, 1]")
+                if region["mode"] == "static_object" and not Path(region.get("reference", "")).is_file():
+                    raise ValueError("Static object filter requires an existing reference image")
+                for key in ("min_overlap", "min_changed_fraction"):
+                    if not 0 < region.get(key, 0.85 if key == "min_overlap" else 0.15) <= 1:
+                        raise ValueError(f"Invalid scene threshold: {key}")
             if not camera.video.is_file():
                 raise ValueError(f"Video does not exist: {camera.video}")
             if not math.isfinite(camera.time_offset_sec):
@@ -143,6 +157,7 @@ def load_settings(path: Path) -> Settings:
             "video",
             "time_offset_sec",
             "clock_anchors",
+            "scene_regions",
         }:
             raise ValueError("Invalid camera mapping or unknown camera field")
     cameras = [
@@ -151,6 +166,10 @@ def load_settings(path: Path) -> Settings:
             video=resolve(c["video"]),
             time_offset_sec=float(c.get("time_offset_sec", 0)),
             clock_anchors=c.get("clock_anchors", []),
+            scene_regions=[
+                {**r, **({"reference": str(resolve(r["reference"]))} if "reference" in r else {})}
+                for r in c.get("scene_regions", [])
+            ],
         )
         for c in camera_values
     ]

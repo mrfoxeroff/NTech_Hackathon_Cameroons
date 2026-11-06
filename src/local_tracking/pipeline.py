@@ -11,6 +11,7 @@ from pathlib import Path
 
 from .artifacts import ObservationWriter, PreviewWriter, TrackSummary, write_json
 from .config import CameraConfig, Settings, tracker_parameters
+from .scene_filter import SceneFilter
 from .tracker import LocalTracker
 from .video import iter_video, probe_video
 
@@ -126,6 +127,7 @@ def process_camera(
         "empty_frames": 0,
         "timestamp_fallback_frames": 0,
         "source_gap_count": 0,
+        "scene_rejected_detections": 0,
     }
     summary = TrackSummary(settings.selected_crops_per_track)
     writer = ObservationWriter(output, settings.crop_interval_sec, settings.save_masks)
@@ -135,6 +137,7 @@ def process_camera(
         manifest["source_sha256"] = file_hash(camera.video)
         manifest["weights_sha256"] = file_hash(settings.model)
         tracker = LocalTracker(settings, info.fps)
+        scene_filter = SceneFilter(camera.scene_regions, info.width, info.height)
         manifest["tracker_buffer_steps"] = tracker.buffer_steps
         if runtime["device"] != "cpu":
             torch.cuda.reset_peak_memory_stats(int(runtime["device"].removeprefix("cuda:")))
@@ -166,6 +169,8 @@ def process_camera(
                     retina_masks=True,
                     verbose=False,
                 )[0]
+                result, rejected = scene_filter.apply(result, frame.image)
+                metrics["scene_rejected_detections"] += len(rejected)
                 assignments = tracker.update(result.boxes.cpu().numpy(), frame.image, frame.timestamp_sec)
                 observations = writer.build(
                     result, assignments, frame, settings.recording_id, camera.camera_id
@@ -182,6 +187,7 @@ def process_camera(
                     "frame_width": info.width,
                     "frame_height": info.height,
                     "observations": observations,
+                    "scene_rejections": rejected,
                 }
                 stream.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + "\n")
                 for obs in observations:

@@ -7,7 +7,7 @@ model: ../weights/person-office-v1.pt
 device: auto
 imgsz: 640
 fp16: true
-confidence: 0.10
+confidence: 0.50
 iou: 0.70
 stride: 1
 lost_track_sec: 1.0
@@ -17,14 +17,22 @@ save_masks: true
 save_preview: true
 preview_max_width: 1280
 tracker:
-  track_high_thresh: 0.25
-  track_low_thresh: 0.10
-  new_track_thresh: 0.30
+  track_high_thresh: 0.50
+  track_low_thresh: 0.50
+  new_track_thresh: 0.55
   match_thresh: 0.80
   fuse_score: true
 cameras:
   - camera_id: camera_1
     video: ../data/video/camera_1.mkv
+    scene_regions:
+      - name: foosball_static
+        mode: static_object
+        reference: ../data/samples/camera_1.jpg
+        min_overlap: 0.85
+        min_changed_fraction: 0.15
+        pixel_difference: 30
+        polygon: [[0, 0.309], [0.0694, 0.309], [0.0926, 0.5144], [0, 0.5401]]
     time_offset_sec: 0.0
     clock_anchors:
       - {video_time_sec: 0.781, timestamp_sec: 1}
@@ -45,6 +53,19 @@ cameras:
       - {video_time_sec: 1193.076, timestamp_sec: 1198}
   - camera_id: camera_3
     video: ../data/video/camera_3.mkv
+    scene_regions:
+      - name: tv_main
+        mode: screen
+        min_overlap: 0.90
+        polygon: [[0.6867, 0.2119], [0.8364, 0.2356], [0.8109, 0.3529], [0.6636, 0.3488]]
+      - name: tv_right
+        mode: screen
+        min_overlap: 0.90
+        polygon: [[0.8387, 0.2377], [0.9336, 0.2603], [0.9113, 0.3580], [0.8194, 0.3519]]
+      - name: tv_vertical
+        mode: screen
+        min_overlap: 0.90
+        polygon: [[0.5702, 0.1698], [0.6713, 0.1739], [0.6420, 0.3837], [0.5471, 0.3981]]
     time_offset_sec: 0.0
     clock_anchors:
       - {video_time_sec: 1.213, timestamp_sec: 2}
