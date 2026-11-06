@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=78"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ntech-local-tracking"
+version = "0.1.0"
+description = "Offline per-camera person segmentation and tracking for NTech hackathon"
+requires-python = ">=3.12"
+dependencies = [
+  "ultralytics==8.4.203",
+  "av==19.0.2",
+  "PyYAML>=6,<7",
+  "lap>=0.5,<0.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.12"]
+
+[project.scripts]
+local-tracking = "local_tracking.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]

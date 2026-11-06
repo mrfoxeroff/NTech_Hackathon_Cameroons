@@ -1,0 +1,75 @@
+# All paths are relative to this YAML file, not the current working directory.
+recording_id: office_01
+# Local OSD clock; timezone has not been established. See docs/clock_alignment.json.
+timeline_origin: '2026-10-08T17:38:39'
+output_root: ../outputs
+model: ../weights/yolo11s-seg.pt
+device: auto
+imgsz: 640
+fp16: true
+confidence: 0.10
+iou: 0.70
+stride: 1
+lost_track_sec: 1.0
+crop_interval_sec: 0.5
+selected_crops_per_track: 5
+save_masks: true
+save_preview: true
+preview_max_width: 1280
+tracker:
+  track_high_thresh: 0.25
+  track_low_thresh: 0.10
+  new_track_thresh: 0.30
+  match_thresh: 0.80
+  fuse_score: true
+cameras:
+  - camera_id: camera_1
+    video: ../data/video/camera_1.mkv
+    time_offset_sec: 0.0
+    clock_anchors:
+      - {video_time_sec: 0.781, timestamp_sec: 1}
+      - {video_time_sec: 1.720, timestamp_sec: 2}
+      - {video_time_sec: 30.881, timestamp_sec: 32}
+      - {video_time_sec: 600.751, timestamp_sec: 603}
+      - {video_time_sec: 1190.675, timestamp_sec: 1195}
+      - {video_time_sec: 1193.813, timestamp_sec: 1198}
+  - camera_id: camera_2
+    video: ../data/video/camera_2.mkv
+    time_offset_sec: 0.0
+    clock_anchors:
+      - {video_time_sec: 0.549, timestamp_sec: 2}
+      - {video_time_sec: 1.803, timestamp_sec: 3}
+      - {video_time_sec: 30.153, timestamp_sec: 32}
+      - {video_time_sec: 600.860, timestamp_sec: 604}
+      - {video_time_sec: 1190.883, timestamp_sec: 1196}
+      - {video_time_sec: 1193.076, timestamp_sec: 1198}
+  - camera_id: camera_3
+    video: ../data/video/camera_3.mkv
+    time_offset_sec: 0.0
+    clock_anchors:
+      - {video_time_sec: 1.213, timestamp_sec: 2}
+      - {video_time_sec: 2.156, timestamp_sec: 3}
+      - {video_time_sec: 30.471, timestamp_sec: 32}
+      - {video_time_sec: 600.971, timestamp_sec: 604}
+      - {video_time_sec: 1190.332, timestamp_sec: 1195}
+      - {video_time_sec: 1193.155, timestamp_sec: 1198}
+  - camera_id: camera_4
+    video: ../data/video/camera_4.mkv
+    time_offset_sec: 0.0
+    clock_anchors:
+      - {video_time_sec: 0.550, timestamp_sec: 5}
+      - {video_time_sec: 1.600, timestamp_sec: 6}
+      - {video_time_sec: 30.602, timestamp_sec: 35}
+      - {video_time_sec: 600.603, timestamp_sec: 605}
+      - {video_time_sec: 1190.601, timestamp_sec: 1195}
+      - {video_time_sec: 1193.551, timestamp_sec: 1198}
+  - camera_id: camera_5
+    video: ../data/video/camera_5.mkv
+    time_offset_sec: 0.0
+    clock_anchors:
+      - {video_time_sec: 0.197, timestamp_sec: 4}
+      - {video_time_sec: 1.136, timestamp_sec: 5}
+      - {video_time_sec: 30.598, timestamp_sec: 35}
+      - {video_time_sec: 600.366, timestamp_sec: 606}
+      - {video_time_sec: 1190.520, timestamp_sec: 1198}
+      - {video_time_sec: 1193.343, timestamp_sec: 1201}
