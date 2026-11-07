@@ -1,0 +1,47 @@
+[
+  {
+    "camera_id": "camera_1",
+    "objects": 17,
+    "polygons": 30,
+    "coordinates_valid": true,
+    "no_proper_self_intersections": true,
+    "union_matches_polygons": true,
+    "individual_masks_valid": true
+  },
+  {
+    "camera_id": "camera_2",
+    "objects": 16,
+    "polygons": 30,
+    "coordinates_valid": true,
+    "no_proper_self_intersections": true,
+    "union_matches_polygons": true,
+    "individual_masks_valid": true
+  },
+  {
+    "camera_id": "camera_3",
+    "objects": 18,
+    "polygons": 29,
+    "coordinates_valid": true,
+    "no_proper_self_intersections": true,
+    "union_matches_polygons": true,
+    "individual_masks_valid": true
+  },
+  {
+    "camera_id": "camera_4",
+    "objects": 7,
+    "polygons": 8,
+    "coordinates_valid": true,
+    "no_proper_self_intersections": true,
+    "union_matches_polygons": true,
+    "individual_masks_valid": true
+  },
+  {
+    "camera_id": "camera_5",
+    "objects": 11,
+    "polygons": 23,
+    "coordinates_valid": true,
+    "no_proper_self_intersections": true,
+    "union_matches_polygons": true,
+    "individual_masks_valid": true
+  }
+]

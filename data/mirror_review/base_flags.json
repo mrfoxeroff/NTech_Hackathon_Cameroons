@@ -1,0 +1,82 @@
+[
+  {
+    "id": 53,
+    "path": "data/image/samples/camera_2/cam2_00m01s.jpg",
+    "overlap": 0.2651046271735927
+  },
+  {
+    "id": 59,
+    "path": "data/image/samples/camera_2/cam2_02m55s.jpg",
+    "overlap": 1.0
+  },
+  {
+    "id": 61,
+    "path": "data/image/samples/camera_2/cam2_02m55s.jpg",
+    "overlap": 1.0
+  },
+  {
+    "id": 64,
+    "path": "data/image/samples/camera_2/cam2_02m59s.jpg",
+    "overlap": 0.22203378775030982
+  },
+  {
+    "id": 77,
+    "path": "data/image/samples/camera_2/cam2_03m11s.jpg",
+    "overlap": 1.0
+  },
+  {
+    "id": 79,
+    "path": "data/image/samples/camera_2/cam2_03m11s.jpg",
+    "overlap": 1.0
+  },
+  {
+    "id": 84,
+    "path": "data/image/samples/camera_2/cam2_03m15s.jpg",
+    "overlap": 0.997456279809221
+  },
+  {
+    "id": 88,
+    "path": "data/image/samples/camera_2/cam2_03m55s.jpg",
+    "overlap": 0.24015715121625011
+  },
+  {
+    "id": 90,
+    "path": "data/image/samples/camera_2/cam2_04m21s.jpg",
+    "overlap": 1.0
+  },
+  {
+    "id": 93,
+    "path": "data/image/samples/camera_2/cam2_04m21s.jpg",
+    "overlap": 1.0
+  },
+  {
+    "id": 97,
+    "path": "data/image/samples/camera_2/cam2_04m29s.jpg",
+    "overlap": 0.9963281698221457
+  },
+  {
+    "id": 107,
+    "path": "data/image/samples/camera_2/cam2_10m15s.jpg",
+    "overlap": 0.9977316915100454
+  },
+  {
+    "id": 114,
+    "path": "data/image/samples/camera_2/cam2_17m25s.jpg",
+    "overlap": 0.23647939550829078
+  },
+  {
+    "id": 229,
+    "path": "data/image/samples/camera_4/cam4_03m05s.jpg",
+    "overlap": 0.34130958296701197
+  },
+  {
+    "id": 232,
+    "path": "data/image/samples/camera_4/cam4_04m15s.jpg",
+    "overlap": 0.8039921062368951
+  },
+  {
+    "id": 243,
+    "path": "data/image/samples/camera_4/cam4_06m35s.jpg",
+    "overlap": 0.3771546770857274
+  }
+]

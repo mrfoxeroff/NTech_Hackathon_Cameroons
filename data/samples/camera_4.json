@@ -1,0 +1,511 @@
+{
+  "version": "5.6.0",
+  "flags": {
+    "scene_objects_only": true
+  },
+  "shapes": [
+    {
+      "label": "furniture",
+      "points": [
+        [
+          772,
+          548
+        ],
+        [
+          788,
+          542
+        ],
+        [
+          804,
+          552
+        ],
+        [
+          812,
+          572
+        ],
+        [
+          810,
+          648
+        ],
+        [
+          800,
+          678
+        ],
+        [
+          782,
+          692
+        ],
+        [
+          766,
+          682
+        ],
+        [
+          760,
+          658
+        ],
+        [
+          756,
+          594
+        ],
+        [
+          752,
+          578
+        ],
+        [
+          766,
+          574
+        ]
+      ],
+      "group_id": 1,
+      "description": "fire_extinguisher",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          796,
+          532
+        ],
+        [
+          808,
+          530
+        ],
+        [
+          820,
+          552
+        ],
+        [
+          826,
+          612
+        ],
+        [
+          818,
+          644
+        ],
+        [
+          810,
+          646
+        ],
+        [
+          812,
+          612
+        ],
+        [
+          810,
+          568
+        ],
+        [
+          800,
+          558
+        ]
+      ],
+      "group_id": 2,
+      "description": "extinguisher_bracket_hose",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          790,
+          170
+        ],
+        [
+          890,
+          142
+        ],
+        [
+          890,
+          516
+        ],
+        [
+          830,
+          528
+        ],
+        [
+          800,
+          514
+        ]
+      ],
+      "group_id": 3,
+      "description": "fire_cabinet",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          802,
+          390
+        ],
+        [
+          812,
+          382
+        ],
+        [
+          826,
+          388
+        ],
+        [
+          830,
+          402
+        ],
+        [
+          826,
+          420
+        ],
+        [
+          812,
+          424
+        ],
+        [
+          802,
+          414
+        ]
+      ],
+      "group_id": 3,
+      "description": "fire_cabinet",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1078,
+          276
+        ],
+        [
+          1096,
+          276
+        ],
+        [
+          1106,
+          284
+        ],
+        [
+          1104,
+          294
+        ],
+        [
+          1086,
+          294
+        ],
+        [
+          1078,
+          288
+        ]
+      ],
+      "group_id": 4,
+      "description": "open_door_handle",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1380,
+          620
+        ],
+        [
+          1392,
+          616
+        ],
+        [
+          1404,
+          626
+        ],
+        [
+          1402,
+          646
+        ],
+        [
+          1394,
+          652
+        ],
+        [
+          1390,
+          678
+        ],
+        [
+          1380,
+          682
+        ],
+        [
+          1376,
+          668
+        ],
+        [
+          1386,
+          648
+        ]
+      ],
+      "group_id": 5,
+      "description": "right_door_handle",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          830,
+          144
+        ],
+        [
+          842,
+          136
+        ],
+        [
+          856,
+          136
+        ],
+        [
+          864,
+          152
+        ],
+        [
+          854,
+          162
+        ],
+        [
+          834,
+          166
+        ]
+      ],
+      "group_id": 6,
+      "description": "small_wall_fitting",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          148,
+          0
+        ],
+        [
+          618,
+          0
+        ],
+        [
+          630,
+          186
+        ],
+        [
+          644,
+          396
+        ],
+        [
+          666,
+          614
+        ],
+        [
+          692,
+          800
+        ],
+        [
+          724,
+          906
+        ],
+        [
+          726,
+          928
+        ],
+        [
+          702,
+          930
+        ],
+        [
+          706,
+          962
+        ],
+        [
+          688,
+          970
+        ],
+        [
+          686,
+          996
+        ],
+        [
+          666,
+          1004
+        ],
+        [
+          670,
+          1040
+        ],
+        [
+          646,
+          1054
+        ],
+        [
+          648,
+          1082
+        ],
+        [
+          628,
+          1094
+        ],
+        [
+          626,
+          1118
+        ],
+        [
+          606,
+          1120
+        ],
+        [
+          610,
+          1148
+        ],
+        [
+          592,
+          1158
+        ],
+        [
+          598,
+          1200
+        ],
+        [
+          590,
+          1232
+        ],
+        [
+          568,
+          1244
+        ],
+        [
+          538,
+          1242
+        ],
+        [
+          550,
+          1284
+        ],
+        [
+          548,
+          1304
+        ],
+        [
+          532,
+          1322
+        ],
+        [
+          504,
+          1320
+        ],
+        [
+          476,
+          1300
+        ],
+        [
+          466,
+          1308
+        ],
+        [
+          442,
+          1292
+        ],
+        [
+          406,
+          1290
+        ],
+        [
+          358,
+          1198
+        ],
+        [
+          316,
+          1074
+        ],
+        [
+          280,
+          928
+        ],
+        [
+          238,
+          750
+        ],
+        [
+          204,
+          562
+        ],
+        [
+          174,
+          362
+        ],
+        [
+          156,
+          180
+        ]
+      ],
+      "group_id": 7,
+      "description": "folded_curtain",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    }
+  ],
+  "imagePath": "camera_4.jpg",
+  "imageData": null,
+  "imageHeight": 1944,
+  "imageWidth": 2592,
+  "annotation_metadata": {
+    "method": "assistant visually traced polygons; rendered with OpenCV",
+    "accuracy": "approximate visible outlines; small appendages are simplified",
+    "person_annotations_complete": false,
+    "unsafe_as_hard_person_exclusion_mask": true,
+    "objects": [
+      {
+        "id": 1,
+        "name": "fire_extinguisher",
+        "label": "furniture"
+      },
+      {
+        "id": 2,
+        "name": "extinguisher_bracket_hose",
+        "label": "furniture"
+      },
+      {
+        "id": 3,
+        "name": "fire_cabinet",
+        "label": "furniture"
+      },
+      {
+        "id": 4,
+        "name": "open_door_handle",
+        "label": "furniture"
+      },
+      {
+        "id": 5,
+        "name": "right_door_handle",
+        "label": "furniture"
+      },
+      {
+        "id": 6,
+        "name": "small_wall_fitting",
+        "label": "furniture"
+      },
+      {
+        "id": 7,
+        "name": "folded_curtain",
+        "label": "furniture"
+      }
+    ]
+  }
+}

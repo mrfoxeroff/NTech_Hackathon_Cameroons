@@ -1,0 +1,24 @@
+{
+  "splits": {
+    "train": {
+      "images": 107,
+      "instances": 172,
+      "negative_frames": 18
+    },
+    "val": {
+      "images": 37,
+      "instances": 60,
+      "negative_frames": 7
+    },
+    "test": {
+      "images": 17,
+      "instances": 6,
+      "negative_frames": 11
+    }
+  },
+  "source_frames": 200,
+  "used_frames": 161,
+  "guard_excluded": 39,
+  "label_coordinates_valid": true,
+  "no_identical_files_across_splits": true
+}

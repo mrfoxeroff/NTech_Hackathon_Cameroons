@@ -1,0 +1,1748 @@
+[
+  {
+    "image": "cam1_00m05s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_00m05s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_01m05s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_01m05s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_03m01s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_03m01s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_03m03s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_03m03s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_03m05s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_03m05s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_03m09s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_03m09s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_03m11s.jpg",
+    "split": "train",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_03m11s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_03m15s.jpg",
+    "split": "train",
+    "instances": 4,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_03m15s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_03m17s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_03m17s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_04m31s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_04m31s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_04m33s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_04m33s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_04m35s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_04m35s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_04m37s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_04m37s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_04m39s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_04m39s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_05m05s.jpg",
+    "split": "val",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_05m05s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_06m35s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_06m35s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_07m13s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_07m13s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_07m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_07m15s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_07m17s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_07m17s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_08m15s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_08m15s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_09m05s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_09m05s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_10m13s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_10m13s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_10m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_10m15s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_10m17s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_10m17s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_15m01s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_15m01s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_15m03s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_15m03s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_15m05s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_15m05s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_16m35s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_16m35s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_17m25s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_17m25s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_17m29s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_17m29s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam1_18m25s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_1/cam1_18m25s.jpg",
+    "camera_id": "camera_1"
+  },
+  {
+    "image": "cam2_00m01s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_00m01s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_00m03s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_00m03s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_00m05s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_00m05s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_00m55s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_00m55s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_01m05s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_01m05s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_02m55s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [
+      "59",
+      "61"
+    ],
+    "source": "data/image/samples/camera_2/cam2_02m55s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_02m59s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_02m59s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_03m01s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_03m01s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_03m05s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_03m05s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_03m09s.jpg",
+    "split": "train",
+    "instances": 4,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_03m09s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_03m11s.jpg",
+    "split": "train",
+    "instances": 3,
+    "rejected": [
+      "77",
+      "79"
+    ],
+    "source": "data/image/samples/camera_2/cam2_03m11s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_03m15s.jpg",
+    "split": "train",
+    "instances": 4,
+    "rejected": [
+      "84"
+    ],
+    "source": "data/image/samples/camera_2/cam2_03m15s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_04m21s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [
+      "90",
+      "93"
+    ],
+    "source": "data/image/samples/camera_2/cam2_04m21s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_04m25s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_04m25s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_04m29s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [
+      "97"
+    ],
+    "source": "data/image/samples/camera_2/cam2_04m29s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_05m05s.jpg",
+    "split": "val",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_05m05s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_06m35s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_06m35s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_07m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_07m15s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_08m15s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_08m15s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_08m53s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_08m53s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_08m55s.jpg",
+    "split": "test",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_08m55s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_09m05s.jpg",
+    "split": "test",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_09m05s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_10m11s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_10m11s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_10m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [
+      "107"
+    ],
+    "source": "data/image/samples/camera_2/cam2_10m15s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_15m01s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_15m01s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_15m03s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_15m03s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_15m05s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_15m05s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_16m35s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_16m35s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_17m21s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_17m21s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_17m25s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_17m25s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_17m29s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_17m29s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam2_18m25s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_2/cam2_18m25s.jpg",
+    "camera_id": "camera_2"
+  },
+  {
+    "image": "cam3_00m05s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_00m05s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_00m25s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_00m25s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_00m55s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_00m55s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_01m05s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_01m05s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_01m25s.jpg",
+    "split": "train",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_01m25s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_01m45s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_01m45s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_02m25s.jpg",
+    "split": "test",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_02m25s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_02m45s.jpg",
+    "split": "test",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_02m45s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_02m55s.jpg",
+    "split": "test",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_02m55s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_03m05s.jpg",
+    "split": "test",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_03m05s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_03m15s.jpg",
+    "split": "test",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_03m15s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_03m25s.jpg",
+    "split": "test",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_03m25s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_03m45s.jpg",
+    "split": "test",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_03m45s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_04m15s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_04m15s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_04m35s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_04m35s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_05m05s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_05m05s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_05m35s.jpg",
+    "split": "val",
+    "instances": 3,
+    "rejected": [
+      "165"
+    ],
+    "source": "data/image/samples/camera_3/cam3_05m35s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_05m45s.jpg",
+    "split": "val",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_05m45s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_06m35s.jpg",
+    "split": "train",
+    "instances": 4,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_06m35s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_07m05s.jpg",
+    "split": "train",
+    "instances": 5,
+    "rejected": [
+      "177"
+    ],
+    "source": "data/image/samples/camera_3/cam3_07m05s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_07m25s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_07m25s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_08m15s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_08m15s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_09m05s.jpg",
+    "split": "test",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_09m05s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_10m25s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_10m25s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_10m55s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_10m55s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_11m25s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_11m25s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_12m55s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_12m55s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_14m45s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_14m45s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_14m55s.jpg",
+    "split": "train",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_14m55s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_15m25s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_15m25s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_16m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_16m15s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_16m25s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_16m25s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_19m15s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_3/cam3_19m15s.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam4_00m05s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_00m05s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_00m15s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_00m15s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_00m25s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_00m25s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_01m05s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_01m05s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_01m25s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_01m25s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_02m45s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_02m45s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_03m05s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_03m05s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_03m35s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_03m35s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_04m15s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_04m15s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_04m55s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_04m55s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_05m05s.jpg",
+    "split": "val",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_05m05s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_05m25s.jpg",
+    "split": "val",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_05m25s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_06m35s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_06m35s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_06m55s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_06m55s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_07m05s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_07m05s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_07m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_07m15s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_07m25s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_07m25s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_07m45s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_07m45s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_09m05s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_09m05s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_10m15s.jpg",
+    "split": "train",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_10m15s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_10m25s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_10m25s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_11m45s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_11m45s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_12m25s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_12m25s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_13m05s.jpg",
+    "split": "train",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_13m05s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_13m15s.jpg",
+    "split": "train",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_13m15s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_13m25s.jpg",
+    "split": "train",
+    "instances": 4,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_13m25s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_13m45s.jpg",
+    "split": "train",
+    "instances": 4,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_13m45s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_14m15s.jpg",
+    "split": "val",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_14m15s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_15m45s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_15m45s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_16m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_16m15s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_16m35s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_16m35s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_17m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_17m15s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam4_17m45s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_4/cam4_17m45s.jpg",
+    "camera_id": "camera_4"
+  },
+  {
+    "image": "cam5_00m05s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_00m05s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_00m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_00m15s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_00m25s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_00m25s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_00m35s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_00m35s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_01m05s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_01m05s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_01m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_01m15s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_01m25s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_01m25s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_02m35s.jpg",
+    "split": "train",
+    "instances": 5,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_02m35s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_02m45s.jpg",
+    "split": "train",
+    "instances": 5,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_02m45s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_03m35s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_03m35s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_04m25s.jpg",
+    "split": "val",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_04m25s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_05m05s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_05m05s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_05m15s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_05m15s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_05m25s.jpg",
+    "split": "val",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_05m25s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_05m35s.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_05m35s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_06m25s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_06m25s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_06m35s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_06m35s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_07m05s.jpg",
+    "split": "train",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_07m05s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_07m15s.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_07m15s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_07m35s.jpg",
+    "split": "train",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_07m35s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_08m25s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_08m25s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_08m35s.jpg",
+    "split": "test",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_08m35s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_09m25s.jpg",
+    "split": "test",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_09m25s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_10m35s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_10m35s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_11m15s.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_11m15s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_11m45s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_11m45s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_13m25s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_13m25s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_14m45s.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_14m45s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_15m25s.jpg",
+    "split": "val",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_15m25s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_16m45s.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_16m45s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_18m15s.jpg",
+    "split": "test",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_18m15s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam5_19m15s.jpg",
+    "split": "test",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/image/samples/camera_5/cam5_19m15s.jpg",
+    "camera_id": "camera_5"
+  },
+  {
+    "image": "cam3_extra_00046.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00046:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00046.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00050.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00050:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00050.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00054.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00054:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00054.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00058.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00058:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00058.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00062.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00062:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00062.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00066.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00066:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00066.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00070.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00070:0",
+      "cam3_extra_00070:1",
+      "cam3_extra_00070:2",
+      "cam3_extra_00070:3",
+      "cam3_extra_00070:4",
+      "cam3_extra_00070:5"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00070.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00770.jpg",
+    "split": "val",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00770:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00770.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00774.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00774:1"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00774.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00778.jpg",
+    "split": "val",
+    "instances": 0,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00778.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00782.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [
+      "cam3_extra_00782:2"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00782.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00786.jpg",
+    "split": "val",
+    "instances": 2,
+    "rejected": [
+      "cam3_extra_00786:2"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00786.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00790.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00790:1"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00790.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00794.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00794:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00794.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00798.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00798:1"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00798.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00802.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00802:1"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00802.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00842.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00842.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00846.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00846:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00846.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00850.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00850:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00850.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00854.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00854:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00854.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00858.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00858:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00858.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00886.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00886.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00890.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [
+      "cam3_extra_00890:2"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00890.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00894.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00894.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00898.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00898.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00902.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00902.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00149.jpg",
+    "split": "test",
+    "instances": 2,
+    "rejected": [
+      "cam3_extra_00149:2",
+      "cam3_extra_00149:3"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00149.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00154.jpg",
+    "split": "test",
+    "instances": 5,
+    "rejected": [
+      "cam3_extra_00154:5",
+      "cam3_extra_00154:6"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00154.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00159.jpg",
+    "split": "test",
+    "instances": 6,
+    "rejected": [
+      "cam3_extra_00159:6"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00159.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00164.jpg",
+    "split": "test",
+    "instances": 2,
+    "rejected": [
+      "cam3_extra_00164:2"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00164.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00169.jpg",
+    "split": "test",
+    "instances": 3,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00169.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00052.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00052:1"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00052.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00053.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00053:1"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00053.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00055.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00055:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00055.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00056.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00056:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00056.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00057.jpg",
+    "split": "train",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00057:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00057.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00772.jpg",
+    "split": "val",
+    "instances": 0,
+    "rejected": [
+      "cam3_extra_00772:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00772.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00773.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00773:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00773.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00775.jpg",
+    "split": "val",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00775.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00843.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00843.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00844.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00844.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00845.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [
+      "cam3_extra_00845:0"
+    ],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00845.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00892.jpg",
+    "split": "train",
+    "instances": 1,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00892.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00893.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00893.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00895.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00895.jpg",
+    "camera_id": "camera_3"
+  },
+  {
+    "image": "cam3_extra_00896.jpg",
+    "split": "train",
+    "instances": 2,
+    "rejected": [],
+    "source": "data/person_mirrors_v2/source/cam3_extra_00896.jpg",
+    "camera_id": "camera_3"
+  }
+]

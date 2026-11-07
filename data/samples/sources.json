@@ -1,0 +1,47 @@
+[
+  {
+    "camera_id": "camera_1",
+    "source_video": "data/video/camera_1.mkv",
+    "frame_index": 766,
+    "video_time_sec": 30.021,
+    "media_time_sec": 30.806,
+    "width": 2592,
+    "height": 1944
+  },
+  {
+    "camera_id": "camera_2",
+    "source_video": "data/video/camera_2.mkv",
+    "frame_index": 766,
+    "video_time_sec": 30.035,
+    "media_time_sec": 30.82,
+    "width": 2592,
+    "height": 1944
+  },
+  {
+    "camera_id": "camera_3",
+    "source_video": "data/video/camera_3.mkv",
+    "frame_index": 765,
+    "video_time_sec": 30.002,
+    "media_time_sec": 30.786,
+    "width": 2592,
+    "height": 1944
+  },
+  {
+    "camera_id": "camera_4",
+    "source_video": "data/video/camera_4.mkv",
+    "frame_index": 600,
+    "video_time_sec": 30.002,
+    "media_time_sec": 34.631,
+    "width": 2592,
+    "height": 1944
+  },
+  {
+    "camera_id": "camera_5",
+    "source_video": "data/video/camera_5.mkv",
+    "frame_index": 0,
+    "video_time_sec": 0.0,
+    "media_time_sec": 5.323,
+    "width": 2592,
+    "height": 1944
+  }
+]

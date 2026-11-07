@@ -1,0 +1,6 @@
+names:
+  0: person
+path: C:/Users/user/Desktop/Lyceum/pycharm/Projects/NTechHackatoon/data/person_mirrors_v2
+test: images/test
+train: images/train
+val: images/val

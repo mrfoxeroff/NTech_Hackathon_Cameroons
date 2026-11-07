@@ -1,0 +1,1369 @@
+{
+  "version": "5.6.0",
+  "flags": {
+    "scene_objects_only": true
+  },
+  "shapes": [
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1800,
+          616
+        ],
+        [
+          1832,
+          610
+        ],
+        [
+          1892,
+          610
+        ],
+        [
+          1948,
+          624
+        ],
+        [
+          2000,
+          620
+        ],
+        [
+          2024,
+          646
+        ],
+        [
+          2026,
+          690
+        ],
+        [
+          2084,
+          696
+        ],
+        [
+          2116,
+          734
+        ],
+        [
+          2136,
+          800
+        ],
+        [
+          2130,
+          876
+        ],
+        [
+          2114,
+          920
+        ],
+        [
+          2090,
+          934
+        ],
+        [
+          1900,
+          956
+        ],
+        [
+          1852,
+          942
+        ],
+        [
+          1828,
+          906
+        ],
+        [
+          1804,
+          840
+        ],
+        [
+          1778,
+          762
+        ],
+        [
+          1774,
+          712
+        ],
+        [
+          1784,
+          664
+        ]
+      ],
+      "group_id": 1,
+      "description": "armchair_far",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1854,
+          928
+        ],
+        [
+          1870,
+          942
+        ],
+        [
+          1882,
+          976
+        ],
+        [
+          1870,
+          984
+        ],
+        [
+          1850,
+          956
+        ]
+      ],
+      "group_id": 1,
+      "description": "armchair_far",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2086,
+          920
+        ],
+        [
+          2108,
+          908
+        ],
+        [
+          2108,
+          948
+        ],
+        [
+          2088,
+          960
+        ]
+      ],
+      "group_id": 1,
+      "description": "armchair_far",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2208,
+          1118
+        ],
+        [
+          2278,
+          1120
+        ],
+        [
+          2296,
+          1082
+        ],
+        [
+          2314,
+          1058
+        ],
+        [
+          2342,
+          1064
+        ],
+        [
+          2416,
+          1114
+        ],
+        [
+          2430,
+          1162
+        ],
+        [
+          2414,
+          1240
+        ],
+        [
+          2392,
+          1322
+        ],
+        [
+          2352,
+          1402
+        ],
+        [
+          2322,
+          1454
+        ],
+        [
+          2232,
+          1504
+        ],
+        [
+          2160,
+          1536
+        ],
+        [
+          2110,
+          1526
+        ],
+        [
+          2084,
+          1492
+        ],
+        [
+          2048,
+          1406
+        ],
+        [
+          2028,
+          1320
+        ],
+        [
+          2008,
+          1230
+        ],
+        [
+          2018,
+          1182
+        ],
+        [
+          2050,
+          1136
+        ],
+        [
+          2132,
+          1118
+        ]
+      ],
+      "group_id": 2,
+      "description": "armchair_near",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2016,
+          1262
+        ],
+        [
+          2028,
+          1280
+        ],
+        [
+          2026,
+          1328
+        ],
+        [
+          2008,
+          1338
+        ],
+        [
+          2004,
+          1318
+        ]
+      ],
+      "group_id": 2,
+      "description": "armchair_near",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2144,
+          1498
+        ],
+        [
+          2168,
+          1502
+        ],
+        [
+          2162,
+          1548
+        ],
+        [
+          2144,
+          1550
+        ]
+      ],
+      "group_id": 2,
+      "description": "armchair_near",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2284,
+          1472
+        ],
+        [
+          2308,
+          1466
+        ],
+        [
+          2300,
+          1512
+        ],
+        [
+          2280,
+          1520
+        ]
+      ],
+      "group_id": 2,
+      "description": "armchair_near",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2076,
+          936
+        ],
+        [
+          2112,
+          922
+        ],
+        [
+          2142,
+          922
+        ],
+        [
+          2188,
+          942
+        ],
+        [
+          2222,
+          968
+        ],
+        [
+          2236,
+          998
+        ],
+        [
+          2226,
+          1022
+        ],
+        [
+          2202,
+          1038
+        ],
+        [
+          2168,
+          1046
+        ],
+        [
+          2164,
+          1088
+        ],
+        [
+          2186,
+          1116
+        ],
+        [
+          2174,
+          1138
+        ],
+        [
+          2128,
+          1154
+        ],
+        [
+          2082,
+          1146
+        ],
+        [
+          2050,
+          1124
+        ],
+        [
+          2042,
+          1100
+        ],
+        [
+          2052,
+          1072
+        ],
+        [
+          2070,
+          1052
+        ],
+        [
+          2072,
+          1028
+        ],
+        [
+          2054,
+          1004
+        ],
+        [
+          2056,
+          972
+        ]
+      ],
+      "group_id": 3,
+      "description": "round_side_table",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2126,
+          946
+        ],
+        [
+          2130,
+          934
+        ],
+        [
+          2138,
+          960
+        ],
+        [
+          2152,
+          938
+        ],
+        [
+          2152,
+          948
+        ],
+        [
+          2144,
+          964
+        ],
+        [
+          2160,
+          964
+        ],
+        [
+          2156,
+          976
+        ],
+        [
+          2150,
+          998
+        ],
+        [
+          2134,
+          1000
+        ],
+        [
+          2122,
+          988
+        ],
+        [
+          2120,
+          970
+        ],
+        [
+          2130,
+          968
+        ]
+      ],
+      "group_id": 4,
+      "description": "small_table_plant",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1822,
+          156
+        ],
+        [
+          1840,
+          150
+        ],
+        [
+          1910,
+          156
+        ],
+        [
+          1922,
+          170
+        ],
+        [
+          1916,
+          256
+        ],
+        [
+          1908,
+          340
+        ],
+        [
+          1896,
+          420
+        ],
+        [
+          1878,
+          510
+        ],
+        [
+          1872,
+          612
+        ],
+        [
+          1856,
+          618
+        ],
+        [
+          1858,
+          526
+        ],
+        [
+          1880,
+          416
+        ],
+        [
+          1894,
+          332
+        ],
+        [
+          1900,
+          248
+        ],
+        [
+          1906,
+          170
+        ],
+        [
+          1842,
+          168
+        ],
+        [
+          1844,
+          246
+        ],
+        [
+          1834,
+          248
+        ]
+      ],
+      "group_id": 5,
+      "description": "exercise_rack",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1708,
+          362
+        ],
+        [
+          1784,
+          360
+        ],
+        [
+          1784,
+          348
+        ],
+        [
+          1800,
+          352
+        ],
+        [
+          1808,
+          368
+        ],
+        [
+          1874,
+          360
+        ],
+        [
+          1890,
+          366
+        ],
+        [
+          1890,
+          386
+        ],
+        [
+          1870,
+          392
+        ],
+        [
+          1826,
+          388
+        ],
+        [
+          1826,
+          410
+        ],
+        [
+          1880,
+          416
+        ],
+        [
+          1890,
+          434
+        ],
+        [
+          1876,
+          444
+        ],
+        [
+          1824,
+          432
+        ],
+        [
+          1824,
+          462
+        ],
+        [
+          1810,
+          472
+        ],
+        [
+          1804,
+          428
+        ],
+        [
+          1748,
+          428
+        ],
+        [
+          1738,
+          418
+        ],
+        [
+          1786,
+          418
+        ],
+        [
+          1784,
+          386
+        ],
+        [
+          1704,
+          382
+        ]
+      ],
+      "group_id": 5,
+      "description": "exercise_rack",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1848,
+          444
+        ],
+        [
+          1866,
+          444
+        ],
+        [
+          1848,
+          550
+        ],
+        [
+          1830,
+          610
+        ],
+        [
+          1824,
+          614
+        ],
+        [
+          1814,
+          600
+        ],
+        [
+          1832,
+          546
+        ]
+      ],
+      "group_id": 5,
+      "description": "exercise_rack",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1832,
+          472
+        ],
+        [
+          1850,
+          476
+        ],
+        [
+          1824,
+          594
+        ],
+        [
+          1806,
+          600
+        ],
+        [
+          1810,
+          576
+        ]
+      ],
+      "group_id": 5,
+      "description": "exercise_rack",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1826,
+          604
+        ],
+        [
+          1830,
+          618
+        ],
+        [
+          1712,
+          630
+        ],
+        [
+          1696,
+          640
+        ],
+        [
+          1690,
+          666
+        ],
+        [
+          1782,
+          666
+        ],
+        [
+          1782,
+          684
+        ],
+        [
+          1640,
+          684
+        ],
+        [
+          1640,
+          666
+        ],
+        [
+          1674,
+          666
+        ],
+        [
+          1682,
+          632
+        ],
+        [
+          1702,
+          618
+        ]
+      ],
+      "group_id": 5,
+      "description": "exercise_rack",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1816,
+          700
+        ],
+        [
+          1826,
+          710
+        ],
+        [
+          1716,
+          712
+        ],
+        [
+          1700,
+          724
+        ],
+        [
+          1692,
+          748
+        ],
+        [
+          1774,
+          748
+        ],
+        [
+          1776,
+          762
+        ],
+        [
+          1672,
+          764
+        ],
+        [
+          1670,
+          750
+        ],
+        [
+          1684,
+          748
+        ],
+        [
+          1690,
+          720
+        ],
+        [
+          1704,
+          704
+        ]
+      ],
+      "group_id": 5,
+      "description": "exercise_rack",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2264,
+          1942
+        ],
+        [
+          2242,
+          1890
+        ],
+        [
+          2188,
+          1870
+        ],
+        [
+          2252,
+          1878
+        ],
+        [
+          2188,
+          1818
+        ],
+        [
+          2268,
+          1850
+        ],
+        [
+          2238,
+          1798
+        ],
+        [
+          2164,
+          1788
+        ],
+        [
+          2246,
+          1786
+        ],
+        [
+          2204,
+          1750
+        ],
+        [
+          2128,
+          1728
+        ],
+        [
+          2204,
+          1734
+        ],
+        [
+          2152,
+          1696
+        ],
+        [
+          2086,
+          1694
+        ],
+        [
+          2168,
+          1682
+        ],
+        [
+          2234,
+          1710
+        ],
+        [
+          2192,
+          1666
+        ],
+        [
+          2208,
+          1646
+        ],
+        [
+          2266,
+          1706
+        ],
+        [
+          2276,
+          1638
+        ],
+        [
+          2240,
+          1568
+        ],
+        [
+          2286,
+          1620
+        ],
+        [
+          2288,
+          1530
+        ],
+        [
+          2308,
+          1592
+        ],
+        [
+          2324,
+          1500
+        ],
+        [
+          2334,
+          1582
+        ],
+        [
+          2374,
+          1522
+        ],
+        [
+          2354,
+          1624
+        ],
+        [
+          2408,
+          1540
+        ],
+        [
+          2378,
+          1644
+        ],
+        [
+          2454,
+          1580
+        ],
+        [
+          2408,
+          1668
+        ],
+        [
+          2506,
+          1610
+        ],
+        [
+          2448,
+          1686
+        ],
+        [
+          2532,
+          1662
+        ],
+        [
+          2456,
+          1708
+        ],
+        [
+          2560,
+          1690
+        ],
+        [
+          2470,
+          1738
+        ],
+        [
+          2588,
+          1742
+        ],
+        [
+          2490,
+          1768
+        ],
+        [
+          2562,
+          1790
+        ],
+        [
+          2486,
+          1808
+        ],
+        [
+          2572,
+          1838
+        ],
+        [
+          2486,
+          1838
+        ],
+        [
+          2550,
+          1880
+        ],
+        [
+          2464,
+          1864
+        ],
+        [
+          2506,
+          1940
+        ]
+      ],
+      "group_id": 6,
+      "description": "floor_plant",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1330,
+          110
+        ],
+        [
+          1392,
+          106
+        ],
+        [
+          1414,
+          126
+        ],
+        [
+          1404,
+          148
+        ],
+        [
+          1398,
+          172
+        ],
+        [
+          1332,
+          168
+        ],
+        [
+          1332,
+          150
+        ]
+      ],
+      "group_id": 7,
+      "description": "far_corridor_table",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1338,
+          158
+        ],
+        [
+          1348,
+          164
+        ],
+        [
+          1348,
+          190
+        ],
+        [
+          1338,
+          190
+        ]
+      ],
+      "group_id": 7,
+      "description": "far_corridor_table",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1394,
+          158
+        ],
+        [
+          1406,
+          156
+        ],
+        [
+          1408,
+          182
+        ],
+        [
+          1398,
+          184
+        ]
+      ],
+      "group_id": 7,
+      "description": "far_corridor_table",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          402,
+          1616
+        ],
+        [
+          420,
+          1610
+        ],
+        [
+          432,
+          1620
+        ],
+        [
+          434,
+          1632
+        ],
+        [
+          476,
+          1640
+        ],
+        [
+          476,
+          1656
+        ],
+        [
+          454,
+          1666
+        ],
+        [
+          418,
+          1656
+        ],
+        [
+          406,
+          1636
+        ]
+      ],
+      "group_id": 8,
+      "description": "foreground_door_handle",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1298,
+          674
+        ],
+        [
+          1326,
+          660
+        ],
+        [
+          1338,
+          666
+        ],
+        [
+          1328,
+          680
+        ],
+        [
+          1312,
+          686
+        ],
+        [
+          1318,
+          710
+        ],
+        [
+          1308,
+          722
+        ],
+        [
+          1298,
+          710
+        ]
+      ],
+      "group_id": 9,
+      "description": "middle_door_handle",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1610,
+          328
+        ],
+        [
+          1618,
+          326
+        ],
+        [
+          1626,
+          336
+        ],
+        [
+          1644,
+          336
+        ],
+        [
+          1644,
+          344
+        ],
+        [
+          1624,
+          344
+        ],
+        [
+          1618,
+          362
+        ],
+        [
+          1610,
+          362
+        ]
+      ],
+      "group_id": 10,
+      "description": "far_door_handle",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "poster",
+      "points": [
+        [
+          2200,
+          256
+        ],
+        [
+          2434,
+          222
+        ],
+        [
+          2406,
+          586
+        ],
+        [
+          2332,
+          866
+        ],
+        [
+          2144,
+          678
+        ]
+      ],
+      "group_id": 11,
+      "description": "wall_poster",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    }
+  ],
+  "imagePath": "camera_5.jpg",
+  "imageData": null,
+  "imageHeight": 1944,
+  "imageWidth": 2592,
+  "annotation_metadata": {
+    "method": "assistant visually traced polygons; rendered with OpenCV",
+    "accuracy": "approximate visible outlines; small appendages are simplified",
+    "person_annotations_complete": false,
+    "unsafe_as_hard_person_exclusion_mask": true,
+    "objects": [
+      {
+        "id": 1,
+        "name": "armchair_far",
+        "label": "furniture"
+      },
+      {
+        "id": 2,
+        "name": "armchair_near",
+        "label": "furniture"
+      },
+      {
+        "id": 3,
+        "name": "round_side_table",
+        "label": "furniture"
+      },
+      {
+        "id": 4,
+        "name": "small_table_plant",
+        "label": "furniture"
+      },
+      {
+        "id": 5,
+        "name": "exercise_rack",
+        "label": "furniture"
+      },
+      {
+        "id": 6,
+        "name": "floor_plant",
+        "label": "furniture"
+      },
+      {
+        "id": 7,
+        "name": "far_corridor_table",
+        "label": "furniture"
+      },
+      {
+        "id": 8,
+        "name": "foreground_door_handle",
+        "label": "furniture"
+      },
+      {
+        "id": 9,
+        "name": "middle_door_handle",
+        "label": "furniture"
+      },
+      {
+        "id": 10,
+        "name": "far_door_handle",
+        "label": "furniture"
+      },
+      {
+        "id": 11,
+        "name": "wall_poster",
+        "label": "poster"
+      }
+    ]
+  }
+}

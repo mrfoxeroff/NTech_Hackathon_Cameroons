@@ -1,0 +1,22 @@
+{
+  "camera_1": {
+    "objects": 17,
+    "polygon_components": 30
+  },
+  "camera_2": {
+    "objects": 16,
+    "polygon_components": 30
+  },
+  "camera_3": {
+    "objects": 18,
+    "polygon_components": 29
+  },
+  "camera_4": {
+    "objects": 7,
+    "polygon_components": 8
+  },
+  "camera_5": {
+    "objects": 11,
+    "polygon_components": 23
+  }
+}

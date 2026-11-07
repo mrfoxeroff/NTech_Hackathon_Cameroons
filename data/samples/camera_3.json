@@ -1,0 +1,1212 @@
+{
+  "version": "5.6.0",
+  "flags": {
+    "scene_objects_only": true
+  },
+  "shapes": [
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1652,
+          968
+        ],
+        [
+          2056,
+          916
+        ],
+        [
+          2102,
+          960
+        ],
+        [
+          2152,
+          1064
+        ],
+        [
+          2176,
+          1112
+        ],
+        [
+          2154,
+          1146
+        ],
+        [
+          1734,
+          1240
+        ],
+        [
+          1700,
+          1218
+        ],
+        [
+          1636,
+          1102
+        ],
+        [
+          1610,
+          1052
+        ],
+        [
+          1616,
+          1016
+        ]
+      ],
+      "group_id": 1,
+      "description": "foosball_body",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1706,
+          1216
+        ],
+        [
+          1738,
+          1230
+        ],
+        [
+          1786,
+          1356
+        ],
+        [
+          1838,
+          1358
+        ],
+        [
+          1870,
+          1226
+        ],
+        [
+          1900,
+          1218
+        ],
+        [
+          1866,
+          1356
+        ],
+        [
+          1834,
+          1388
+        ],
+        [
+          1694,
+          1422
+        ],
+        [
+          1680,
+          1400
+        ],
+        [
+          1760,
+          1374
+        ]
+      ],
+      "group_id": 2,
+      "description": "foosball_legs",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2020,
+          1176
+        ],
+        [
+          2054,
+          1168
+        ],
+        [
+          2084,
+          1272
+        ],
+        [
+          2072,
+          1324
+        ],
+        [
+          2040,
+          1344
+        ],
+        [
+          2052,
+          1284
+        ]
+      ],
+      "group_id": 2,
+      "description": "foosball_legs",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1616,
+          1200
+        ],
+        [
+          1664,
+          1192
+        ],
+        [
+          1680,
+          1202
+        ],
+        [
+          1678,
+          1224
+        ],
+        [
+          1614,
+          1246
+        ],
+        [
+          1598,
+          1234
+        ]
+      ],
+      "group_id": 2,
+      "description": "foosball_legs",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1662,
+          974
+        ],
+        [
+          1678,
+          970
+        ],
+        [
+          1728,
+          1096
+        ],
+        [
+          1716,
+          1104
+        ]
+      ],
+      "group_id": 3,
+      "description": "foosball_rods",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1704,
+          960
+        ],
+        [
+          1716,
+          958
+        ],
+        [
+          1782,
+          1120
+        ],
+        [
+          1790,
+          1148
+        ],
+        [
+          1774,
+          1152
+        ],
+        [
+          1768,
+          1124
+        ]
+      ],
+      "group_id": 3,
+      "description": "foosball_rods",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1754,
+          954
+        ],
+        [
+          1768,
+          952
+        ],
+        [
+          1832,
+          1102
+        ],
+        [
+          1852,
+          1158
+        ],
+        [
+          1838,
+          1164
+        ],
+        [
+          1818,
+          1108
+        ]
+      ],
+      "group_id": 3,
+      "description": "foosball_rods",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1800,
+          948
+        ],
+        [
+          1812,
+          946
+        ],
+        [
+          1888,
+          1100
+        ],
+        [
+          1922,
+          1166
+        ],
+        [
+          1910,
+          1172
+        ]
+      ],
+      "group_id": 3,
+      "description": "foosball_rods",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1854,
+          940
+        ],
+        [
+          1868,
+          940
+        ],
+        [
+          1940,
+          1086
+        ],
+        [
+          1984,
+          1174
+        ],
+        [
+          1972,
+          1182
+        ]
+      ],
+      "group_id": 3,
+      "description": "foosball_rods",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1904,
+          936
+        ],
+        [
+          1918,
+          934
+        ],
+        [
+          1994,
+          1088
+        ],
+        [
+          2042,
+          1182
+        ],
+        [
+          2030,
+          1188
+        ]
+      ],
+      "group_id": 3,
+      "description": "foosball_rods",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1956,
+          928
+        ],
+        [
+          1970,
+          926
+        ],
+        [
+          2046,
+          1066
+        ],
+        [
+          2096,
+          1160
+        ],
+        [
+          2086,
+          1168
+        ]
+      ],
+      "group_id": 3,
+      "description": "foosball_rods",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2010,
+          922
+        ],
+        [
+          2024,
+          920
+        ],
+        [
+          2092,
+          1040
+        ],
+        [
+          2166,
+          1164
+        ],
+        [
+          2154,
+          1172
+        ]
+      ],
+      "group_id": 3,
+      "description": "foosball_rods",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1406,
+          764
+        ],
+        [
+          2356,
+          750
+        ],
+        [
+          2380,
+          810
+        ],
+        [
+          2304,
+          1048
+        ],
+        [
+          1380,
+          1186
+        ],
+        [
+          1390,
+          912
+        ]
+      ],
+      "group_id": 4,
+      "description": "display_counter",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1444,
+          728
+        ],
+        [
+          1462,
+          728
+        ],
+        [
+          1470,
+          750
+        ],
+        [
+          1462,
+          812
+        ],
+        [
+          1452,
+          824
+        ],
+        [
+          1438,
+          812
+        ],
+        [
+          1440,
+          756
+        ]
+      ],
+      "group_id": 5,
+      "description": "bottle",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1570,
+          782
+        ],
+        [
+          1696,
+          768
+        ],
+        [
+          1732,
+          792
+        ],
+        [
+          1594,
+          812
+        ]
+      ],
+      "group_id": 6,
+      "description": "keyboard",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1792,
+          776
+        ],
+        [
+          1806,
+          776
+        ],
+        [
+          1818,
+          816
+        ],
+        [
+          1798,
+          820
+        ]
+      ],
+      "group_id": 7,
+      "description": "remote",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2126,
+          718
+        ],
+        [
+          2146,
+          704
+        ],
+        [
+          2172,
+          708
+        ],
+        [
+          2188,
+          728
+        ],
+        [
+          2194,
+          766
+        ],
+        [
+          2172,
+          778
+        ],
+        [
+          2132,
+          770
+        ],
+        [
+          2108,
+          768
+        ]
+      ],
+      "group_id": 8,
+      "description": "helmet",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2224,
+          736
+        ],
+        [
+          2234,
+          708
+        ],
+        [
+          2248,
+          692
+        ],
+        [
+          2268,
+          690
+        ],
+        [
+          2286,
+          708
+        ],
+        [
+          2290,
+          736
+        ],
+        [
+          2274,
+          770
+        ],
+        [
+          2276,
+          790
+        ],
+        [
+          2226,
+          794
+        ],
+        [
+          2212,
+          776
+        ]
+      ],
+      "group_id": 9,
+      "description": "racket_holder",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2298,
+          736
+        ],
+        [
+          2322,
+          740
+        ],
+        [
+          2358,
+          750
+        ],
+        [
+          2354,
+          766
+        ],
+        [
+          2340,
+          762
+        ],
+        [
+          2342,
+          778
+        ],
+        [
+          2332,
+          782
+        ],
+        [
+          2320,
+          760
+        ],
+        [
+          2306,
+          758
+        ]
+      ],
+      "group_id": 10,
+      "description": "counter_accessories",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          766,
+          324
+        ],
+        [
+          900,
+          310
+        ],
+        [
+          904,
+          374
+        ],
+        [
+          898,
+          450
+        ],
+        [
+          886,
+          468
+        ],
+        [
+          766,
+          472
+        ],
+        [
+          760,
+          446
+        ],
+        [
+          766,
+          406
+        ]
+      ],
+      "group_id": 11,
+      "description": "corridor_table",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          776,
+          458
+        ],
+        [
+          788,
+          460
+        ],
+        [
+          782,
+          486
+        ],
+        [
+          772,
+          492
+        ]
+      ],
+      "group_id": 11,
+      "description": "corridor_table",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          886,
+          450
+        ],
+        [
+          896,
+          452
+        ],
+        [
+          892,
+          476
+        ],
+        [
+          884,
+          480
+        ]
+      ],
+      "group_id": 11,
+      "description": "corridor_table",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          2590,
+          1720
+        ],
+        [
+          2562,
+          1746
+        ],
+        [
+          2526,
+          1758
+        ],
+        [
+          2504,
+          1804
+        ],
+        [
+          2512,
+          1864
+        ],
+        [
+          2480,
+          1894
+        ],
+        [
+          2408,
+          1904
+        ],
+        [
+          2386,
+          1892
+        ],
+        [
+          2410,
+          1874
+        ],
+        [
+          2466,
+          1860
+        ],
+        [
+          2470,
+          1810
+        ],
+        [
+          2492,
+          1760
+        ],
+        [
+          2556,
+          1722
+        ],
+        [
+          2590,
+          1700
+        ]
+      ],
+      "group_id": 12,
+      "description": "chair_partial_right_bottom",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          332,
+          968
+        ],
+        [
+          368,
+          952
+        ],
+        [
+          410,
+          980
+        ],
+        [
+          424,
+          1022
+        ],
+        [
+          408,
+          1060
+        ],
+        [
+          372,
+          1080
+        ],
+        [
+          352,
+          1060
+        ],
+        [
+          328,
+          1024
+        ]
+      ],
+      "group_id": 13,
+      "description": "chair_partial_left",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "furniture",
+      "points": [
+        [
+          1084,
+          620
+        ],
+        [
+          1096,
+          624
+        ],
+        [
+          1104,
+          638
+        ],
+        [
+          1136,
+          622
+        ],
+        [
+          1150,
+          630
+        ],
+        [
+          1148,
+          640
+        ],
+        [
+          1102,
+          654
+        ],
+        [
+          1084,
+          644
+        ]
+      ],
+      "group_id": 14,
+      "description": "door_handle",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "screen",
+      "points": [
+        [
+          1478,
+          330
+        ],
+        [
+          1740,
+          338
+        ],
+        [
+          1664,
+          746
+        ],
+        [
+          1418,
+          774
+        ]
+      ],
+      "group_id": 15,
+      "description": "left_display",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "screen",
+      "points": [
+        [
+          1780,
+          412
+        ],
+        [
+          2168,
+          458
+        ],
+        [
+          2102,
+          686
+        ],
+        [
+          1720,
+          678
+        ]
+      ],
+      "group_id": 16,
+      "description": "main_display",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "screen",
+      "points": [
+        [
+          2174,
+          462
+        ],
+        [
+          2420,
+          506
+        ],
+        [
+          2362,
+          696
+        ],
+        [
+          2124,
+          684
+        ]
+      ],
+      "group_id": 17,
+      "description": "right_display",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "mirror",
+      "points": [
+        [
+          334,
+          964
+        ],
+        [
+          356,
+          942
+        ],
+        [
+          382,
+          938
+        ],
+        [
+          408,
+          966
+        ],
+        [
+          448,
+          1058
+        ],
+        [
+          516,
+          1208
+        ],
+        [
+          580,
+          1340
+        ],
+        [
+          650,
+          1454
+        ],
+        [
+          720,
+          1522
+        ],
+        [
+          748,
+          1570
+        ],
+        [
+          752,
+          1608
+        ],
+        [
+          726,
+          1652
+        ],
+        [
+          690,
+          1674
+        ],
+        [
+          652,
+          1678
+        ],
+        [
+          618,
+          1664
+        ],
+        [
+          570,
+          1620
+        ],
+        [
+          516,
+          1538
+        ],
+        [
+          460,
+          1418
+        ],
+        [
+          416,
+          1300
+        ],
+        [
+          370,
+          1160
+        ],
+        [
+          332,
+          1032
+        ],
+        [
+          322,
+          988
+        ]
+      ],
+      "group_id": 18,
+      "description": "curved_mirror",
+      "shape_type": "polygon",
+      "flags": {},
+      "mask": null
+    }
+  ],
+  "imagePath": "camera_3.jpg",
+  "imageData": null,
+  "imageHeight": 1944,
+  "imageWidth": 2592,
+  "annotation_metadata": {
+    "method": "assistant visually traced polygons; rendered with OpenCV",
+    "accuracy": "approximate visible outlines; small appendages are simplified",
+    "person_annotations_complete": false,
+    "unsafe_as_hard_person_exclusion_mask": true,
+    "objects": [
+      {
+        "id": 1,
+        "name": "foosball_body",
+        "label": "furniture"
+      },
+      {
+        "id": 2,
+        "name": "foosball_legs",
+        "label": "furniture"
+      },
+      {
+        "id": 3,
+        "name": "foosball_rods",
+        "label": "furniture"
+      },
+      {
+        "id": 4,
+        "name": "display_counter",
+        "label": "furniture"
+      },
+      {
+        "id": 5,
+        "name": "bottle",
+        "label": "furniture"
+      },
+      {
+        "id": 6,
+        "name": "keyboard",
+        "label": "furniture"
+      },
+      {
+        "id": 7,
+        "name": "remote",
+        "label": "furniture"
+      },
+      {
+        "id": 8,
+        "name": "helmet",
+        "label": "furniture"
+      },
+      {
+        "id": 9,
+        "name": "racket_holder",
+        "label": "furniture"
+      },
+      {
+        "id": 10,
+        "name": "counter_accessories",
+        "label": "furniture"
+      },
+      {
+        "id": 11,
+        "name": "corridor_table",
+        "label": "furniture"
+      },
+      {
+        "id": 12,
+        "name": "chair_partial_right_bottom",
+        "label": "furniture"
+      },
+      {
+        "id": 13,
+        "name": "chair_partial_left",
+        "label": "furniture"
+      },
+      {
+        "id": 14,
+        "name": "door_handle",
+        "label": "furniture"
+      },
+      {
+        "id": 15,
+        "name": "left_display",
+        "label": "screen"
+      },
+      {
+        "id": 16,
+        "name": "main_display",
+        "label": "screen"
+      },
+      {
+        "id": 17,
+        "name": "right_display",
+        "label": "screen"
+      },
+      {
+        "id": 18,
+        "name": "curved_mirror",
+        "label": "mirror"
+      }
+    ]
+  }
+}

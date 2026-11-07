@@ -1,0 +1,1497 @@
+{
+  "weights": "weights\\person-office-v2.pt",
+  "weights_sha256": "c214094716a7a89df74fdeb82cb52c1007f2aa0f5cf728d205558be7c262e30d",
+  "confidence": 0.25,
+  "imgsz": 800,
+  "bbox_match_iou": 0.5,
+  "summary": {
+    "val": {
+      "raw": {
+        "tp": 61,
+        "fp": 4,
+        "fn": 3,
+        "mirror_fp": 1,
+        "precision": 0.9384615384615385,
+        "recall": 0.953125
+      },
+      "filtered": {
+        "tp": 61,
+        "fp": 3,
+        "fn": 3,
+        "mirror_fp": 0,
+        "precision": 0.953125,
+        "recall": 0.953125
+      }
+    },
+    "test": {
+      "raw": {
+        "tp": 34,
+        "fp": 4,
+        "fn": 2,
+        "mirror_fp": 0,
+        "precision": 0.8947368421052632,
+        "recall": 0.9444444444444444
+      },
+      "filtered": {
+        "tp": 34,
+        "fp": 4,
+        "fn": 2,
+        "mirror_fp": 0,
+        "precision": 0.8947368421052632,
+        "recall": 0.9444444444444444
+      }
+    }
+  },
+  "images": [
+    {
+      "image": "cam1_04m31s.jpg",
+      "split": "val",
+      "camera_id": "camera_1",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_04m33s.jpg",
+      "split": "val",
+      "camera_id": "camera_1",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_04m35s.jpg",
+      "split": "val",
+      "camera_id": "camera_1",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_04m37s.jpg",
+      "split": "val",
+      "camera_id": "camera_1",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_04m39s.jpg",
+      "split": "val",
+      "camera_id": "camera_1",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_05m05s.jpg",
+      "split": "val",
+      "camera_id": "camera_1",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_08m15s.jpg",
+      "split": "test",
+      "camera_id": "camera_1",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_09m05s.jpg",
+      "split": "test",
+      "camera_id": "camera_1",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_15m01s.jpg",
+      "split": "val",
+      "camera_id": "camera_1",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_15m03s.jpg",
+      "split": "val",
+      "camera_id": "camera_1",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_15m05s.jpg",
+      "split": "val",
+      "camera_id": "camera_1",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam1_18m25s.jpg",
+      "split": "test",
+      "camera_id": "camera_1",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_04m21s.jpg",
+      "split": "val",
+      "camera_id": "camera_2",
+      "truth": 2,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_04m25s.jpg",
+      "split": "val",
+      "camera_id": "camera_2",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_04m29s.jpg",
+      "split": "val",
+      "camera_id": "camera_2",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "mirror_fp": 1
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": [
+        {
+          "source_detection_index": 2,
+          "region": "mirror_right_of_door",
+          "confidence": 0.5185546875
+        }
+      ]
+    },
+    {
+      "image": "cam2_05m05s.jpg",
+      "split": "val",
+      "camera_id": "camera_2",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_08m15s.jpg",
+      "split": "test",
+      "camera_id": "camera_2",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_08m53s.jpg",
+      "split": "test",
+      "camera_id": "camera_2",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_08m55s.jpg",
+      "split": "test",
+      "camera_id": "camera_2",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_09m05s.jpg",
+      "split": "test",
+      "camera_id": "camera_2",
+      "truth": 1,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_15m01s.jpg",
+      "split": "val",
+      "camera_id": "camera_2",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_15m03s.jpg",
+      "split": "val",
+      "camera_id": "camera_2",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_15m05s.jpg",
+      "split": "val",
+      "camera_id": "camera_2",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam2_18m25s.jpg",
+      "split": "test",
+      "camera_id": "camera_2",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_02m25s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_02m45s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_02m55s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_03m05s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_03m15s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_03m25s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_03m45s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_04m15s.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_04m35s.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_05m05s.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_05m35s.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 4,
+      "raw": {
+        "tp": 3,
+        "fp": 1,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 3,
+        "fp": 1,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_05m45s.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_08m15s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_09m05s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_12m55s.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_19m15s.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam4_04m15s.jpg",
+      "split": "val",
+      "camera_id": "camera_4",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam4_04m55s.jpg",
+      "split": "val",
+      "camera_id": "camera_4",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam4_05m05s.jpg",
+      "split": "val",
+      "camera_id": "camera_4",
+      "truth": 3,
+      "raw": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam4_05m25s.jpg",
+      "split": "val",
+      "camera_id": "camera_4",
+      "truth": 3,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam4_09m05s.jpg",
+      "split": "test",
+      "camera_id": "camera_4",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam4_14m15s.jpg",
+      "split": "val",
+      "camera_id": "camera_4",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam4_15m45s.jpg",
+      "split": "val",
+      "camera_id": "camera_4",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_04m25s.jpg",
+      "split": "val",
+      "camera_id": "camera_5",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_05m05s.jpg",
+      "split": "val",
+      "camera_id": "camera_5",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_05m15s.jpg",
+      "split": "val",
+      "camera_id": "camera_5",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_05m25s.jpg",
+      "split": "val",
+      "camera_id": "camera_5",
+      "truth": 3,
+      "raw": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_05m35s.jpg",
+      "split": "val",
+      "camera_id": "camera_5",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_08m25s.jpg",
+      "split": "test",
+      "camera_id": "camera_5",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_08m35s.jpg",
+      "split": "test",
+      "camera_id": "camera_5",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_09m25s.jpg",
+      "split": "test",
+      "camera_id": "camera_5",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_14m45s.jpg",
+      "split": "val",
+      "camera_id": "camera_5",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_15m25s.jpg",
+      "split": "val",
+      "camera_id": "camera_5",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_18m15s.jpg",
+      "split": "test",
+      "camera_id": "camera_5",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam5_19m15s.jpg",
+      "split": "test",
+      "camera_id": "camera_5",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00770.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00774.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00778.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00782.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00786.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00790.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00794.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00798.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00802.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00149.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00154.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 5,
+      "raw": {
+        "tp": 4,
+        "fp": 3,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 4,
+        "fp": 3,
+        "fn": 1,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00159.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 6,
+      "raw": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00164.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 2,
+      "raw": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00169.jpg",
+      "split": "test",
+      "camera_id": "camera_3",
+      "truth": 3,
+      "raw": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00772.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 0,
+      "raw": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00773.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    },
+    {
+      "image": "cam3_extra_00775.jpg",
+      "split": "val",
+      "camera_id": "camera_3",
+      "truth": 1,
+      "raw": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "filtered": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "mirror_fp": 0
+      },
+      "rejected": []
+    }
+  ]
+}
