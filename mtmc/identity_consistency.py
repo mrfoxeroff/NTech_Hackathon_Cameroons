@@ -10,6 +10,7 @@ import numpy as np
 from lap import lapjv
 
 from .associate import DEFAULTS, Observation, associate, split_tracklets, summarize
+from .reconnect import reconnect
 
 
 @dataclass(frozen=True)
@@ -317,6 +318,8 @@ def associate_consistently(rows, settings, calibrations, plan_size):
         groups, split_tracklets(working, config["max_local_gap_ms"]), reference, config
     )
     groups = [[originals[obs.camera, obs.local_id, obs.frame] for obs in group] for group in groups]
+    groups, recovered, uncertain = reconnect(groups, config)
+    pending.extend(uncertain)
     pending.extend(originals[obs.camera, obs.local_id, obs.frame] for obs in ambiguous)
     report = {
         "switches": [
@@ -331,6 +334,7 @@ def associate_consistently(rows, settings, calibrations, plan_size):
         "pending_observations": len(pending),
         "duplicate_observations": len(duplicates),
         "reassigned_by_geometry": changed,
+        "recovered_links": recovered,
         "map_distance_px": config["max_map_distance"],
     }
     return groups, pending, report

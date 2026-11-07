@@ -32,15 +32,7 @@
     .map-container { flex: 1; min-height: 0; position: relative; background: #090d16; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
     canvas { width: 100%; height: 100%; object-fit: contain; }
     .video-slot { min-height: 0; }
-    .bottom-panel { max-height: 30vh; overflow: auto; }
     #sessionStatus:empty { display: none; }
-    @media (max-width: 900px) {
-      body { height: auto; }
-      .main-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .map-container { min-height: 360px; }
-      .video-stage { aspect-ratio: 4 / 3; }
-      .bottom-panel { flex-wrap: wrap; }
-    }
 
     /* Таймлайн (Блок 1) */
     .timeline-bar { background: #1e293b; padding: 12px 20px; border-radius: 10px; border: 1px solid #334155; display: flex; align-items: center; gap: 16px; }
@@ -48,12 +40,19 @@
     .btn { background: #38bdf8; color: #0f172a; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; }
 
     /* Список активных ID и Паспорт трека (Блок 2) */
-    .bottom-panel { background: #1e293b; padding: 12px 20px; border-radius: 10px; border: 1px solid #334155; display: flex; gap: 20px; align-items: center; min-height: 95px; }
-    .active-ids { display: flex; gap: 10px; flex-wrap: wrap; flex: 1; }
+    .bottom-panel { background: #1e293b; padding: 12px 20px; border-radius: 10px; border: 1px solid #334155; display: grid; grid-template-columns: 140px minmax(0, 1fr) minmax(180px, 340px); grid-template-rows: minmax(0, 1fr); gap: 20px; align-items: start; height: clamp(148px, 20vh, 210px); flex: none; }
+    .active-ids { display: flex; gap: 10px; flex-wrap: wrap; align-content: flex-start; align-self: stretch; min-height: 0; overflow-y: auto; scrollbar-gutter: stable; }
     .id-card { background: #0f172a; border: 2px solid #475569; border-radius: 8px; padding: 8px 12px; cursor: pointer; transition: 0.15s; font-size: 13px; }
     .id-card.selected { border-color: #38bdf8; background: #172554; }
     .id-card .time-range { color: #94a3b8; font-size: 12px; margin-top: 4px; }
-    .passport { width: 340px; background: #0f172a; padding: 10px 14px; border-radius: 8px; border-left: 4px solid #38bdf8; font-size: 13px; line-height: 1.5; }
+    .passport { background: #0f172a; padding: 10px 14px; border-radius: 8px; border-left: 4px solid #38bdf8; font-size: 13px; line-height: 1.5; }
+    @media (max-width: 900px) {
+      body { height: auto; }
+      .main-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .map-container { min-height: 360px; }
+      .video-stage { aspect-ratio: 4 / 3; }
+      .bottom-panel { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; gap: 8px; height: 220px; }
+    }
   </style>
 </head>
 <body>

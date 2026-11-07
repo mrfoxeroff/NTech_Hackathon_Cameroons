@@ -1,4 +1,5 @@
 {
+  "reappearance_memory_ms": 60000,
   "overlap_pairs": [
     ["camera_1", "camera_2"],
     ["camera_1", "camera_3"],
