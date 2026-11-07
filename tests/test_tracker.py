@@ -70,3 +70,14 @@ def test_buffer_is_in_processed_frame_steps(settings):
     tracker = LocalTracker(settings, fps=30)
     assert tracker.buffer_steps == 8  # ceil(0.5 * (30 / 2))
     assert tracker.backend.max_frames_lost == 8
+
+
+def test_clothing_evidence_prevents_swap_of_overlapping_people(settings):
+    tracker = LocalTracker(settings, fps=10, appearance=True)
+    dark = [[25, 128, 128], [45, 135, 106]]
+    light = [[195, 128, 128], [165, 128, 128]]
+    detections = boxes([30, 10, 90, 110], [46, 10, 106, 110])
+    assert tracker.update(detections, IMAGE, 0.0, np.asarray([dark, light], np.float32)) == {0: 1, 1: 2}
+
+    crossed = boxes([32, 10, 92, 110], [44, 10, 104, 110])
+    assert tracker.update(crossed, IMAGE, 0.1, np.asarray([light, dark], np.float32)) == {0: 2, 1: 1}

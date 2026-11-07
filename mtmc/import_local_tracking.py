@@ -102,7 +102,7 @@ class IntelEncoder:
         return self.compiled([tensor])[self.compiled.output(0)].reshape(-1).tolist()
 
 
-def add_appearance(row, source, root, encoder, min_quality):
+def add_appearance(row, source, root, encoder, min_quality, foreground=False):
     import cv2
     import numpy as np
 
@@ -114,7 +114,24 @@ def add_appearance(row, source, root, encoder, min_quality):
     crop = cv2.imdecode(np.fromfile(artifact_path(root, source["crop_ref"]), dtype=np.uint8), cv2.IMREAD_COLOR)
     if crop is None:
         raise ValueError("Unreadable ReID crop")
-    embedding = encoder(crop)
+    mask = None
+    if source.get("mask_ref"):
+        mask = cv2.imdecode(np.fromfile(artifact_path(root, source["mask_ref"]), dtype=np.uint8), cv2.IMREAD_GRAYSCALE)
+        if mask is None or mask.shape != crop.shape[:2]:
+            raise ValueError("Crop and mask ROI sizes differ")
+    if foreground and mask is not None:
+        coverage = np.count_nonzero(mask) / mask.size
+        if coverage < 0.18:
+            return "rejected_crop"
+        # A small border keeps the silhouette usable by a box-trained ReID
+        # encoder while suppressing dominant wall/door colors.
+        margin = cv2.dilate(mask, np.ones((3, 3), dtype=np.uint8)) != 0
+        neutral = np.full_like(crop, 96)
+        neutral = cv2.addWeighted(crop, 0.25, neutral, 0.75, 0)
+        model_crop = np.where(margin[..., None], crop, neutral)
+    else:
+        model_crop = crop
+    embedding = encoder(model_crop)
     if not embedding or not all(math.isfinite(x) for x in embedding):
         raise ValueError("ReID returned an empty or nonfinite vector")
     normalized = unit(embedding)
@@ -123,10 +140,7 @@ def add_appearance(row, source, root, encoder, min_quality):
     row["embedding"] = list(normalized)
     row["appearance_weight"] = weight
     # Match the existing masked torso-brightness feature; never use the background.
-    if source.get("mask_ref"):
-        mask = cv2.imdecode(np.fromfile(artifact_path(root, source["mask_ref"]), dtype=np.uint8), cv2.IMREAD_GRAYSCALE)
-        if mask is None or mask.shape != crop.shape[:2]:
-            raise ValueError("Crop and mask ROI sizes differ")
+    if mask is not None:
         top, bottom = int(crop.shape[0] * 0.22), int(crop.shape[0] * 0.52)
         pixels = crop[top:bottom][mask[top:bottom] != 0]
         if len(pixels):
@@ -182,6 +196,7 @@ def import_outputs(inputs, output, encoder, settings=None, min_quality=0.05, run
               (output / "unassigned.jsonl").open("x", encoding="utf-8") as unassigned):
             for root, manifest, validation in sources:
                 camera = manifest["camera_id"]
+                foreground = camera in settings.get("foreground_reid_cameras", [])
                 stats = {"frames": 0, "observations": 0, "unassigned": 0, "excluded": 0,
                          "source_gaps": 0, "embeddings": 0, "rejected_crop": 0, "no_crop": 0}
                 report["cameras"][camera] = {"input": str(root), "validation": validation, "stats": stats,
@@ -219,7 +234,7 @@ def import_outputs(inputs, output, encoder, settings=None, min_quality=0.05, run
                                     "artifact_root": str(root), "observation": source}, allow_nan=False) + "\n")
                                 continue
                             row = convert_observation(frame, source, manifest, root, segment)
-                            stats[add_appearance(row, source, root, encoder, min_quality)] += 1
+                            stats[add_appearance(row, source, root, encoder, min_quality, foreground)] += 1
                             observations.write(json.dumps(row, separators=(",", ":"), allow_nan=False) + "\n")
                             stats["observations"] += 1
                             frame_info["observation_ids"].append(source["observation_id"])

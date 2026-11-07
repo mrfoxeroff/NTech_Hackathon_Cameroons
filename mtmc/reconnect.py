@@ -156,18 +156,31 @@ def return_score(left, right, memory_ms):
     return None
 
 
-def compatible(left, right, overlaps, tolerance):
+def overlap_conflicts(left, right, overlaps, tolerance, corridor):
+    uncertain = set()
     for a in left:
         for b in right:
             if max(a.first.time, b.first.time) > min(a.last.time, b.last.time):
                 continue
             pair = frozenset((a.first.camera, b.first.camera))
             if pair not in overlaps:
-                return False
-            distances = [d for _, _, d in aligned_points(a, b, tolerance)]
+                return None
+            points = aligned_points(a, b, tolerance)
+            distances = [d for _, _, d in points]
             if len(distances) >= 5 and min(distances) > 30 and median(distances) > 45:
-                return False
-    return True
+                if not corridor or pair != frozenset(corridor["cameras"]):
+                    return None
+                detail = a if a.first.camera == corridor["cameras"][1] else b
+                if (
+                    detail.last.time - detail.first.time > 1500
+                    or any(
+                        o.bbox is None or o.bbox[3] > corridor["image_bottom_px"] for o in detail.observations
+                    )
+                    or median(abs(p.xy[0] - q.xy[0]) for p, q, _ in points) > 8
+                ):
+                    return None
+                uncertain.update(detail.observations)
+    return uncertain
 
 
 def best_link(left, right, mode, overlaps, tolerance, memory):
@@ -232,11 +245,16 @@ def reconnect(groups, config):
             if start - end > (memory if mode == "return" else 0):
                 continue
             best = best_link(left, right, mode, overlaps, tolerance, memory)
-            if best is None or not compatible(left, right, overlaps, tolerance):
+            if best is None:
+                continue
+            corridor = config.get("distant_corridor") if mode == "trajectory" else None
+            conflicts = overlap_conflicts(left, right, overlaps, tolerance, corridor)
+            if conflicts is None or best[1] in conflicts or best[2] in conflicts:
                 continue
             edge = (best[0], i, j)
-            ranked[i].append((edge, best[1:]))
-            ranked[j].append((edge, best[1:]))
+            evidence = best[1], best[2], best[3] | conflicts
+            ranked[i].append((edge, evidence))
+            ranked[j].append((edge, evidence))
         for candidates in ranked.values():
             candidates.sort(key=lambda entry: entry[0], reverse=True)
         for i, candidates in ranked.items():

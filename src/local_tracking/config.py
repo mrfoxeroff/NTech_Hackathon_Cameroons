@@ -23,6 +23,8 @@ class CameraConfig:
     clock_anchors: list[dict] = field(default_factory=list)
     scene_regions: list[dict] = field(default_factory=list)
     occluder_polygons: list = field(default_factory=list)
+    detail_roi: list[float] | None = None
+    appearance_tracking: bool = False
 
     def common_time(self, video_time_sec: float) -> float:
         """Interpolate measured OSD clock anchors, extrapolate at boundaries."""
@@ -73,6 +75,18 @@ class Settings:
         if len(set(ids)) != len(ids):
             raise ValueError("Camera identifiers must be unique")
         for camera in self.cameras:
+            if type(camera.appearance_tracking) is not bool:
+                raise ValueError("appearance_tracking must be a YAML boolean")
+            if camera.detail_roi is not None:
+                roi = camera.detail_roi
+                if (
+                    not isinstance(roi, list)
+                    or len(roi) != 4
+                    or not all(math.isfinite(v) and 0 <= v <= 1 for v in roi)
+                    or roi[0] >= roi[2]
+                    or roi[1] >= roi[3]
+                ):
+                    raise ValueError("detail_roi requires a normalized nonempty xyxy rectangle")
             for points in camera.occluder_polygons:
                 if len(points) < 3 or not all(
                     len(p) == 2 and all(math.isfinite(v) and 0 <= v <= 1 for v in p) for p in points
@@ -167,6 +181,8 @@ def load_settings(path: Path, *, camera_ids: set[str] | None = None) -> Settings
             "clock_anchors",
             "scene_regions",
             "occluder_polygons",
+            "detail_roi",
+            "appearance_tracking",
         }:
             raise ValueError("Invalid camera mapping or unknown camera field")
     if camera_ids is not None:
@@ -181,6 +197,8 @@ def load_settings(path: Path, *, camera_ids: set[str] | None = None) -> Settings
             time_offset_sec=float(c.get("time_offset_sec", 0)),
             clock_anchors=c.get("clock_anchors", []),
             occluder_polygons=c.get("occluder_polygons", []),
+            detail_roi=c.get("detail_roi"),
+            appearance_tracking=c.get("appearance_tracking", False),
             scene_regions=[
                 {**r, **({"reference": str(resolve(r["reference"]))} if "reference" in r else {})}
                 for r in c.get("scene_regions", [])

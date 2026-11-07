@@ -131,13 +131,16 @@ def process_camera(
         "scene_rejected_detections": 0,
     }
     summary = TrackSummary(settings.selected_crops_per_track)
-    writer = ObservationWriter(output, settings.crop_interval_sec, settings.save_masks)
+    crop_interval = (
+        min(settings.crop_interval_sec, 0.25) if camera.appearance_tracking else settings.crop_interval_sec
+    )
+    writer = ObservationWriter(output, crop_interval, settings.save_masks)
     original_error = None
     previous_video_time = None
     try:
         manifest["source_sha256"] = file_hash(camera.video)
         manifest["weights_sha256"] = file_hash(settings.model)
-        tracker = LocalTracker(settings, info.fps)
+        tracker = LocalTracker(settings, info.fps, appearance=camera.appearance_tracking)
         scene_filter = SceneFilter(camera.scene_regions, info.width, info.height)
         stabilizer = GeometryStabilizer(
             info.width, info.height, camera.occluder_polygons, reset_gap_sec=settings.lost_track_sec
@@ -153,6 +156,20 @@ def process_camera(
                 info.fps / settings.stride,
                 settings.preview_max_width,
             )
+
+        def predict(image, confidence):
+            return model.predict(
+                image,
+                classes=[person_class],
+                conf=confidence,
+                iou=settings.iou,
+                imgsz=settings.imgsz,
+                device=runtime["device"],
+                quantize=16 if settings.fp16 and runtime["device"] != "cpu" else 32,
+                retina_masks=True,
+                verbose=False,
+            )[0]
+
         frames = iter_video(camera.video, camera.time_offset_sec, start_sec, end_sec, settings.stride)
         with (output / "frames.jsonl").open("w", encoding="utf-8") as stream:
             for step, frame in enumerate(frames):
@@ -162,20 +179,22 @@ def process_camera(
                 previous_video_time = frame.video_time_sec
                 if frame.image.shape[:2] != (info.height, info.width):
                     raise ValueError("Source resolution changed inside recording")
-                result = model.predict(
-                    frame.image,
-                    classes=[person_class],
-                    conf=settings.confidence,
-                    iou=settings.iou,
-                    imgsz=settings.imgsz,
-                    device=runtime["device"],
-                    quantize=16 if settings.fp16 and runtime["device"] != "cpu" else 32,
-                    retina_masks=True,
-                    verbose=False,
-                )[0]
+
+                result = predict(frame.image, settings.confidence)
+                if camera.detail_roi is not None:
+                    from .detail import refine_distant
+
+                    result = refine_distant(result, frame.image, camera.detail_roi, predict)
                 result, rejected = scene_filter.apply(result, frame.image)
                 metrics["scene_rejected_detections"] += len(rejected)
-                assignments = tracker.update(result.boxes.cpu().numpy(), frame.image, frame.timestamp_sec)
+                features = None
+                if camera.appearance_tracking:
+                    from .appearance import clothing_colors
+
+                    features = clothing_colors(result, frame.image)
+                assignments = tracker.update(
+                    result.boxes.cpu().numpy(), frame.image, frame.timestamp_sec, features
+                )
                 observations = writer.build(
                     result, assignments, frame, settings.recording_id, camera.camera_id
                 )

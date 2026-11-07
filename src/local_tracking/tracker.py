@@ -7,22 +7,28 @@ from .config import Settings, tracker_parameters
 
 
 class LocalTracker:
-    def __init__(self, settings: Settings, fps: float):
+    def __init__(self, settings: Settings, fps: float, appearance=False):
         from ultralytics.trackers.byte_tracker import BYTETracker
+
+        backend = BYTETracker
+        if appearance:
+            from .appearance import AppearanceByteTracker
+
+            backend = AppearanceByteTracker
 
         effective_fps = fps / settings.stride
         params = tracker_parameters(settings)
         # Ultralytics 8.4.203 uses processed-frame counts directly (no FPS
         # constructor parameter), and owns a separate ID counter per tracker.
         self.buffer_steps = max(1, math.ceil(settings.lost_track_sec * effective_fps))
-        self.backend = BYTETracker(SimpleNamespace(**params, track_buffer=self.buffer_steps))
+        self.backend = backend(SimpleNamespace(**params, track_buffer=self.buffer_steps))
         self.lost_sec = settings.lost_track_sec
         self.identities = {}
         self.next_id = 1
 
-    def update(self, boxes, image, timestamp_sec: float) -> dict[int, int]:
+    def update(self, boxes, image, timestamp_sec: float, features=None) -> dict[int, int]:
         """Return source detection index -> local ID; unmatched detections keep null ID."""
-        assignments = self.backend.update(boxes, image)
+        assignments = self.backend.update(boxes, None if features is not None else image, feats=features)
         ids = {}
         for row in assignments:
             # Ultralytics BYTETracker output: xyxy, track_id, score, cls, detection_index.

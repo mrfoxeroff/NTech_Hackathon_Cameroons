@@ -10,6 +10,7 @@ import numpy as np
 from lap import lapjv
 
 from .associate import DEFAULTS, Observation, associate, split_tracklets, summarize
+from .corridor import reconcile_corridor
 from .reconnect import reconnect
 
 
@@ -320,6 +321,16 @@ def associate_consistently(rows, settings, calibrations, plan_size):
     groups = [[originals[obs.camera, obs.local_id, obs.frame] for obs in group] for group in groups]
     groups, recovered, uncertain = reconnect(groups, config)
     pending.extend(uncertain)
+    groups, uncertain, corridor = reconcile_corridor(groups, config)
+    pending.extend(uncertain)
+    confirmed = []
+    minimums = config.get("standalone_camera_min_observations", {})
+    for group in groups:
+        first_camera = group[0].camera
+        if len(group) < minimums.get(first_camera, 0) and all(o.camera == first_camera for o in group):
+            pending.extend(group)
+        else:
+            confirmed.append(group)
     pending.extend(originals[obs.camera, obs.local_id, obs.frame] for obs in ambiguous)
     report = {
         "switches": [
@@ -335,6 +346,7 @@ def associate_consistently(rows, settings, calibrations, plan_size):
         "duplicate_observations": len(duplicates),
         "reassigned_by_geometry": changed,
         "recovered_links": recovered,
+        "distant_corridor_links": corridor,
         "map_distance_px": config["max_map_distance"],
     }
-    return groups, pending, report
+    return confirmed, pending, report

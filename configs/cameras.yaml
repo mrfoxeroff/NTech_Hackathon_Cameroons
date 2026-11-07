@@ -322,6 +322,8 @@ cameras:
       - 0.7314814814814815
 - camera_id: camera_5
   video: ../data/video/camera_5.mkv
+  detail_roi: [0.395, 0, 0.665, 0.26]
+  appearance_tracking: true
   time_offset_sec: 0.0
   clock_anchors:
   - video_time_sec: 0.197

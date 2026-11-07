@@ -1,5 +1,12 @@
 {
   "reappearance_memory_ms": 60000,
+  "foreground_reid_cameras": ["camera_5"],
+  "standalone_camera_min_observations": {"camera_5": 4},
+  "distant_corridor": {
+    "cameras": ["camera_3", "camera_5"],
+    "map_rect": [280, 170, 330, 300],
+    "image_bottom_px": 345
+  },
   "overlap_pairs": [
     ["camera_1", "camera_2"],
     ["camera_1", "camera_3"],
