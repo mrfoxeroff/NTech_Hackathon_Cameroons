@@ -33,6 +33,38 @@ function formatTime(seconds) {
   return minutes + ":" + ((tenths % 600) / 10).toFixed(1).padStart(4, "0");
 }
 
+function formatBoundary(seconds) {
+  const ms = Math.round(seconds * 1000);
+  return String(Math.floor(ms / 60000)).padStart(2, "0") + ":"
+    + ((ms % 60000) / 1000).toFixed(3).padStart(6, "0");
+}
+
+function initTrackLog() {
+  const dialog = element("trackLog");
+  const table = element("trackLogRows");
+  for (const track of [...tracks].sort((a, b) => a.start_time - b.start_time || a.id - b.id)) {
+    const row = table.insertRow();
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "id-card";
+    button.style.color = track.color;
+    button.textContent = "ID " + track.id;
+    button.onclick = () => {
+      dialog.close();
+      if (playing) togglePlay();
+      selectedId = track.id;
+      seek(Math.max(metadata.start_time, Math.min(track.start_time, metadata.end_time)));
+    };
+    row.insertCell().append(button);
+    row.insertCell().textContent = formatBoundary(track.start_time);
+    row.insertCell().textContent = formatBoundary(track.end_time);
+    row.insertCell().textContent = track.cameras_visited.join(" → ");
+  }
+  const open = element("openTrackLog");
+  open.onclick = () => dialog.showModal();
+  open.disabled = false;
+}
+
 function covered(slot) {
   return metadata.cameras[slot.camera].coverage.some(([start, end]) => currentTime >= start && currentTime <= end);
 }
@@ -302,6 +334,7 @@ async function init() {
     if (!response.ok) throw new Error(data.detail || "Не удалось загрузить сеанс.");
     metadata = data;
     tracks = Object.values(data.tracks_summary);
+    initTrackLog();
     canvas.width = data.map.width;
     canvas.height = data.map.height;
     plan.onload = render;

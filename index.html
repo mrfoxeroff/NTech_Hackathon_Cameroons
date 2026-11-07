@@ -10,6 +10,13 @@
     /* Шапка со счетчиком */
     .header { display: flex; justify-content: space-between; align-items: center; background: #1e293b; padding: 12px 20px; border-radius: 10px; border: 1px solid #334155; }
     .badge { background: #0284c7; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 16px; }
+    .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .track-log { width: min(720px, 94vw); max-height: 82vh; margin: auto; padding: 18px; color: #f8fafc; background: #1e293b; border: 1px solid #475569; border-radius: 10px; }
+    .track-log::backdrop { background: #020617bb; }
+    .track-log-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .track-log table { width: 100%; border-collapse: collapse; text-align: left; }
+    .track-log th, .track-log td { padding: 8px; border-bottom: 1px solid #475569; }
+    .track-log .id-card { white-space: nowrap; }
 
     /* Главная рабочая область: Слева 2 камеры, Справа 2D-карта */
     .main-grid { display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 16px; flex: 1; min-height: 0; }
@@ -54,7 +61,10 @@
   <!-- Шапка -->
   <div class="header">
     <h2>Система межкамерного трекинга (SCT + ReID)</h2>
-    <div class="badge" id="totalTracksBadge">Всего уникальных сквозных треков: 0</div>
+    <div class="header-actions">
+      <div class="badge" id="totalTracksBadge">Всего уникальных сквозных треков: 0</div>
+      <button class="btn" id="openTrackLog" type="button" disabled>Журнал ID</button>
+    </div>
   </div>
 
   <!-- Основной экран: Видео (2 слота) | 2D Карта -->
@@ -115,6 +125,16 @@
     </div>
   </div>
 
+  <dialog class="track-log" id="trackLog" aria-labelledby="trackLogTitle">
+    <div class="track-log-header">
+      <h2 id="trackLogTitle">Все треки за запись</h2>
+      <form method="dialog"><button class="btn" type="submit">Закрыть</button></form>
+    </div>
+    <table>
+      <thead><tr><th scope="col">ID</th><th scope="col">Начало</th><th scope="col">Конец</th><th scope="col">Камеры</th></tr></thead>
+      <tbody id="trackLogRows"></tbody>
+    </table>
+  </dialog>
 <script src="/viewer.js" defer></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 from mtmc.associate import DEFAULTS, Observation, split_tracklets
-from mtmc.identity_consistency import repair_geometry
+from mtmc.identity_consistency import nested_duplicates, repair_geometry
 
 
 def test_sustained_geometry_switch_repairs_two_dark_tracks_without_following_one_bad_frame():
@@ -26,3 +26,23 @@ def test_sustained_geometry_switch_repairs_two_dark_tracks_without_following_one
     assert changed == 10
     assert set(groups[0]) == set(anchor_a + target_a[:7] + target_b[7:])
     assert set(groups[1]) == set(anchor_b + target_b[:7] + target_a[7:])
+
+
+def test_short_torso_duplicate_is_removed_but_adjacent_short_person_is_kept():
+    def detection(local_id, frame, box, confidence):
+        return Observation.parse(
+            {
+                "camera_id": "camera_2",
+                "local_id": local_id,
+                "frame_index": frame,
+                "timestamp_ms": 120 * frame,
+                "bbox_xyxy": box,
+                "confidence": confidence,
+            }
+        )
+
+    person = [detection(1, frame, [100, 50, 160, 220], 0.94) for frame in range(7)]
+    torso = [detection(2, frame, [102, 51, 159, 150], 0.72) for frame in range(2, 6)]
+    neighbor = [detection(3, frame, [150, 49, 205, 162], 0.72) for frame in range(2, 6)]
+    fragments = split_tracklets(person + torso + neighbor, 750)
+    assert nested_duplicates(fragments, {}) == set(torso)

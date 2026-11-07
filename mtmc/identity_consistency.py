@@ -80,6 +80,55 @@ def matching_point(row, matrix, size):
     return None
 
 
+def nested_duplicates(fragments, borders):
+    """Suppress a short inner box when a longer track covers the same person."""
+    frames = defaultdict(list)
+    for index, fragment in enumerate(fragments):
+        for obs in fragment.observations:
+            if obs.bbox:
+                frames[obs.camera, obs.frame].append((index, obs))
+
+    suppressed = set()
+    for index, fragment in enumerate(fragments):
+        detections = fragment.observations
+        singleton = len(detections) == 1
+        if not singleton and (len(detections) < 3 or fragment.last.time - fragment.first.time > 1200):
+            continue
+        owners = None
+        for inner in detections:
+            if not inner.bbox:
+                owners = set()
+                break
+            x1, y1, x2, y2 = inner.bbox
+            width, height = x2 - x1, y2 - y1
+            matching = set()
+            for outer_index, outer in frames[inner.camera, inner.frame]:
+                if outer_index == index or (outer.confidence or 0) < (inner.confidence or 0):
+                    continue
+                owner = fragments[outer_index]
+                if len(owner.observations) <= len(detections):
+                    continue
+                a, b, c, d = outer.bbox
+                overlap = max(0, min(x2, c) - max(x1, a)) * max(0, min(y2, d) - max(y1, b))
+                if overlap < 0.95 * width * height or abs(y1 - b) > 0.08 * (d - b):
+                    continue
+                if singleton:
+                    edge = any(
+                        borders.get(inner, {}).get(side) and borders.get(outer, {}).get(side)
+                        for side in ("left", "right")
+                    )
+                    if edge and overlap >= 0.60 * (c - a) * (d - b) and abs(y2 - d) <= 0.08 * (d - b):
+                        matching.add(outer_index)
+                elif height <= 0.80 * (d - b) and abs((x1 + x2 - a - c) / 2) <= 0.12 * (c - a):
+                    matching.add(outer_index)
+            owners = matching if owners is None else owners & matching
+            if not owners:
+                break
+        if owners:
+            suppressed.update(detections)
+    return suppressed
+
+
 def nearest(series, timestamp, tolerance):
     times, observations = series
     index = bisect_left(times, timestamp)
@@ -242,11 +291,15 @@ def associate_consistently(rows, settings, calibrations, plan_size):
         for row in rows
     ]
     fragments = split_tracklets(observations, config["max_local_gap_ms"])
+    duplicates = nested_duplicates(
+        fragments, {obs: row.get("border_flags") or {} for obs, row in zip(observations, rows, strict=True)}
+    )
+    fragments = [fragment for fragment in fragments if fragment.first not in duplicates]
     events = appearance_switches(fragments)
     cuts = defaultdict(list)
     for event in events:
         cuts[event.fragment].append((event.old_sample, event.new_sample))
-    working, pending = [], []
+    working, pending = [], [obs for obs in observations if obs in duplicates]
     originals = {}
     for index, fragment in enumerate(fragments):
         windows = sorted(cuts[index])
@@ -276,6 +329,7 @@ def associate_consistently(rows, settings, calibrations, plan_size):
             for event in events
         ],
         "pending_observations": len(pending),
+        "duplicate_observations": len(duplicates),
         "reassigned_by_geometry": changed,
         "map_distance_px": config["max_map_distance"],
     }
