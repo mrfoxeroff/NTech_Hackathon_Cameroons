@@ -1,3 +1,5 @@
+from dataclasses import replace
+
 from mtmc.associate import Observation
 from mtmc.doorways import restore_door_returns
 
@@ -55,3 +57,22 @@ def test_simultaneous_equally_plausible_arrivals_do_not_steal_old_id():
     groups, links = restore_door_returns([departure, a, b], CONFIG)
     assert groups == [departure, a, b]
     assert not links
+
+
+def test_recovery_with_no_office_zones_or_calibration():
+    config = CONFIG | {"door_return_zones": {}}
+    departure = [replace(obs, xy=None) for obs in fragment(1, 0)]
+    arrival = [replace(obs, xy=None) for obs in fragment(2, 60300)]
+    groups, links = restore_door_returns([departure, arrival], config)
+    assert groups == [departure + arrival]
+    assert links[0]["gap_ms"] == 60000
+    other_view = [replace(obs, camera="camera_5") for obs in arrival]
+    assert restore_door_returns([departure, other_view], config)[1] == []
+
+
+def test_recovery_between_verified_overlapping_views_without_office_zones():
+    departure = fragment(1, 0)
+    arrival = fragment(2, 60000, "camera_5", x=15)
+    config = CONFIG | {"door_return_zones": {}, "overlap_pairs": [["camera_3", "camera_5"]]}
+    assert restore_door_returns([departure, arrival], config)[0] == [departure + arrival]
+    assert restore_door_returns([departure, arrival], config | {"overlap_pairs": []})[1] == []

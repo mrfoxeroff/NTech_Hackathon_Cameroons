@@ -2,7 +2,10 @@
 
 import cv2
 import numpy as np
-from lens_geometry import undistort_points
+if __package__:
+    from .lens_geometry import undistort_points
+else:
+    from lens_geometry import undistort_points
 
 
 def floor_homography(intrinsic, gravity):

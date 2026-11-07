@@ -8,8 +8,12 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-from floor_ray_geometry import floor_homography, project_floor, transform_points
-from lens_geometry import distort_points, undistort_points
+if __package__:
+    from .floor_ray_geometry import floor_homography, project_floor, transform_points
+    from .lens_geometry import distort_points, undistort_points
+else:
+    from floor_ray_geometry import floor_homography, project_floor, transform_points
+    from lens_geometry import distort_points, undistort_points
 
 
 def mutual_appearance(a, b, minimum=0.6, margin=0.06):

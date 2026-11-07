@@ -6,7 +6,10 @@ import re
 from pathlib import Path
 
 import numpy as np
-from motion_config import dump_json
+if __package__:
+    from .motion_config import dump_json
+else:
+    from motion_config import dump_json
 
 
 def exportable_calibrations(result):

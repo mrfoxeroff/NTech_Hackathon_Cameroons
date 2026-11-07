@@ -3,10 +3,12 @@
 import argparse
 import json
 import math
+import os
 from collections import defaultdict
 from fractions import Fraction
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from time import sleep
 
 import av
 import cv2
@@ -18,6 +20,7 @@ from local_tracking.config import safe_id
 from local_tracking.pipeline import file_hash
 from local_tracking.video import iter_video
 from mtmc.associate import DEFAULTS, export_tracks
+from mtmc.floor_projection import floor_point
 from mtmc.identity_consistency import associate_consistently
 from tools.world_state import STEP_MS, build_world_state
 
@@ -59,11 +62,9 @@ def project(row, matrix, size):
     status = row.get("footpoint_status")
     if status == "unknown" or point is None or row.get("touches_frame_bottom"):
         return None
-    x, y, scale = matrix @ [*point, 1]
-    if not np.isfinite([x, y, scale]).all() or abs(scale) < 1e-9:
-        return None
-    x, y = x / scale, y / scale
-    if 0 <= x < size[0] and 0 <= y < size[1]:
+    position = floor_point(point, matrix, size)
+    if position is not None:
+        x, y = position
         return {"x": round(x, 2), "y": round(y, 2), "status": status or "observed"}
     return None
 
@@ -257,7 +258,12 @@ def session_sources(global_root, plan_size, calibrations):
             or file_hash(root / "frames.jsonl") != info["frames_sha256"]
         ):
             raise ValueError(f"Local artifacts no longer match global run: {camera}")
-        cameras[camera] = (root, local, load_calibration(calibrations, camera, local["source"], plan_size))
+        calibration = (
+            calibrations.get(camera)
+            if isinstance(calibrations, dict)
+            else load_calibration(calibrations, camera, local["source"], plan_size)
+        )
+        cameras[camera] = (root, local, calibration)
     if not cameras:
         raise ValueError("Global run contains no cameras")
     return manifest, cameras
@@ -300,7 +306,7 @@ def repair_associations(global_root, plan, calibrations):
     return report
 
 
-def export_session(global_root, output, plan, calibrations):
+def export_session(global_root, output, plan, calibrations, *, localization=None):
     if output.exists():
         raise FileExistsError(output)
     with Image.open(plan) as image:
@@ -399,9 +405,18 @@ def export_session(global_root, output, plan, calibrations):
             "state_index": {"url": "/api/state", "step_ms": STEP_MS},
             "visibility_gap_sec": gap_sec,
         }
+        if localization is not None:
+            payload["localization"] = localization
         write_json(bundle / "world_state.json", world_state)
         write_json(bundle / "session.json", payload)
-        bundle.rename(output)
+        for delay in (0.1, 0.25, 0.5, 1, None):
+            try:
+                bundle.rename(output)
+                break
+            except PermissionError:
+                if os.name != "nt" or delay is None or output.exists():
+                    raise
+                sleep(delay)
     return payload
 
 

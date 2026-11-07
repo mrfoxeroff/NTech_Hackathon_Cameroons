@@ -11,7 +11,7 @@ def _merged_wall_runs(mask, vertical=False):
     image = mask.T if vertical else mask
     found = cv2.HoughLinesP(image, 1, np.pi / 180, threshold=18, minLineLength=20, maxLineGap=2)
     lines = []
-    for line in [] if found is None else found[:, 0]:
+    for line in [] if found is None else found.reshape(-1, 4):
         x1, y1, x2, y2 = map(int, line)
         if abs(y2 - y1) <= 2 and abs(x2 - x1) >= 20:
             lines.append((round((y1 + y2) / 2), min(x1, x2), max(x1, x2)))

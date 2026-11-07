@@ -11,6 +11,7 @@ from lap import lapjv
 
 from .associate import DEFAULTS, Observation, associate, split_tracklets, summarize, upper_anchor
 from .corridor import reconcile_corridor
+from .floor_projection import floor_point
 from .lifecycle import review_lifecycle
 from .reconnect import reconnect
 
@@ -100,13 +101,7 @@ def matching_point(row, matrix, size):
     if point is None or row.get("footpoint_status") != "observed":
         x1, _, x2, y2 = row["bbox_xyxy"]
         point = ((x1 + x2) / 2, y2)
-    x, y, scale = matrix @ [*point, 1]
-    if not math.isfinite(scale) or abs(scale) < 1e-9:
-        return None
-    x, y = x / scale, y / scale
-    if 0 <= x < size[0] and 0 <= y < size[1]:
-        return float(x), float(y)
-    return None
+    return floor_point(point, matrix, size)
 
 
 def nested_duplicates(fragments, borders):

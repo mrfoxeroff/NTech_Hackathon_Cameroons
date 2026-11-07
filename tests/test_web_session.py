@@ -113,3 +113,64 @@ def test_non_h264_web_video_keeps_source_frames_and_overlay_separate(tmp_path):
     assert metadata["coverage"] == [[4, 4.148]]
     overlay = json.loads((tmp_path / "camera_4_overlay.json").read_text(encoding="utf-8"))
     assert overlay["frames"] == [[0, []], [0.148, [[1, 2, 3, 20, 30]]]]
+
+
+def test_uploaded_project_serves_its_own_session(tmp_path, monkeypatch):
+    pytest.importorskip("fastapi")
+    httpx = pytest.importorskip("httpx")
+    from app import create_app
+
+    def process(plan, videos, output, roi, progress):
+        assert plan.read_bytes() == b"plan"
+        assert [video.read_bytes() for video in videos] == [b"first", b"second"]
+        progress("building")
+        session = output / "session"
+        session.mkdir(parents=True)
+        (session / "camera_1.mp4").write_bytes(b"0123456789")
+        (session / "session.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": "1.0",
+                    "map": {"url": "/media/map.png"},
+                    "cameras": {"camera_1": {"url": "/media/camera_1.mp4"}},
+                }
+            ),
+            encoding="utf-8",
+        )
+
+    monkeypatch.setattr("project_uploads.process_project", process)
+    server = create_app(tmp_path / "default", tmp_path / "uploads")
+
+    async def verify():
+        async with httpx.AsyncClient(
+            transport=httpx.ASGITransport(app=server), base_url="http://test"
+        ) as client:
+            created = await client.post("/api/projects", json={"cameras": 2})
+            assert created.status_code == 201
+            job = "/api/projects/" + created.json()["project_id"]
+            assert (await client.post(job + "/start")).status_code == 422
+            for slot, name, data in (
+                ("plan", "map.png", b"plan"),
+                ("1", "a.mp4", b"first"),
+                ("2", "b.mkv", b"second"),
+            ):
+                response = await client.put(job + "/files/" + slot, params={"filename": name}, content=data)
+                assert response.status_code == 200
+            assert (await client.post(job + "/start")).status_code == 202
+            for _ in range(100):
+                status = (await client.get(job)).json()
+                if status["state"] in {"ready", "failed"}:
+                    break
+                await asyncio.sleep(0.02)
+            assert status["state"] == "ready", status
+            url = status["url"]
+            session = await client.get(url + "api/session")
+            assert session.status_code == 200
+            assert (await client.get("/api/session")).status_code == 503
+            video = session.json()["cameras"]["camera_1"]["url"]
+            assert video == url + "media/camera_1.mp4"
+            assert (await client.get(video, headers={"Range": "bytes=2-5"})).content == b"2345"
+            assert (await client.get(url + "media/status.json")).status_code == 404
+            assert (await client.post(job + "/start")).status_code == 409
+
+    asyncio.run(verify())

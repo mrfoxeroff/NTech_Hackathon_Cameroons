@@ -17,6 +17,7 @@ def inspect_inputs(args, config):
     required = [
         args.pose_weights,
         args.lenses,
+        args.plan,
         args.plan_walls,
         args.bank,
         args.source_manifest,
@@ -75,6 +76,7 @@ def main():
     p.add_argument("--pose-weights", type=Path, default=HERE / "cache/yolo11n-pose.pt")
     p.add_argument("--hf-cache", type=Path, default=LAB / "neural_weights/huggingface")
     p.add_argument("--lenses", type=Path, default=OFFICE / "lenses.json")
+    p.add_argument("--plan", type=Path, default=OFFICE / "plan.jpg")
     p.add_argument("--plan-walls", type=Path, default=OFFICE / "plan-walls.png")
     p.add_argument("--bank", type=Path, default=OFFICE / "automatic-candidates.json")
     p.add_argument("--source-manifest", type=Path, default=OFFICE / "source-manifest.json")
@@ -88,6 +90,7 @@ def main():
         "pose_weights",
         "hf_cache",
         "lenses",
+        "plan",
         "plan_walls",
         "bank",
         "source_manifest",
@@ -105,10 +108,19 @@ def main():
     from motion_frames import file_hash
 
     validate_bank(json.loads(args.bank.read_text(encoding="utf-8")))
+    sources = {c: file_hash(v["video"]) for c, v in config["cameras"].items()}
+    source_manifest = json.loads(args.source_manifest.read_text(encoding="utf-8"))
     verify_sources(
-        {"cameras": {c: {"source_sha256": file_hash(v["video"])} for c, v in config["cameras"].items()}},
-        json.loads(args.source_manifest.read_text(encoding="utf-8")),
+        {"cameras": {c: {"source_sha256": digest} for c, digest in sources.items()}},
+        source_manifest,
     )
+    expected_plan = (
+        file_hash(OFFICE / "plan.jpg")
+        if args.bank == OFFICE / "automatic-candidates.json"
+        else source_manifest.get("plan_sha256")
+    )
+    if expected_plan and file_hash(args.plan) != expected_plan:
+        p.error("The plan does not match the calibration bank.")
     root = args.output.resolve()
     root.mkdir(parents=True, exist_ok=False)
     dump_json(root / "resolved-config.json", config)
@@ -265,7 +277,11 @@ def main():
                 joint,
             ],
         )
-        run("motion_export.py", ["--joint", joint / "joint.json", "--output", root / "accepted"])
+        joint_path = joint / "joint.json"
+        result = json.loads(joint_path.read_text(encoding="utf-8"))
+        result.update(plan_sha256=expected_plan, source_sha256=sources)
+        dump_json(joint_path, result)
+        run("motion_export.py", ["--joint", joint_path, "--output", root / "accepted"])
         manifest.update(status="complete", current_stage=None)
     except BaseException as error:
         manifest.update(status="failed", error=str(error))

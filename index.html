@@ -41,9 +41,10 @@
     .map-controls output { min-width: 4ch; text-align: center; font-variant-numeric: tabular-nums; }
     .video-slot { min-height: 0; }
     #sessionStatus:empty { display: none; }
+    #localizationStatus { color: #fcd34d; font-size: 13px; }
 
     /* Таймлайн (Блок 1) */
-    .timeline-bar { background: #1e293b; padding: 12px 20px; border-radius: 10px; border: 1px solid #334155; display: flex; align-items: center; gap: 16px; }
+    .timeline-bar { background: #1e293b; padding: 12px 20px; border-radius: 10px; border: 1px solid #334155; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
     .timeline-bar input[type="range"] { flex: 1; cursor: pointer; accent-color: #38bdf8; height: 6px; }
     .btn { background: #38bdf8; color: #0f172a; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; }
 
@@ -71,6 +72,7 @@
     <div class="header-actions">
       <div class="badge" id="totalTracksBadge">Подтверждённые треки за сеанс: 0</div>
       <button class="btn" id="openTrackLog" type="button" disabled>Журнал ID</button>
+      <a class="btn" id="newProject" href="/new" hidden>Новый проект</a>
     </div>
   </div>
 
@@ -119,6 +121,7 @@
       <div class="map-container">
         <canvas id="mapCanvas" width="700" height="450" aria-label="План офиса с траекториями"></canvas>
       </div>
+      <p id="localizationStatus" hidden></p>
     </div>
   </div>
 
@@ -126,6 +129,7 @@
   <div class="timeline-bar">
     <button class="btn" id="playBtn" disabled onclick="togglePlay()">▶ Play</button>
     <span id="timeLabel" style="font-family:monospace; font-size:15px; white-space:nowrap;">t = 00:00.0</span>
+    <span id="clockLabel" style="font-size:13px; white-space:nowrap;" hidden></span>
     <input type="range" id="timeline" disabled min="0" max="100" step="0.04" value="0">
   </div>
 

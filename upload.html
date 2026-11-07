@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Новый проект · NTech</title>
+  <style>
+    body { max-width: 680px; margin: 3rem auto; padding: 0 1rem; background: #0f172a; color: #f8fafc; font: 16px system-ui, sans-serif; }
+    form { display: grid; gap: 1rem; padding: 1.25rem; background: #1e293b; border-radius: 10px; }
+    label, details { display: grid; gap: .5rem; }
+    details label { margin-top: .7rem; }
+    input, button { font: inherit; max-width: 100%; }
+    button { justify-self: start; padding: .55rem 1rem; background: #38bdf8; color: #0f172a; border: 0; border-radius: 6px; }
+    button:disabled { opacity: .5; }
+    a { color: #7dd3fc; }
+    #status { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <a href="/">Плеер</a>
+  <h1>Новый проект</h1>
+  <p>Загрузите план и по одной непрерывной записи каждой камеры. Записи должны содержать синхронизированные экранные часы.</p>
+  <form id="projectForm">
+    <label>План помещения <input id="planFile" type="file" accept=".png,.jpg,.jpeg" required></label>
+    <label>Записи камер <input id="videoFiles" type="file" accept=".mkv,.mp4,.mov,.avi,.webm" multiple required></label>
+    <span id="cameraCount" aria-live="polite">Видео пока не выбраны.</span>
+    <details>
+      <summary>Настройка области экранных часов</summary>
+      <label>Координаты x1, y1, x2, y2 от 0 до 1
+        <input id="clockRoi" type="text" value="0, 0, 0.42, 0.07">
+      </label>
+      <p>В стандартном режиме поиск идёт в верхних углах. Формат часов YYYY-MM-DD HH:MM:SS.</p>
+    </details>
+    <p>Для автоматической абсолютной привязки разместите на полу и плане одинаковые метки ArUco 4×4_50. Камеры без подтверждённой привязки будут доступны в плеере на общей шкале.</p>
+    <button id="submit" type="submit">Загрузить и обработать</button>
+  </form>
+  <p id="status" role="status"></p>
+  <a id="result" hidden>Открыть сеанс</a>
+  <script src="/upload.js" defer></script>
+</body>
+</html>

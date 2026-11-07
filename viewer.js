@@ -1,6 +1,8 @@
 "use strict";
 
 const element = id => document.getElementById(id);
+const sessionPrefix = location.pathname.match(/^\/projects\/[a-f0-9]{32}(?=\/|$)/)?.[0] || "";
+const sessionUrl = path => sessionPrefix + path;
 const timeline = element("timeline");
 const canvas = element("mapCanvas");
 const ctx = canvas.getContext("2d");
@@ -349,6 +351,14 @@ function drawMap(active, selected) {
 function render() {
   timeline.value = currentTime;
   element("timeLabel").textContent = "t = " + formatTime(currentTime) + " / " + formatTime(metadata.end_time);
+  if (metadata.localization && metadata.timeline_origin) {
+    const origin = Date.parse(metadata.timeline_origin + "Z");
+    if (Number.isFinite(origin)) {
+      const clock = element("clockLabel");
+      clock.textContent = "OSD " + new Date(origin + currentTime * 1000).toISOString().slice(0, 19).replace("T", " ");
+      clock.hidden = false;
+    }
+  }
   const active = tracks.filter(track => visibleSegments(track).length);
   const selected = metadata.tracks_summary[selectedId];
   renderCards(active);
@@ -401,7 +411,7 @@ function tick(now) {
 
 async function init() {
   try {
-    const response = await fetch("/api/session");
+    const response = await fetch(sessionUrl("/api/session"));
     const data = await response.json();
     if (!response.ok) throw new Error(data.detail || "Не удалось загрузить сеанс.");
     metadata = data;
@@ -411,6 +421,12 @@ async function init() {
     canvas.height = data.map.height;
     plan.onload = render;
     plan.src = data.map.url;
+    const unlocalized = data.localization?.unlocalized_cameras ?? [];
+    if (unlocalized.length) {
+      const warning = element("localizationStatus");
+      warning.textContent = "Нет подтверждённой привязки к плану: " + unlocalized.join(", ");
+      warning.hidden = false;
+    }
     element("totalTracksBadge").textContent = "Подтверждённые треки за сеанс: " + data.total_unique_tracks;
     timeline.min = data.start_time;
     timeline.max = data.end_time;
@@ -449,3 +465,6 @@ async function init() {
 }
 
 init();
+fetch("/api/projects/enabled").then(response => {
+  element("newProject").hidden = !response.ok;
+}).catch(() => {});

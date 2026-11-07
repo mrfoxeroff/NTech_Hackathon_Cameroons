@@ -8,7 +8,10 @@ import av
 import cv2
 import numpy as np
 
-from geometry import fit_calibration
+if __package__:
+    from .geometry import fit_calibration
+else:
+    from geometry import fit_calibration
 
 
 def digest(path):
