@@ -179,6 +179,7 @@ DEFAULTS = {
     "allow_geometry_only": True,
     "max_brightness_difference": None,
     "overlap_pairs": [],
+    "overlap_requires_map": [],
     "continuous_handoffs": [],
     "stitch_local_fragments": False,
     "contextual_appearance": False,
@@ -307,7 +308,8 @@ def candidate(a, b, overlaps, handoffs, config):
     spatial_limit = config["max_map_distance"]
     distance = None
     if gap <= 0:
-        if frozenset((a.first.camera, b.first.camera)) not in overlaps:
+        camera_pair = frozenset((a.first.camera, b.first.camera))
+        if camera_pair not in overlaps:
             return None
         pairs = list(synchronized_pairs(a.observations, b.observations, config["sync_tolerance_ms"]))
         if len(pairs) < config["min_overlap_pairs"]:
@@ -315,6 +317,8 @@ def candidate(a, b, overlaps, handoffs, config):
         distances = [math.dist(p.xy, q.xy) for p, q in pairs if p.xy is not None and q.xy is not None]
         if len(distances) >= config["min_overlap_pairs"]:
             distance = median(distances)
+        elif any(camera_pair == frozenset(pair) for pair in config["overlap_requires_map"]):
+            return None
         mode = "overlap"
     else:
         key = (a.last.camera, a.last.zone, b.first.camera, b.first.zone)

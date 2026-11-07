@@ -76,6 +76,15 @@ class StitchTests(unittest.TestCase):
                    for cam in ("a", "b") for ident in (1, 2)), [])
         self.assertEqual(len(associate(obs, CFG)), 4)
 
+    def test_overlap_can_require_multiple_projected_positions(self):
+        left = fragment("a", 1, 0, 500)
+        right = fragment("b", 1, 0, 500)
+        config = CFG | {"overlap_requires_map": [["a", "b"]], "max_map_distance": 24}
+        self.assertEqual(len(associate(left + right, config)), 2)
+
+        projected = [replace(obs, xy=(obs.time / 100, 0)) for obs in left + right]
+        self.assertEqual(len(associate(projected, config)), 1)
+
     def test_joint_evidence_breaks_local_tie(self):
         ts = split_tracklets(fragment("a", 1, 0, 600) + fragment("a", 2, 0, 600)
                              + fragment("b", 1, 0, 600) + fragment("b", 2, 0, 600), 750)

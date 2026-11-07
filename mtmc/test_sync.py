@@ -37,6 +37,21 @@ def test_piecewise_map_can_be_inverted(tmp_path):
         assert interpolate(interpolate(value, xs, ys), ys, xs) == pytest.approx(value)
 
 
+def test_opening_second_longer_than_next_starts_on_its_displayed_clock(tmp_path):
+    audit, rows = fixture(tmp_path)
+    rows.pop()
+    audit["decoded_frames"] = len(rows)
+    seconds = [1, 1, 1, 1, 2, 2, 3, 3]
+    for row, second in zip(rows, seconds):
+        row["osd_sec"] = second
+    audit["transitions"] = [{"frame_index": i, "timestamp_sec": seconds[i]} for i in (4, 6)]
+
+    mapping = build_camera(audit, rows)
+    assert mapping["common_start_sec"] == 1
+    camera = CameraConfig("test", tmp_path / "source.bin", clock_anchors=mapping["clock_anchors"])
+    assert [int(camera.common_time(row["video_time_sec"])) for row in rows] == seconds
+
+
 def test_uncertain_clock_not_silently_accepted(tmp_path):
     audit, rows = fixture(tmp_path)
     audit["errors"] = [{"frame_index": 4}]

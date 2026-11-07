@@ -59,7 +59,10 @@ def create_app(session_root):
     return server
 
 
-app = create_app(os.environ.get("NTECH_SESSION_DIR", ROOT / "outputs_full/session"))
+default_session = ROOT / "outputs_all/session"
+if not (default_session / "session.json").is_file():
+    default_session = ROOT / "outputs_full/session"
+app = create_app(os.environ.get("NTECH_SESSION_DIR", default_session))
 
 
 if __name__ == "__main__":

@@ -148,6 +148,42 @@ def render_camera(camera, local_frames, manifest, annotations, path):
     return {"url": f"/media/{path.name}", "start": start, "end": coverage[-1][1], "coverage": coverage}
 
 
+def transcode_camera(original, stream, source, path, offset):
+    """Encode browser-compatible H.264 while retaining every source PTS."""
+    stream.thread_type = "AUTO"
+    stream.codec_context.thread_count = 4
+    encoders = (
+        ("h264_nvenc", {"preset": "p3", "rc": "constqp", "qp": "23"}),
+        ("libx264", {"preset": "veryfast", "crf": "23", "tune": "zerolatency", "threads": "4"}),
+    )
+    for codec, options in encoders:
+        if codec == "h264_nvenc" and codec not in av.codecs_available:
+            continue
+        with av.open(str(path), "w", options={"movflags": "+faststart"}) as output:
+            target = output.add_stream(codec, rate=stream.average_rate or Fraction(str(source["fps"])))
+            target.width, target.height, target.pix_fmt = source["width"], source["height"], "yuv420p"
+            target.time_base = target.codec_context.time_base = stream.time_base
+            target.codec_context.max_b_frames = 0
+            target.options = options
+            try:
+                target.codec_context.open()
+            except av.FFmpegError:
+                if codec == "h264_nvenc":
+                    continue
+                raise
+            for frame in original.decode(stream):
+                if frame.pts is None:
+                    return False
+                encoded = frame.reformat(format="yuv420p")
+                encoded.pts = frame.pts - offset
+                encoded.time_base = frame.time_base
+                for packet in target.encode(encoded):
+                    output.mux(packet)
+            for packet in target.encode():
+                output.mux(packet)
+        return True
+
+
 def package_camera(camera, frames, manifest, annotations, path):
     source = manifest["source"]
     video = Path(source["path"])
@@ -155,24 +191,24 @@ def package_camera(camera, frames, manifest, annotations, path):
         raise ValueError(f"Source video changed for {camera}")
     with av.open(str(video)) as original:
         stream = original.streams.video[0]
-        if (
-            stream.codec_context.name != "h264"
-            or stream.codec_context.has_b_frames
-            or source.get("first_frame_time_sec") is None
-        ):
+        if source.get("first_frame_time_sec") is None:
             return render_camera(camera, frames, manifest, annotations, path)
         offset = round(source["first_frame_time_sec"] / stream.time_base)
-        with av.open(str(path), "w", options={"movflags": "+faststart"}) as output:
-            target = output.add_stream_from_template(stream)
-            for packet in original.demux(stream):
-                if packet.size == 0:
-                    continue
-                if packet.dts is None or packet.pts is None:
-                    raise ValueError(f"Cannot remux missing source timestamps for {camera}")
-                packet.pts -= offset
-                packet.dts -= offset
-                packet.stream = target
-                output.mux(packet)
+        if stream.codec_context.name != "h264" or stream.codec_context.has_b_frames:
+            if not transcode_camera(original, stream, source, path, offset):
+                return render_camera(camera, frames, manifest, annotations, path)
+        else:
+            with av.open(str(path), "w", options={"movflags": "+faststart"}) as output:
+                target = output.add_stream_from_template(stream)
+                for packet in original.demux(stream):
+                    if packet.size == 0:
+                        continue
+                    if packet.dts is None or packet.pts is None:
+                        raise ValueError(f"Cannot remux missing source timestamps for {camera}")
+                    packet.pts -= offset
+                    packet.dts -= offset
+                    packet.stream = target
+                    output.mux(packet)
 
     overlay = path.with_name(camera + "_overlay.json")
     write_json(

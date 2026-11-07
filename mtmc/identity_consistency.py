@@ -217,7 +217,7 @@ def repair_geometry(groups, fragments, reference_camera, config):
             by_track[obs.camera, obs.local_id].append(obs)
     features = {key: time_series(by_track[key]) for key in {(obs.camera, obs.local_id) for obs in base}}
     votes = {}
-    overlaps = {frozenset(pair) for pair in config["overlap_pairs"]}
+    overlaps = {frozenset(pair) for pair in config.get("geometry_repair_pairs", config["overlap_pairs"])}
     for (camera, _), frame in frames.items():
         if frozenset((camera, reference_camera)) not in overlaps:
             continue

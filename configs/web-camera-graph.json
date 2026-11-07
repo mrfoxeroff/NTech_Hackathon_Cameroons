@@ -1,0 +1,20 @@
+{
+  "overlap_pairs": [
+    ["camera_1", "camera_2"],
+    ["camera_1", "camera_3"],
+    ["camera_2", "camera_3"],
+    ["camera_3", "camera_4"],
+    ["camera_3", "camera_5"],
+    ["camera_4", "camera_5"]
+  ],
+  "overlap_requires_map": [
+    ["camera_1", "camera_3"],
+    ["camera_2", "camera_3"],
+    ["camera_3", "camera_4"],
+    ["camera_3", "camera_5"],
+    ["camera_4", "camera_5"]
+  ],
+  "geometry_repair_pairs": [
+    ["camera_1", "camera_2"]
+  ]
+}

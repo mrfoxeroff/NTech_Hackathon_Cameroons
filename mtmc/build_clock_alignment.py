@@ -25,6 +25,11 @@ def build_camera(audit, rows):
     seconds = [t["timestamp_sec"] for t in transitions]
     if any(b - a != 1 for a, b in zip(seconds, seconds[1:])):
         raise ValueError("OSD seconds are missing; inspect possible content loss")
+    if interpolate(0, indexes, seconds) < rows[0]["osd_sec"]:
+        # The opening OSD second can last more frames than the next one.
+        # The first frame still has to belong to its displayed second.
+        indexes.insert(0, 0)
+        seconds.insert(0, rows[0]["osd_sec"])
     # Interpolate within one displayed second by source-frame order. Interpolating
     # across a 10-second PTS jump would incorrectly allocate almost a whole OSD
     # second to adjacent frames. Explicit before/after knots prevent that.

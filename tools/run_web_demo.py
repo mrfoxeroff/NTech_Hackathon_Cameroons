@@ -1,4 +1,4 @@
-"""Process cameras 1 and 2 on the verified office clock and build a web session."""
+"""Process the office cameras on a common clock and build a web session."""
 
 import argparse
 import json
@@ -13,13 +13,31 @@ from mtmc.import_local_tracking import IntelEncoder, import_outputs
 from tools.export_web_session import export_session, repair_associations
 
 ROOT = Path(__file__).resolve().parents[1]
+CAMERA_NUMBERS = (1, 2, 3, 4, 5)
 
 
-def run(output, start, end, stride, reid):
+def camera_graph(camera_ids):
+    stable = json.loads((ROOT / "mtmc/camera_graph.stable.json").read_text(encoding="utf-8"))
+    topology = json.loads((ROOT / "configs/web-camera-graph.json").read_text(encoding="utf-8"))
+    config = stable | topology
+    for key in ("overlap_pairs", "overlap_requires_map", "geometry_repair_pairs"):
+        config[key] = [pair for pair in config[key] if set(pair) <= camera_ids]
+    # The current local model already applies the camera-specific scene filters.
+    config.pop("excluded_image_rects", None)
+    return config
+
+
+def run(output, start, end, stride, reid, camera_numbers=CAMERA_NUMBERS):
     if output.exists():
         raise FileExistsError(output)
     alignment = json.loads((ROOT / "mtmc/sync-check/alignment.json").read_text(encoding="utf-8"))
-    settings = load_settings(ROOT / "configs/cameras.yaml", camera_ids={"camera_1", "camera_2"})
+    camera_ids = {f"camera_{number}" for number in camera_numbers}
+    if camera_ids - {"camera_1", "camera_2"}:
+        extra = json.loads((ROOT / "configs/clock-cameras-3-5.json").read_text(encoding="utf-8"))
+        if extra["timeline_origin"] != alignment["timeline_origin"]:
+            raise ValueError("Clock maps must use the same epoch")
+        alignment["cameras"].update(extra["cameras"])
+    settings = load_settings(ROOT / "configs/cameras.yaml", camera_ids=camera_ids)
     if settings.timeline_origin != alignment["timeline_origin"]:
         raise ValueError("Expected the verified office clock epoch")
     windows = []
@@ -54,10 +72,7 @@ def run(output, start, end, stride, reid):
         process_camera(settings, camera, model, person, runtime, local_start, local_end)
         inputs.append(settings.output_root / settings.recording_id / camera.camera_id)
 
-    config = json.loads((ROOT / "mtmc/camera_graph.stable.json").read_text(encoding="utf-8"))
-    config["overlap_pairs"] = [["camera_1", "camera_2"]]
-    # The current local model already applies the camera-specific scene filters.
-    config.pop("excluded_image_rects", None)
+    config = camera_graph(camera_ids)
     global_root = output / "global"
     import_outputs(inputs, global_root, encoder, config)
     repair_associations(global_root, ROOT / "office.jpg", ROOT)
@@ -68,7 +83,8 @@ def run(output, start, end, stride, reid):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=ROOT / "outputs_full")
+    parser.add_argument("--output", type=Path, default=ROOT / "outputs_all")
+    parser.add_argument("--cameras", type=int, nargs="+", choices=CAMERA_NUMBERS, default=CAMERA_NUMBERS)
     parser.add_argument("--start", type=float, default=0, help="Start on the common clock, seconds")
     parser.add_argument("--end", type=float, help="End on the common clock, seconds")
     parser.add_argument("--stride", type=int, default=3)
@@ -84,6 +100,6 @@ if __name__ == "__main__":
     ):
         parser.error("Expected finite 0 <= start < end")
     try:
-        run(args.output.resolve(), args.start, args.end, args.stride, args.reid.resolve())
+        run(args.output.resolve(), args.start, args.end, args.stride, args.reid.resolve(), args.cameras)
     except (OSError, ValueError, KeyError, RuntimeError) as error:
         parser.exit(2, f"error: {error}\n")
