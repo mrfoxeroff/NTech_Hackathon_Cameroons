@@ -5,6 +5,8 @@ const timeline = element("timeline");
 const canvas = element("mapCanvas");
 const ctx = canvas.getContext("2d");
 const plan = new Image();
+const mapView = { level: 0, scale: 1, x: 0, y: 0 };
+const maxMapZoom = 6;
 const slots = [1, 2].map(number => ({
   number,
   video: element("video" + number),
@@ -244,8 +246,77 @@ function positionAt(track) {
     ? point : null;
 }
 
+function mapPointer(event) {
+  const rect = canvas.getBoundingClientRect();
+  const fit = Math.min(rect.width / canvas.width, rect.height / canvas.height);
+  return {
+    x: (event.clientX - rect.left - rect.width / 2) / fit + canvas.width / 2,
+    y: (event.clientY - rect.top - rect.height / 2) / fit + canvas.height / 2,
+  };
+}
+
+function drawCurrentMap() {
+  mapView.x = Math.max(canvas.width * (1 - mapView.scale), Math.min(0, mapView.x));
+  mapView.y = Math.max(canvas.height * (1 - mapView.scale), Math.min(0, mapView.y));
+  drawMap(tracks.filter(track => visibleSegments(track).length), metadata.tracks_summary[selectedId]);
+}
+
+function zoomMap(level, anchor = { x: canvas.width / 2, y: canvas.height / 2 }) {
+  level = Math.max(0, Math.min(maxMapZoom, level));
+  const scale = 1.25 ** level;
+  const ratio = scale / mapView.scale;
+  mapView.x = anchor.x - (anchor.x - mapView.x) * ratio;
+  mapView.y = anchor.y - (anchor.y - mapView.y) * ratio;
+  mapView.level = level;
+  mapView.scale = scale;
+  canvas.classList.toggle("map-zoomed", level > 0);
+  element("mapZoomOut").disabled = element("mapZoomReset").disabled = level === 0;
+  element("mapZoomIn").disabled = level === maxMapZoom;
+  element("mapZoomValue").value = Math.round(scale * 100) + "%";
+  drawCurrentMap();
+}
+
+function initMapControls() {
+  let drag;
+  element("mapZoomOut").onclick = () => zoomMap(mapView.level - 1);
+  element("mapZoomIn").onclick = () => zoomMap(mapView.level + 1);
+  element("mapZoomReset").onclick = () => zoomMap(0);
+  canvas.addEventListener("wheel", event => {
+    const anchor = mapPointer(event);
+    if (!event.deltaY || anchor.x < 0 || anchor.x > canvas.width
+      || anchor.y < 0 || anchor.y > canvas.height) return;
+    const level = mapView.level + (event.deltaY < 0 ? 1 : -1);
+    if (level < 0 || level > maxMapZoom) return;
+    event.preventDefault();
+    zoomMap(level, anchor);
+  }, { passive: false });
+  canvas.addEventListener("pointerdown", event => {
+    if (drag || mapView.level === 0 || event.button !== 0) return;
+    drag = { id: event.pointerId, point: mapPointer(event) };
+    canvas.setPointerCapture(drag.id);
+    canvas.classList.add("map-dragging");
+  });
+  canvas.addEventListener("pointermove", event => {
+    if (drag?.id !== event.pointerId) return;
+    const point = mapPointer(event);
+    mapView.x += point.x - drag.point.x;
+    mapView.y += point.y - drag.point.y;
+    drag.point = point;
+    drawCurrentMap();
+  });
+  canvas.addEventListener("lostpointercapture", event => {
+    if (drag?.id !== event.pointerId) return;
+    drag = null;
+    canvas.classList.remove("map-dragging");
+  });
+  element("mapZoomIn").disabled = false;
+}
+
 function drawMap(active, selected) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.save();
+  ctx.translate(mapView.x, mapView.y);
+  ctx.scale(mapView.scale, mapView.scale);
   if (plan.complete && plan.naturalWidth) ctx.drawImage(plan, 0, 0);
   for (const track of selected ? [selected] : active) {
     let previous;
@@ -272,6 +343,7 @@ function drawMap(active, selected) {
       ctx.fillText("ID " + track.id, point.x + 8, point.y + 4);
     }
   }
+  ctx.restore();
 }
 
 function render() {
@@ -369,6 +441,7 @@ async function init() {
     element("autoSwitchCam").onchange = render;
     timeline.disabled = element("playBtn").disabled = false;
     element("sessionStatus").textContent = "";
+    initMapControls();
     render();
   } catch (error) {
     element("sessionStatus").textContent = error.message;
