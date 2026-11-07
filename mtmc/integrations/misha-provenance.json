@@ -1,0 +1,62 @@
+{
+  "repository": "https://github.com/mrfoxeroff/NTech_Hackathon_Cameroons",
+  "branch": "misha",
+  "commit": "00853f1242037ed4833eab3dd98cab8604e2d84a",
+  "source_archive_sha256": "31f57dbfbda01395b7e794f140472818cc4752bad6a96b29d7cf5cbac4e19bd8",
+  "files": [
+    {
+      "file": "__init__.py",
+      "upstream_sha256": "955d3aa3b83a0b578d7aa093bd3c3171a08bfbfde71d8d0f689311425c36f9e2",
+      "integrated_sha256": "8e133d11c5a205e7684be3f3d3f4cb8ed267f2736b0df71e46f2db2656961ebe",
+      "modified": true
+    },
+    {
+      "file": "__main__.py",
+      "upstream_sha256": "482b8693e2fe6dbd732e3d7961e03827d3efa187bad11d29da188be580ebbeea",
+      "integrated_sha256": "482b8693e2fe6dbd732e3d7961e03827d3efa187bad11d29da188be580ebbeea",
+      "modified": false
+    },
+    {
+      "file": "artifacts.py",
+      "upstream_sha256": "c1a4581315773245cbe84089a17d0e6ce81ee90d2e935652b74794d20bf2d549",
+      "integrated_sha256": "c1a4581315773245cbe84089a17d0e6ce81ee90d2e935652b74794d20bf2d549",
+      "modified": false
+    },
+    {
+      "file": "cli.py",
+      "upstream_sha256": "476a220d2f0734ff8b4ded131ed6944d6834430dff10ac343e64635d0cc05526",
+      "integrated_sha256": "476a220d2f0734ff8b4ded131ed6944d6834430dff10ac343e64635d0cc05526",
+      "modified": false
+    },
+    {
+      "file": "config.py",
+      "upstream_sha256": "cb6c92dc6242b1609a8954236e966c874522c79d38a553db633a532e896a0ecd",
+      "integrated_sha256": "cb6c92dc6242b1609a8954236e966c874522c79d38a553db633a532e896a0ecd",
+      "modified": false
+    },
+    {
+      "file": "pipeline.py",
+      "upstream_sha256": "4b6b900f34d1332de1b38b0ac9cb924ae31bb4f07334d6e44db1d6bc7fed6189",
+      "integrated_sha256": "03fbbb804b192837387dca74c159eecb999e7aecaa9f71645de11b807d7a1b34",
+      "modified": true
+    },
+    {
+      "file": "tracker.py",
+      "upstream_sha256": "083a797abcd75888811c0a32124ba17d781bb41854cf1c2900088fdc6012710d",
+      "integrated_sha256": "083a797abcd75888811c0a32124ba17d781bb41854cf1c2900088fdc6012710d",
+      "modified": false
+    },
+    {
+      "file": "validate.py",
+      "upstream_sha256": "e43c5d9f2752b8ff526599b837f81febfed3a1756e127cf6df2c1cbaffe21c29",
+      "integrated_sha256": "e43c5d9f2752b8ff526599b837f81febfed3a1756e127cf6df2c1cbaffe21c29",
+      "modified": false
+    },
+    {
+      "file": "video.py",
+      "upstream_sha256": "04f4e8e8717bb198d3b7dfa1cb78355c9675f96ea680001ba827c5bd4c4b22b5",
+      "integrated_sha256": "04f4e8e8717bb198d3b7dfa1cb78355c9675f96ea680001ba827c5bd4c4b22b5",
+      "modified": false
+    }
+  ]
+}

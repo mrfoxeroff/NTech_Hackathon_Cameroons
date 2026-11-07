@@ -1,0 +1,43 @@
+{
+  "cameras": {"cam_1": "camera_new_1.mkv", "cam_2": "camera_new_2.mkv"},
+  "camera_2_offset_ms": 900,
+  "excluded_window_ms": [239000, 253000],
+  "excluded_window_reason": "No confirmed simultaneous views of the same person.",
+  "cases": [
+    {
+      "name": "a_four_people",
+      "window_ms": [172000, 201000],
+      "observations": "a/observations.jsonl",
+      "labels": [
+        ["cam_1", 3, "black_ponytail"], ["cam_2", 1, "black_ponytail"],
+        ["cam_2", 32, "black_ponytail", 182300, 189600],
+        ["cam_1", 6, "black_tshirt_jeans"], ["cam_2", 3, "black_tshirt_jeans", 173400, 189000],
+        ["cam_1", 46, "dark_hoodie", 190250, 195900], ["cam_2", 40, "dark_hoodie", 189000, 191850],
+        ["cam_1", 50, "light_outfit"], ["cam_2", 38, "light_outfit", 188200, 190850],
+        ["cam_2", 76, "light_outfit"]
+      ]
+    },
+    {
+      "name": "c_two_dark_outfits",
+      "window_ms": [268000, 283000],
+      "observations": "c/observations.jsonl",
+      "labels": [
+        ["cam_1", 2, "black_ponytail"], ["cam_2", 1, "black_ponytail"],
+        ["cam_1", 1, "dark_jacket_glasses"], ["cam_2", 2, "dark_jacket_glasses", 268000, 269310],
+        ["cam_2", 4, "dark_jacket_glasses"]
+      ]
+    },
+    {
+      "name": "d_single_blue_jacket",
+      "window_ms": [532000, 547000],
+      "observations": "d/observations.jsonl",
+      "labels": [["cam_1", 4, "blue_jacket"], ["cam_2", 1, "blue_jacket"]]
+    },
+    {
+      "name": "e_single_dark_jacket",
+      "window_ms": [895000, 910000],
+      "observations": "e/observations.jsonl",
+      "labels": [["cam_1", 1, "dark_jacket"], ["cam_2", 1, "dark_jacket"]]
+    }
+  ]
+}

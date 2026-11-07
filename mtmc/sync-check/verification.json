@@ -1,0 +1,92 @@
+{
+  "source_frames_checked": 60160,
+  "automated_tests_passed": 128,
+  "mapping_file": "alignment.json",
+  "tracked_video": "cameras-synchronized-tracked.mp4",
+  "tracked_video_decoding": {
+    "codec": "h264",
+    "width": 1440,
+    "height": 660,
+    "duration_sec": 83.04,
+    "bytes": 6998499,
+    "decoded_frames": 1038
+  },
+  "tracked_video_alignment": {
+    "frames": 1038,
+    "blank_panels": 0,
+    "paired_frames": 1038,
+    "same_displayed_second": 1018,
+    "max_model_pair_difference_sec": 0.12384855405068151,
+    "cases": [
+      {
+        "name": "four_people",
+        "frames": 375,
+        "window_ms": [
+          175000,
+          205000
+        ]
+      },
+      {
+        "name": "dark_outfits",
+        "frames": 250,
+        "window_ms": [
+          265000,
+          285000
+        ]
+      },
+      {
+        "name": "blue_jacket",
+        "frames": 200,
+        "window_ms": [
+          534000,
+          550000
+        ]
+      },
+      {
+        "name": "dark_jacket",
+        "frames": 213,
+        "window_ms": [
+          895000,
+          912000
+        ]
+      }
+    ],
+    "displayed_second_agreement": 0.9807321772639692,
+    "note": "Pair difference measures the fitted OSD model, not certified physical capture error."
+  },
+  "tracking_counts": {
+    "four_people": 14,
+    "dark_outfits": 2,
+    "blue_jacket": 1,
+    "dark_jacket": 2
+  },
+  "tracking_accuracy_note": "Fresh automatic detections, no identity ground truth. Residual fragmentation and identity errors remain.",
+  "full_video": "cameras-synchronized-full.mp4",
+  "full_video_decoding": {
+    "codec": "h264",
+    "width": 1440,
+    "height": 660,
+    "duration_sec": 1202.16,
+    "bytes": 36647437,
+    "decoded_frames": 15027
+  },
+  "full_video_alignment": {
+    "frames": 15027,
+    "blank_panels": 0,
+    "paired_frames": 15027,
+    "same_displayed_second": 15027,
+    "max_model_pair_difference_sec": 0.04179685772191988,
+    "cases": [
+      {
+        "name": "full",
+        "frames": 15027,
+        "window_ms": [
+          1562,
+          1203708
+        ]
+      }
+    ],
+    "displayed_second_agreement": 1.0,
+    "note": "Pair difference measures the fitted OSD model, not certified physical capture error."
+  }
+}

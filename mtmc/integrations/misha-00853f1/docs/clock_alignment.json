@@ -1,0 +1,487 @@
+{
+  "schema_version": "1.0",
+  "origin_local_datetime": "2026-10-08T17:38:39",
+  "timezone_note": "OSD timezone is not established; no UTC conversion is asserted.",
+  "methodology": [
+    "User confirmed the camera clocks are synchronized and requested alignment to their on-screen timestamps.",
+    "Decoded source frames with PyAV; local time is media PTS minus the first decoded frame PTS.",
+    "Located changes in the seconds glyph by white-pixel XOR in a fixed OSD crop, then visually verified each selected timestamp.",
+    "Anchors are first source frames showing a new integer OSD second. At long positions decoding was seeked for inspection, so source frame index is omitted rather than guessed.",
+    "Recommended mapping is monotone piecewise linear interpolation; extrapolate with the first/last pair outside measured anchors.",
+    "A single constant offset is insufficient: relative media/OSD offset changes by several seconds over the recording.",
+    "Within-second OSD update jitter is visible; 40/50ms source cadence is not synchronization accuracy. Sparse anchor interpolation is approximate and does not establish frame-accurate cross-camera synchronization."
+  ],
+  "measurement_precision_sec": 0.001,
+  "source_frame_cadence_sec": {
+    "camera_1": 0.039,
+    "camera_2": 0.039,
+    "camera_3": 0.039,
+    "camera_4": 0.05,
+    "camera_5": 0.039
+  },
+  "uncertainty_note": "Local PTS is known at millisecond precision. Clock-label update jitter observed up to several tenths of a second. Unmeasured interpolation residual is not bounded; validate cross-camera transitions separately.",
+  "evidence": [
+    "outputs/clock_transitions.jpg",
+    "outputs/clock_long_anchors.jpg"
+  ],
+  "cameras": {
+    "camera_1": {
+      "measurements": [
+        {
+          "frame_index": 20,
+          "video_time_sec": 0.781,
+          "timestamp_sec": 1,
+          "offset_sec": 0.219,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 44,
+          "video_time_sec": 1.72,
+          "timestamp_sec": 2,
+          "offset_sec": 0.28,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 68,
+          "video_time_sec": 2.662,
+          "timestamp_sec": 3,
+          "offset_sec": 0.338,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 92,
+          "video_time_sec": 3.601,
+          "timestamp_sec": 4,
+          "offset_sec": 0.399,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 116,
+          "video_time_sec": 4.545,
+          "timestamp_sec": 5,
+          "offset_sec": 0.455,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 30.881,
+          "timestamp_sec": 32,
+          "offset_sec": 1.119,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 600.751,
+          "timestamp_sec": 603,
+          "offset_sec": 2.249,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1190.675,
+          "timestamp_sec": 1195,
+          "offset_sec": 4.325,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1193.813,
+          "timestamp_sec": 1198,
+          "offset_sec": 4.187,
+          "kind": "first_frame_of_osd_second"
+        }
+      ],
+      "recommended_clock_anchors": [
+        [
+          0.781,
+          1
+        ],
+        [
+          1.72,
+          2
+        ],
+        [
+          30.881,
+          32
+        ],
+        [
+          600.751,
+          603
+        ],
+        [
+          1190.675,
+          1195
+        ],
+        [
+          1193.813,
+          1198
+        ]
+      ]
+    },
+    "camera_2": {
+      "measurements": [
+        {
+          "frame_index": 14,
+          "video_time_sec": 0.549,
+          "timestamp_sec": 2,
+          "offset_sec": 1.451,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 46,
+          "video_time_sec": 1.803,
+          "timestamp_sec": 3,
+          "offset_sec": 1.197,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 71,
+          "video_time_sec": 2.78,
+          "timestamp_sec": 4,
+          "offset_sec": 1.22,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 96,
+          "video_time_sec": 3.759,
+          "timestamp_sec": 5,
+          "offset_sec": 1.241,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 120,
+          "video_time_sec": 4.701,
+          "timestamp_sec": 6,
+          "offset_sec": 1.299,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 30.153,
+          "timestamp_sec": 32,
+          "offset_sec": 1.847,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 600.86,
+          "timestamp_sec": 604,
+          "offset_sec": 3.14,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1190.883,
+          "timestamp_sec": 1196,
+          "offset_sec": 5.117,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1193.076,
+          "timestamp_sec": 1198,
+          "offset_sec": 4.924,
+          "kind": "first_frame_of_osd_second"
+        }
+      ],
+      "recommended_clock_anchors": [
+        [
+          0.549,
+          2
+        ],
+        [
+          1.803,
+          3
+        ],
+        [
+          30.153,
+          32
+        ],
+        [
+          600.86,
+          604
+        ],
+        [
+          1190.883,
+          1196
+        ],
+        [
+          1193.076,
+          1198
+        ]
+      ]
+    },
+    "camera_3": {
+      "measurements": [
+        {
+          "frame_index": 31,
+          "video_time_sec": 1.213,
+          "timestamp_sec": 2,
+          "offset_sec": 0.787,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 55,
+          "video_time_sec": 2.156,
+          "timestamp_sec": 3,
+          "offset_sec": 0.844,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 79,
+          "video_time_sec": 3.098,
+          "timestamp_sec": 4,
+          "offset_sec": 0.902,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 103,
+          "video_time_sec": 4.039,
+          "timestamp_sec": 5,
+          "offset_sec": 0.961,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 30.471,
+          "timestamp_sec": 32,
+          "offset_sec": 1.529,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 600.971,
+          "timestamp_sec": 604,
+          "offset_sec": 3.029,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1190.332,
+          "timestamp_sec": 1195,
+          "offset_sec": 4.668,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1193.155,
+          "timestamp_sec": 1198,
+          "offset_sec": 4.845,
+          "kind": "first_frame_of_osd_second"
+        }
+      ],
+      "recommended_clock_anchors": [
+        [
+          1.213,
+          2
+        ],
+        [
+          2.156,
+          3
+        ],
+        [
+          30.471,
+          32
+        ],
+        [
+          600.971,
+          604
+        ],
+        [
+          1190.332,
+          1195
+        ],
+        [
+          1193.155,
+          1198
+        ]
+      ]
+    },
+    "camera_4": {
+      "measurements": [
+        {
+          "frame_index": 11,
+          "video_time_sec": 0.55,
+          "timestamp_sec": 5,
+          "offset_sec": 4.45,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 32,
+          "video_time_sec": 1.6,
+          "timestamp_sec": 6,
+          "offset_sec": 4.4,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 49,
+          "video_time_sec": 2.45,
+          "timestamp_sec": 7,
+          "offset_sec": 4.55,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 70,
+          "video_time_sec": 3.5,
+          "timestamp_sec": 8,
+          "offset_sec": 4.5,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 91,
+          "video_time_sec": 4.55,
+          "timestamp_sec": 9,
+          "offset_sec": 4.45,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 30.602,
+          "timestamp_sec": 35,
+          "offset_sec": 4.398,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 600.603,
+          "timestamp_sec": 605,
+          "offset_sec": 4.397,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1190.601,
+          "timestamp_sec": 1195,
+          "offset_sec": 4.399,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1193.551,
+          "timestamp_sec": 1198,
+          "offset_sec": 4.449,
+          "kind": "first_frame_of_osd_second"
+        }
+      ],
+      "recommended_clock_anchors": [
+        [
+          0.55,
+          5
+        ],
+        [
+          1.6,
+          6
+        ],
+        [
+          30.602,
+          35
+        ],
+        [
+          600.603,
+          605
+        ],
+        [
+          1190.601,
+          1195
+        ],
+        [
+          1193.551,
+          1198
+        ]
+      ]
+    },
+    "camera_5": {
+      "measurements": [
+        {
+          "frame_index": 5,
+          "video_time_sec": 0.197,
+          "timestamp_sec": 4,
+          "offset_sec": 3.803,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 29,
+          "video_time_sec": 1.136,
+          "timestamp_sec": 5,
+          "offset_sec": 3.864,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 53,
+          "video_time_sec": 2.075,
+          "timestamp_sec": 6,
+          "offset_sec": 3.925,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 85,
+          "video_time_sec": 3.33,
+          "timestamp_sec": 7,
+          "offset_sec": 3.67,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": 109,
+          "video_time_sec": 4.269,
+          "timestamp_sec": 8,
+          "offset_sec": 3.731,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 30.598,
+          "timestamp_sec": 35,
+          "offset_sec": 4.402,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 600.366,
+          "timestamp_sec": 606,
+          "offset_sec": 5.634,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1190.52,
+          "timestamp_sec": 1198,
+          "offset_sec": 7.48,
+          "kind": "first_frame_of_osd_second"
+        },
+        {
+          "frame_index": null,
+          "video_time_sec": 1193.343,
+          "timestamp_sec": 1201,
+          "offset_sec": 7.657,
+          "kind": "first_frame_of_osd_second"
+        }
+      ],
+      "recommended_clock_anchors": [
+        [
+          0.197,
+          4
+        ],
+        [
+          1.136,
+          5
+        ],
+        [
+          30.598,
+          35
+        ],
+        [
+          600.366,
+          606
+        ],
+        [
+          1190.52,
+          1198
+        ],
+        [
+          1193.343,
+          1201
+        ]
+      ]
+    }
+  }
+}

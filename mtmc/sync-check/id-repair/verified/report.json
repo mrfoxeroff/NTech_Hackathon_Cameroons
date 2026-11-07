@@ -1,0 +1,78 @@
+[
+  {
+    "method": "validated_geometry_with_reid_seeds",
+    "geometry": {
+      "accepted": true,
+      "train_pairs": 214,
+      "validation_pairs": 75,
+      "train_inlier_fraction": 0.8317757009345794,
+      "validation_median_box_heights": 0.05582486179730404,
+      "validation_fraction_within_035_box_heights": 0.9733333333333334,
+      "matrix": [
+        [
+          -1.6266824720903466,
+          1.6947143599805568,
+          2928.0384375365247
+        ],
+        [
+          -0.2819311905040911,
+          0.29632035436203996,
+          712.9206913695385
+        ],
+        [
+          -0.0005786380100886253,
+          0.0011724034525182777,
+          1.0
+        ]
+      ],
+      "seed_track_pairs": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "unconfirmed_observations": 7,
+    "case": "four_people",
+    "total_tracks": 4,
+    "observations": 1020,
+    "pending": 7
+  },
+  {
+    "method": "reid_with_osnet_rescue",
+    "geometry": {
+      "accepted": false,
+      "reason": "fewer_than_two_long_independent_matches"
+    },
+    "case": "dark_outfits",
+    "total_tracks": 2,
+    "observations": 408,
+    "pending": 0
+  },
+  {
+    "method": "reid_with_osnet_rescue",
+    "geometry": {
+      "accepted": false,
+      "reason": "fewer_than_two_long_independent_matches"
+    },
+    "case": "blue_jacket",
+    "total_tracks": 1,
+    "observations": 110,
+    "pending": 0
+  },
+  {
+    "method": "reid_with_osnet_rescue",
+    "geometry": {
+      "accepted": false,
+      "reason": "fewer_than_two_long_independent_matches"
+    },
+    "case": "dark_jacket",
+    "total_tracks": 1,
+    "observations": 127,
+    "pending": 0
+  }
+]

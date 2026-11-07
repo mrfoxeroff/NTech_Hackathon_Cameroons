@@ -1,0 +1,4 @@
+# Additional packages for the misha integration in the existing mtmc environment.
+# Neural-network/video dependencies remain those of the already tested environment.
+PyYAML==6.0.3
+pytest==8.4.2
