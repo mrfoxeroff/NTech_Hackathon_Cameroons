@@ -54,13 +54,23 @@ class FakeSegmenter:
 
 def test_complete_pipeline_exports_real_observations_and_gaps(tmp_path):
     settings, camera = fixture_settings(tmp_path)
-    metrics = process_camera(settings, camera, FakeSegmenter(), 0, {"device": "cpu"})
+    updates = []
+    metrics = process_camera(
+        settings,
+        camera,
+        FakeSegmenter(),
+        0,
+        {"device": "cpu"},
+        progress=lambda count, video_time, duration: updates.append((count, video_time, duration)),
+    )
     root = settings.output_root / "test" / "cam_1"
     manifest = json.loads((root / "manifest.json").read_text())
     frames = [json.loads(line) for line in (root / "frames.jsonl").read_text().splitlines()]
     tracks = json.loads((root / "local_tracks.json").read_text())["tracks"]
     assert manifest["status"] == "complete"
     assert metrics["processed_frames"] == 4 and metrics["empty_frames"] == 1
+    assert updates[0][:2] == (1, 0.0)
+    assert updates[-1][0] == 4 and updates[-1][1] == pytest.approx(0.3)
     assert frames[0]["timestamp_sec"] == 2.0
     assert frames[2]["observations"] == []  # No Kalman prediction as a detection.
     assert frames[0]["observations"][0]["local_track_id"] == frames[3]["observations"][0]["local_track_id"]

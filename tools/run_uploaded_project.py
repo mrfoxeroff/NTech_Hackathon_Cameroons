@@ -2,6 +2,7 @@
 
 import argparse
 import json
+from datetime import timedelta
 from pathlib import Path
 
 from local_tracking.artifacts import write_json
@@ -19,6 +20,13 @@ from tools.upload_geometry import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def camera_progress(stage, count, video_time, duration):
+    timestamp = str(timedelta(seconds=int(video_time)))
+    if duration is not None:
+        timestamp += " / " + str(timedelta(seconds=int(duration)))
+    return f"{stage}\nОбработано кадров: {count} · время видео {timestamp}"
 
 
 def run_project(plan, sources, output, *, roi=DEFAULT_ROI, lab_report=None, progress=print):
@@ -51,11 +59,22 @@ def run_project(plan, sources, output, *, roi=DEFAULT_ROI, lab_report=None, prog
     encoder = IntelEncoder(ROOT / "mtmc/weights/person-reidentification-retail-0288.xml")
     model, person = load_model(settings)
     runtime = runtime_info(settings.device)
+    device = runtime["gpu_name"] or "CPU"
     output.mkdir(parents=True, exist_ok=False)
     inputs = []
-    for camera in settings.cameras:
-        progress(f"Детекция и локальный трекинг · {camera.camera_id}")
-        process_camera(settings, camera, model, person, runtime)
+    for index, camera in enumerate(settings.cameras, 1):
+        stage = f"Детекция и локальный трекинг · {camera.camera_id} ({index}/{len(videos)}) · {device}"
+        progress(stage)
+        process_camera(
+            settings,
+            camera,
+            model,
+            person,
+            runtime,
+            progress=lambda count, video_time, duration: progress(
+                camera_progress(stage, count, video_time, duration)
+            ),
+        )
         inputs.append(settings.output_root / settings.recording_id / camera.camera_id)
     progress("Сопоставление ID между камерами")
     global_root = output / "global"

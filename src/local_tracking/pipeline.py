@@ -89,6 +89,8 @@ def process_camera(
     start_sec=0.0,
     end_sec=None,
     max_frames=None,
+    *,
+    progress=None,
 ):
     import torch
 
@@ -121,6 +123,8 @@ def process_camera(
     write_json(output / "manifest.json", manifest)
     preview = None
     started = time.perf_counter()
+    last_progress = float("-inf")
+    reported_frames = 0
     metrics = {
         "processed_frames": 0,
         "observations": 0,
@@ -236,10 +240,16 @@ def process_camera(
                         frame.video_time_sec,
                         len(summary.tracks),
                     )
+                if progress is not None and time.perf_counter() - last_progress >= 2:
+                    reported_frames = metrics["processed_frames"]
+                    progress(reported_frames, frame.video_time_sec, info.duration_sec)
+                    last_progress = time.perf_counter()
                 if max_frames is not None and metrics["processed_frames"] >= max_frames:
                     break
         if not metrics["processed_frames"]:
             raise ValueError("Selected interval contains no frames; check start/end/stride")
+        if progress is not None and reported_frames != metrics["processed_frames"]:
+            progress(metrics["processed_frames"], metrics["last_video_time_sec"], info.duration_sec)
         manifest["status"] = "complete"
     except BaseException as exc:
         original_error = exc
