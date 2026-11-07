@@ -1,9 +1,77 @@
+import json
+from pathlib import Path
+
 import cv2
 import numpy as np
 import pytest
+import yaml
 from ultralytics.engine.results import Results
 
+from local_tracking.config import Settings
 from local_tracking.scene_filter import SceneFilter
+from local_tracking.tracker import LocalTracker
+
+
+def test_reported_camera3_frame4026_reflection_removed_without_removing_physical_people():
+    root = Path(__file__).resolve().parents[1]
+    case = json.loads((root / "tests/fixtures/camera3_frame4026.json").read_text())
+    camera = next(
+        c
+        for c in yaml.safe_load((root / "configs/cameras.yaml").read_text())["cameras"]
+        if c["camera_id"] == "camera_3"
+    )
+    region = next(r for r in camera["scene_regions"] if r["name"] == "curved_mirror")
+    masks = np.zeros((len(case["detections"]), case["height"], case["width"]), np.uint8)
+    for mask, detection in zip(masks, case["detections"]):
+        cv2.fillPoly(mask, [np.array(p, np.int32) for p in detection["polygons"]], 1)
+    im = np.zeros((case["height"], case["width"], 3), np.uint8)
+    source = result(im, masks)
+    old = SceneFilter([{**region, "min_overlap": 0.85}], case["width"], case["height"])
+    assert len(old.apply(source, im)[0].boxes) == 3  # Reproduces the original escape.
+    current = SceneFilter([region], case["width"], case["height"])
+    filtered, rejected = current.apply(source, im)
+    assert len(filtered.boxes) == 2
+    assert [r["source_detection_index"] for r in rejected] == [0]
+    assert np.array_equal(filtered.masks.data, masks[1:])
+
+
+@pytest.mark.parametrize("key", ["corridor_reflection", "corridor_border_reflection"])
+def test_camera3_corridor_reflection_removed_but_person_behind_open_door_kept(key):
+    root = Path(__file__).resolve().parents[1]
+    case = json.loads((root / "tests/fixtures/camera3_frame4026.json").read_text())
+    camera = next(
+        c
+        for c in yaml.safe_load((root / "configs/cameras.yaml").read_text())["cameras"]
+        if c["camera_id"] == "camera_3"
+    )
+    region = next(r for r in camera["scene_regions"] if r["name"] == "corridor_glass_reflections")
+    masks = np.zeros((2, case["height"], case["width"]), np.uint8)
+    for mask, detection in zip(masks, [case[key], case["detections"][2]]):
+        cv2.fillPoly(mask, [np.array(p, np.int32) for p in detection["polygons"]], 1)
+    im = np.zeros((case["height"], case["width"], 3), np.uint8)
+    filtered, rejected = SceneFilter([region], case["width"], case["height"]).apply(result(im, masks), im)
+    if key == "corridor_border_reflection":
+        # The user accepts diagnostic reflections without IDs. This 0.4766
+        # candidate survives geometry but remains below ByteTrack's low cutoff.
+        assert len(filtered.boxes) == 2 and not rejected
+        filtered.boxes.data[0, 4] = case[key]["confidence"]
+        config = yaml.safe_load((root / "configs/cameras.yaml").read_text())
+        settings = Settings(
+            recording_id="case",
+            output_root=root,
+            model=root / "unused.pt",
+            cameras=[],
+            confidence=config["confidence"],
+            tracker=config["tracker"],
+        )
+        tracker = LocalTracker(settings, fps=25)
+        for step in range(3):
+            assigned = tracker.update(filtered.boxes.cpu().numpy(), im, step / 25)
+            assert 0 not in assigned and 1 in assigned
+        return
+    assert len(filtered.boxes) == 1
+    assert [r["source_detection_index"] for r in rejected] == [0]
+    assert np.array_equal(filtered.masks.data[0], masks[1])
 
 
 def result(image, masks):

@@ -2,11 +2,11 @@
 recording_id: office_01
 timeline_origin: '2026-10-08T17:38:39'
 output_root: ../outputs
-model: ../weights/person-office-v1.pt
+model: ../weights/person-office-v2.pt
 device: auto
-imgsz: 640
+imgsz: 800
 fp16: true
-confidence: 0.5
+confidence: 0.25
 iou: 0.7
 stride: 1
 lost_track_sec: 1.0
@@ -160,6 +160,15 @@ cameras:
 - camera_id: camera_3
   video: ../data/video/camera_3.mkv
   scene_regions:
+  - name: corridor_glass_reflections
+    mode: reflection
+    min_overlap: 0.85
+    # Reflecting glass in the distant corridor, above the open door.
+    polygon:
+    - [0.400463, 0.0]
+    - [0.554784, 0.0]
+    - [0.554784, 0.181070]
+    - [0.418210, 0.143004]
   - name: tv_main
     mode: screen
     min_overlap: 0.9
@@ -198,7 +207,8 @@ cameras:
       - 0.3981
   - name: curved_mirror
     mode: reflection
-    min_overlap: 0.85
+    # Frame 4026: only 62.4% of the reflected mask lies inside this narrow mirror.
+    min_overlap: 0.6
     polygon:
     - - 0.12885802469135801
       - 0.49588477366255146

@@ -67,7 +67,7 @@ def main(argv=None):
             else:
                 if not settings.model.name.startswith("yolo"):
                     raise FileNotFoundError(
-                        "Custom trained weights must be copied locally. See docs/finetuning_report.md; "
+                        "Custom trained weights must be copied locally. See docs/mirror_finetuning_report.md; "
                         "for official weights use configs/cameras.pretrained.yaml"
                     )
                 YOLO(str(settings.model))
