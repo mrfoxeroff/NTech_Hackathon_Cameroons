@@ -1,6 +1,7 @@
 """Read-only API for one prepared camera tracking session."""
 
 import json
+import math
 import os
 from functools import lru_cache
 from pathlib import Path
@@ -47,6 +48,29 @@ def create_app(session_root):
     def read_session():
         data, _ = session()
         return JSONResponse(data, headers={"Cache-Control": "no-store"})
+
+    @lru_cache(maxsize=1)
+    def world_state():
+        try:
+            return json.loads((session_root / "world_state.json").read_text(encoding="utf-8"))
+        except (OSError, ValueError) as error:
+            raise HTTPException(503, "Индекс состояний сеанса недоступен.") from error
+
+    @server.get("/api/state")
+    def read_state(t: float):
+        data, _ = session()
+        if "state_index" not in data:
+            raise HTTPException(404, "Этот сеанс не содержит индекс состояний.")
+        if not math.isfinite(t) or t < data["start_time"] or t > data["end_time"]:
+            raise HTTPException(422, "Время выходит за границы сеанса.")
+        state = world_state()
+        step = state["step_ms"]
+        bucket = math.floor(t * 1000 + 1e-7) // step
+        return {
+            "start_sec": bucket * step / 1000,
+            "end_sec": (bucket + 1) * step / 1000,
+            "tracks": state["buckets"].get(str(bucket), []),
+        }
 
     @server.get("/media/{name}")
     def media(name: str):

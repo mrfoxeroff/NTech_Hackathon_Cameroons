@@ -339,7 +339,7 @@ async function init() {
     canvas.height = data.map.height;
     plan.onload = render;
     plan.src = data.map.url;
-    element("totalTracksBadge").textContent = "Всего уникальных сквозных треков: " + data.total_unique_tracks;
+    element("totalTracksBadge").textContent = "Подтверждённые треки за сеанс: " + data.total_unique_tracks;
     timeline.min = data.start_time;
     timeline.max = data.end_time;
     timeline.step = "any";

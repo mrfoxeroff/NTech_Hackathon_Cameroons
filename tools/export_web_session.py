@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import math
 from collections import defaultdict
 from fractions import Fraction
 from pathlib import Path
@@ -18,6 +19,7 @@ from local_tracking.pipeline import file_hash
 from local_tracking.video import iter_video
 from mtmc.associate import DEFAULTS, export_tracks
 from mtmc.identity_consistency import associate_consistently
+from tools.world_state import STEP_MS, build_world_state
 
 COLORS = ("#38bdf8", "#fb7185", "#4ade80", "#facc15", "#c084fc", "#fb923c")
 
@@ -326,8 +328,7 @@ def export_session(global_root, output, plan, calibrations):
     track_data = read_json(global_root / "tracks.json")
     valid_ids = {track["global_id"] for track in track_data["tracks"]}
     annotations = defaultdict(lambda: defaultdict(list))
-    samples = defaultdict(dict)
-    ranks = {}
+    world_observations = defaultdict(dict)
     for row in rows(global_root / "observations.jsonl"):
         key = observation_key(row)
         ident, timestamp = assignments.pop(key)
@@ -344,17 +345,31 @@ def export_session(global_root, output, plan, calibrations):
         box = row.get("bbox_stabilized_xyxy") or row["bbox_xyxy"]
         annotations[camera][row["frame_index"]].append((ident, box))
         point = project(row, cameras[camera][2], plan_size)
-        if point:
-            # Prefer an observed footpoint, then the more confident view in each 120 ms bin.
-            bucket = row["timestamp_ms"] // 120
-            rank = (point["status"] == "observed", row["confidence"])
-            if (ident, bucket) not in ranks or rank > ranks[ident, bucket]:
-                ranks[ident, bucket] = rank
-                point.update(t=row["timestamp_sec"], cam=camera, segment=row["source_segment"])
-                samples[ident][bucket] = point
+        bucket = math.floor(row["timestamp_sec"] * 1000 + 1e-7) // STEP_MS
+        views = world_observations[ident, bucket]
+        old = views.get(camera)
+        rank = (bool(point and point["status"] == "observed"), bool(point), row["confidence"])
+        if old is None or rank > old[0]:
+            views[camera] = (
+                rank,
+                {
+                    "camera_id": camera,
+                    "frame_index": row["frame_index"],
+                    "timestamp_sec": row["timestamp_sec"],
+                    "source_segment": row["source_segment"],
+                    "confidence": row["confidence"],
+                    "point": point,
+                },
+            )
     if assignments:
         raise ValueError("Global assignments contain observations missing from the import")
     gap_sec = manifest["settings"].get("visibility_gap_ms", 350) / 1000
+    samples, world_state = build_world_state(
+        {
+            key: {camera: source for camera, (_, source) in views.items()}
+            for key, views in world_observations.items()
+        }
+    )
     tracks = build_tracks(track_data, samples, gap_sec)
     output.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(prefix=".web-session-", dir=output.parent) as temporary:
@@ -381,8 +396,10 @@ def export_session(global_root, output, plan, calibrations):
             "cameras": videos,
             "map": {"url": "/media/map.png", "width": plan_size[0], "height": plan_size[1]},
             "tracks_summary": tracks,
+            "state_index": {"url": "/api/state", "step_ms": STEP_MS},
             "visibility_gap_sec": gap_sec,
         }
+        write_json(bundle / "world_state.json", world_state)
         write_json(bundle / "session.json", payload)
         bundle.rename(output)
     return payload

@@ -2,8 +2,18 @@
   "reappearance_memory_ms": 60000,
   "foreground_reid_cameras": ["camera_5"],
   "standalone_camera_min_observations": {"camera_5": 4},
+  "lifecycle": {
+    "min_ms": 1750,
+    "far_ms": 2850,
+    "far_height_px": 170,
+    "near_support": 5,
+    "far_support": 9,
+    "isolated_ms": 500
+  },
   "distant_corridor": {
     "cameras": ["camera_3", "camera_5"],
+    "motion_cameras": ["camera_3", "camera_4", "camera_5"],
+    "motion_rect": [274, 175, 332, 560],
     "map_rect": [280, 170, 330, 300],
     "image_bottom_px": 345
   },

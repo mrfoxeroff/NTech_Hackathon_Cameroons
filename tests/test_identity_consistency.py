@@ -1,5 +1,5 @@
 from mtmc.associate import DEFAULTS, Observation, split_tracklets
-from mtmc.identity_consistency import nested_duplicates, repair_geometry
+from mtmc.identity_consistency import appearance_switches, nested_duplicates, repair_geometry
 
 
 def test_sustained_geometry_switch_repairs_two_dark_tracks_without_following_one_bad_frame():
@@ -46,3 +46,33 @@ def test_short_torso_duplicate_is_removed_but_adjacent_short_person_is_kept():
     neighbor = [detection(3, frame, [150, 49, 205, 162], 0.72) for frame in range(2, 6)]
     fragments = split_tracklets(person + torso + neighbor, 750)
     assert nested_duplicates(fragments, {}) == set(torso)
+
+
+def test_one_sided_appearance_change_needs_another_person_nearby():
+    def detection(ident, time, brightness, embedding, x):
+        return Observation.parse(
+            {
+                "camera_id": "camera_3",
+                "local_id": ident,
+                "frame_index": time // 100,
+                "timestamp_ms": time,
+                "bbox_xyxy": [x, 40, x + 40, 160],
+                "torso_brightness": brightness,
+                "embedding": embedding,
+            }
+        )
+
+    changed = [
+        detection(1, time, brightness, embedding, 100)
+        for time, brightness, embedding in (
+            (0, 0.10, [1, 0]),
+            (500, 0.12, [1, 0]),
+            (1000, 0.64, [0, 1]),
+            (1500, 0.66, [0, 1]),
+        )
+    ]
+    neighbor = detection(2, 900, 0.65, [0, 1], 118)
+    assert not appearance_switches(split_tracklets(changed, 750), crowded_switches=True)
+    events = appearance_switches(split_tracklets(changed + [neighbor], 750), crowded_switches=True)
+    assert len(events) == 1
+    assert (events[0].old_sample, events[0].new_sample) == (500, 1000)

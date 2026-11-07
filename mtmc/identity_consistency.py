@@ -1,7 +1,7 @@
 """Repair reciprocal local ID switches before cross-camera association."""
 
 import math
-from bisect import bisect_left
+from bisect import bisect_left, bisect_right
 from collections import defaultdict
 from dataclasses import dataclass, replace
 from statistics import median
@@ -9,8 +9,9 @@ from statistics import median
 import numpy as np
 from lap import lapjv
 
-from .associate import DEFAULTS, Observation, associate, split_tracklets, summarize
+from .associate import DEFAULTS, Observation, associate, split_tracklets, summarize, upper_anchor
 from .corridor import reconcile_corridor
+from .lifecycle import review_lifecycle
 from .reconnect import reconnect
 
 
@@ -27,8 +28,16 @@ class Switch:
         return (self.old_sample + self.new_sample) / 2
 
 
-def appearance_switches(fragments):
+def appearance_switches(fragments, crowded_switches=False):
     candidates = []
+    unilateral = []
+    neighbors = defaultdict(list)
+    if crowded_switches:
+        for fragment in fragments:
+            for obs in fragment.observations:
+                if obs.bbox is not None:
+                    neighbors[obs.camera].append(obs)
+    nearby = {camera: time_series(items) for camera, items in neighbors.items()}
     for index, fragment in enumerate(fragments):
         samples = [obs for obs in fragment.observations if obs.reid and obs.brightness is not None]
         for a, b, c, d in zip(samples, samples[1:], samples[2:], samples[3:]):
@@ -36,22 +45,39 @@ def appearance_switches(fragments):
                 continue
             previous, following = [a.brightness, b.brightness], [c.brightness, d.brightness]
             delta = median(following) - median(previous)
-            if (
-                abs(delta) < 0.35
-                or abs(a.brightness - b.brightness) > 0.20
-                or abs(c.brightness - d.brightness) > 0.20
-            ):
+            if abs(a.brightness - b.brightness) > 0.20 or abs(c.brightness - d.brightness) > 0.20:
                 continue
             left, right = summarize([a, b], "reid"), summarize([c, d], "reid")
+            if left is None or right is None:
+                continue
+            look = sum(x * y for x, y in zip(left, right, strict=True))
+            event = Switch(index, b.camera, b.time, c.time, delta)
+            if abs(delta) >= 0.35 and look < 0.65:
+                candidates.append(event)
             if (
-                left is not None
-                and right is not None
-                and sum(x * y for x, y in zip(left, right, strict=True)) < 0.65
+                not crowded_switches
+                or look >= 0.42
+                or (look >= 0.33 and abs(delta) < 0.40)
+                or abs(delta) < 0.18
+                or sum(x * y for x, y in zip(a.reid, b.reid, strict=True)) < 0.64
+                or b.bbox is None
+                or c.bbox is None
             ):
-                candidates.append(Switch(index, b.camera, b.time, c.time, delta))
+                continue
+            times, detections = nearby[b.camera]
+            first = bisect_left(times, b.time - 250)
+            last = bisect_right(times, c.time + 250)
+            for other in detections[first:last]:
+                if other.local_id == b.local_id:
+                    continue
+                point = b if other.time < event.midpoint else c
+                height = min(point.bbox[3] - point.bbox[1], other.bbox[3] - other.bbox[1])
+                if math.dist(upper_anchor(point), upper_anchor(other)) <= 0.65 * height:
+                    unilateral.append(event)
+                    break
     # A reciprocal change within one view distinguishes track swaps from a
     # single person changing pose or a lighting change across the whole scene.
-    return [
+    reciprocal = [
         event
         for event in candidates
         if any(
@@ -63,6 +89,7 @@ def appearance_switches(fragments):
             for other in candidates
         )
     ]
+    return list(dict.fromkeys(reciprocal + unilateral))
 
 
 def matching_point(row, matrix, size):
@@ -297,7 +324,7 @@ def associate_consistently(rows, settings, calibrations, plan_size):
         fragments, {obs: row.get("border_flags") or {} for obs, row in zip(observations, rows, strict=True)}
     )
     fragments = [fragment for fragment in fragments if fragment.first not in duplicates]
-    events = appearance_switches(fragments)
+    events = appearance_switches(fragments, crowded_switches=bool(config.get("lifecycle")))
     cuts = defaultdict(list)
     for event in events:
         cuts[event.fragment].append((event.old_sample, event.new_sample))
@@ -323,6 +350,10 @@ def associate_consistently(rows, settings, calibrations, plan_size):
     pending.extend(uncertain)
     groups, uncertain, corridor = reconcile_corridor(groups, config)
     pending.extend(uncertain)
+    groups, uncertain, lifecycle = review_lifecycle(
+        groups, dict(zip(observations, rows, strict=True)), config
+    )
+    pending.extend(uncertain)
     confirmed = []
     minimums = config.get("standalone_camera_min_observations", {})
     for group in groups:
@@ -347,6 +378,7 @@ def associate_consistently(rows, settings, calibrations, plan_size):
         "reassigned_by_geometry": changed,
         "recovered_links": recovered,
         "distant_corridor_links": corridor,
+        "lifecycle": lifecycle,
         "map_distance_px": config["max_map_distance"],
     }
     return confirmed, pending, report

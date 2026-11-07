@@ -40,6 +40,46 @@ def test_session_available_after_export_and_media_is_allowlisted(tmp_path):
     asyncio.run(verify())
 
 
+def test_world_state_api_is_bounded_and_does_not_extrapolate(tmp_path):
+    pytest.importorskip("fastapi")
+    httpx = pytest.importorskip("httpx")
+    from app import create_app
+
+    (tmp_path / "session.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "1.0",
+                "start_time": 0.12,
+                "end_time": 1.25,
+                "map": {"url": "/media/map.png"},
+                "cameras": {"camera_1": {"url": "/media/camera_1.mp4"}},
+                "state_index": {"url": "/api/state", "step_ms": 120},
+            }
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "world_state.json").write_text(
+        json.dumps(
+            {
+                "step_ms": 120,
+                "buckets": {"1": [{"id": 7, "position": {"x": 2, "y": 3}, "sources": []}]},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    async def verify():
+        async with httpx.AsyncClient(
+            transport=httpx.ASGITransport(app=create_app(tmp_path)), base_url="http://test"
+        ) as client:
+            response = await client.get("/api/state", params={"t": 0.12})
+            assert response.json()["tracks"][0]["id"] == 7
+            assert (await client.get("/api/state", params={"t": 0.24})).json()["tracks"] == []
+            assert (await client.get("/api/state", params={"t": 1.26})).status_code == 422
+
+    asyncio.run(verify())
+
+
 def test_non_h264_web_video_keeps_source_frames_and_overlay_separate(tmp_path):
     from local_tracking.pipeline import file_hash
     from tools.export_web_session import package_camera
