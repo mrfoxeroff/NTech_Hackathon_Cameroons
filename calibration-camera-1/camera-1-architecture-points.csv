@@ -1,0 +1,7 @@
+﻿camera_id,point_id,frame_x,frame_y,plan_point_id,plan_x,plan_y,kind,status,description
+1,F1,2021,489,,,,panel_corner,plan_unconfirmed,"Стык задней тёмной и правой светлой панелей у пола. Проверить, совпадает ли с углом стен."
+1,F2,2404,923,,,,opening_candidate,plan_unconfirmed,Дальний нижний край правой белой секции у вертикального профиля. Тип проёма требуется подтвердить.
+1,F3,2516,1100,,,,opening_candidate,plan_unconfirmed,Ближний нижний край той же белой секции у металлического профиля.
+1,F4,2016,650,,,,stand_base,plan_unconfirmed,"Передняя кромка основания дальней чёрной стойки, справа от стола."
+1,F5,2261,925,,,,stand_base,plan_unconfirmed,"Передний угол основания ближней чёрной стойки, справа от витрины."
+1,F6,530,670,,,,stand_base,plan_unconfirmed,Правый нижний угол основания подсвеченного стенда слева.

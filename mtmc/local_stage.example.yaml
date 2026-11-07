@@ -1,0 +1,25 @@
+# Paths relative to this YAML file. No unverified OSD anchors are applied.
+recording_id: new_pair
+timeline_origin: local_media_unverified
+output_root: integration-runs/local
+model: weights/yolo11n-seg.pt
+device: auto
+imgsz: 640
+fp16: true
+confidence: 0.10
+iou: 0.70
+stride: 2
+lost_track_sec: 1.0
+crop_interval_sec: 0.35
+selected_crops_per_track: 5
+save_masks: true
+save_preview: true
+preview_max_width: 1280
+cameras:
+  - camera_id: cam_1
+    video: ../camera_new_1.mkv
+    time_offset_sec: 0.0
+  - camera_id: cam_2
+    video: ../camera_new_2.mkv
+    # Historical pilot offset only; NOT validated for the entire recordings.
+    time_offset_sec: 0.9

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Камера №1 · калибровочная разметка</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#f2f4f7;color:#182330;font:16px/1.5 system-ui,sans-serif}
+main{max-width:1600px;margin:auto;padding:24px} h1{margin:0;font-size:clamp(24px,4vw,36px)} h2{margin:0 0 10px;font-size:20px}
+p{margin:8px 0 16px} .grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:18px}
+section{padding:16px;background:white;border-radius:12px;border:1px solid #dbe0e7} svg{display:block;width:100%;height:auto;background:#f7f8fa}
+.frame circle,.frame path{stroke:var(--point);fill:none;stroke-width:5;filter:drop-shadow(0 0 3px #111)}
+.frame text{fill:var(--point);font:bold 42px system-ui;paint-order:stroke;stroke:#172027;stroke-width:8}
+.plan text{font:bold 13px system-ui;fill:#552600;paint-order:stroke;stroke:white;stroke-width:3}
+table{width:100%;text-align:left;border-collapse:collapse} th,td{padding:7px;border-bottom:1px solid #e0e5ec} .table{overflow-x:auto;margin-top:18px}
+@media(max-width:760px){main{padding:12px}.grid{grid-template-columns:1fr}}
+</style></head><body><main>
+<h1>Камера №1. Опорные точки</h1>
+<p><strong>Статус:</strong> восемь кандидатов на полу размечены на стоп-кадре. Парные координаты на плане пока не подтверждены.</p>
+<div class="grid">
+<section><h2>Стоп-кадр · 2592 × 1944</h2>
+<svg class="frame" viewBox="0 0 2592 1944" role="img" aria-label="Стоп-кадр с восемью точками на полу">
+<image href="../camera_new_1%20-%20frame%20at%200m36s.jpg" width="2592" height="1944"/>
+<g style="--point:#ffc74a"><title>P1: Слева от стола, верхнее Т-образное пересечение швов (521, 864)</title>
+      <circle cx="521" cy="864" r="16"/><path d="M497 864h15m18 0h15 M521 840v15m0 18v15"/>
+      <text x="551" y="844">P1</text></g>
+<g style="--point:#ffc74a"><title>P2: Слева от стола, следующее пересечение ближе к камере (421, 973)</title>
+      <circle cx="421" cy="973" r="16"/><path d="M397 973h15m18 0h15 M421 949v15m0 18v15"/>
+      <text x="451" y="953">P2</text></g>
+<g style="--point:#ffc74a"><title>P3: Справа от стола, угол плитки на открытом полу (2070, 1086)</title>
+      <circle cx="2070" cy="1086" r="16"/><path d="M2046 1086h15m18 0h15 M2070 1062v15m0 18v15"/>
+      <text x="2100" y="1066">P3</text></g>
+<g style="--point:#ffc74a"><title>P4: Справа и ближе к камере, стык поперечного и длинного шва (1748, 1200)</title>
+      <circle cx="1748" cy="1200" r="16"/><path d="M1724 1200h15m18 0h15 M1748 1176v15m0 18v15"/>
+      <text x="1778" y="1180">P4</text></g>
+<g style="--point:#ffc74a"><title>P5: Перед столом слева, пересечение швов (818, 1326)</title>
+      <circle cx="818" cy="1326" r="16"/><path d="M794 1326h15m18 0h15 M818 1302v15m0 18v15"/>
+      <text x="848" y="1306">P5</text></g>
+<g style="--point:#ffc74a"><title>P6: Перед столом справа, пересечение швов (1460, 1431)</title>
+      <circle cx="1460" cy="1431" r="16"/><path d="M1436 1431h15m18 0h15 M1460 1407v15m0 18v15"/>
+      <text x="1490" y="1411">P6</text></g>
+<g style="--point:#73e9fa"><title>P7: Контрольная точка перед столом, левее центра (992, 1418)</title>
+      <circle cx="992" cy="1418" r="16"/><path d="M968 1418h15m18 0h15 M992 1394v15m0 18v15"/>
+      <text x="1022" y="1398">P7</text></g>
+<g style="--point:#73e9fa"><title>P8: Контрольная точка перед столом, ближе к камере (1181, 1514)</title>
+      <circle cx="1181" cy="1514" r="16"/><path d="M1157 1514h15m18 0h15 M1181 1490v15m0 18v15"/>
+      <text x="1211" y="1494">P8</text></g>
+</svg><p>Жёлтые P1–P6 предназначены для расчёта, голубые P7–P8 — для проверки после привязки к плану.</p></section>
+<section><h2>Чистый план · 612 × 658</h2>
+<svg class="plan" viewBox="0 0 612 658" role="img" aria-label="Чистый план с ориентиром направления камеры номер один">
+<image href="../office.jpg" width="612" height="658"/>
+<path d="M222 128 L234 129 L246 152 L203 150 Z" fill="#ff9c32" fill-opacity=".25" stroke="#ad4a00" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M244 142 L332 142" fill="none" stroke="#ad4a00" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="338" y="139">Направление камеры №1</text>
+<text x="338" y="157">ориентир по схеме</text>
+</svg><p>Пунктир показывает направление по <a href="../office_camera.png">схеме с камерами</a>. Для каждой P-точки нужна координата того же физического места на плане.</p></section>
+</div>
+<section class="table"><h2>Координаты в пикселях исходного кадра</h2>
+<table><thead><tr><th>Точка</th><th>x, y</th><th>Назначение</th><th>Ориентир</th></tr></thead><tbody><tr><th>P1</th><td>521, 864</td><td>Расчёт</td><td>Слева от стола, верхнее Т-образное пересечение швов</td></tr>
+<tr><th>P2</th><td>421, 973</td><td>Расчёт</td><td>Слева от стола, следующее пересечение ближе к камере</td></tr>
+<tr><th>P3</th><td>2070, 1086</td><td>Расчёт</td><td>Справа от стола, угол плитки на открытом полу</td></tr>
+<tr><th>P4</th><td>1748, 1200</td><td>Расчёт</td><td>Справа и ближе к камере, стык поперечного и длинного шва</td></tr>
+<tr><th>P5</th><td>818, 1326</td><td>Расчёт</td><td>Перед столом слева, пересечение швов</td></tr>
+<tr><th>P6</th><td>1460, 1431</td><td>Расчёт</td><td>Перед столом справа, пересечение швов</td></tr>
+<tr><th>P7</th><td>992, 1418</td><td>Проверка</td><td>Контрольная точка перед столом, левее центра</td></tr>
+<tr><th>P8</th><td>1181, 1514</td><td>Проверка</td><td>Контрольная точка перед столом, ближе к камере</td></tr></tbody></table>
+<p><a href="camera-1-points.csv">Открыть CSV</a>. Поля plan_x и plan_y оставлены пустыми до замеров или получения подтверждённых соответствий.</p>
+</section></main></body></html>

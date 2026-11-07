@@ -1,0 +1,37 @@
+{
+  "tests_passed": 139,
+  "repeatability": [
+    {
+      "case": "blue_jacket",
+      "identical_assignments": true,
+      "sha256": "72c070ad8c0802545cf5b81b282e04d8a53af8b4ca00b5bba4a264b3849c36d3",
+      "observations": 110,
+      "unconfirmed": 0
+    },
+    {
+      "case": "dark_jacket",
+      "identical_assignments": true,
+      "sha256": "31cb9d5e5b3cdffa1c4a28cb72dca5f7856796831a3cfd97a6595cbe0cf5c6d8",
+      "observations": 127,
+      "unconfirmed": 0
+    },
+    {
+      "case": "dark_outfits",
+      "identical_assignments": true,
+      "sha256": "034013e37690293f8aa21787cb7a2c62776d6dc87b7a04518fd57b0195b84c11",
+      "observations": 408,
+      "unconfirmed": 0
+    },
+    {
+      "case": "four_people",
+      "identical_assignments": true,
+      "sha256": "a4c544b9b6b34f7fd72b45d033d67b312f50c3714ba4e92f210ac0e77f634691",
+      "observations": 1020,
+      "unconfirmed": 7
+    }
+  ],
+  "total_observations": 1665,
+  "unconfirmed": 7,
+  "prior_pilot_global_tracks": 2,
+  "prior_pilot_mixed_tracks": 0
+}
