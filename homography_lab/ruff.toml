@@ -1,0 +1,13 @@
+extend = "../pyproject.toml"
+extend-exclude = ["experiments/scenealigner/vendor_sources", "vendor", "neural_deps", "neural_weights", "runs", "cache"]
+
+# These entry points set module paths or the headless plotting backend before imports.
+[lint.per-file-ignores]
+"demo.py" = ["E402"]
+"neural_auto.py" = ["E402"]
+"experiments/scenealigner/grouped_report.py" = ["E402"]
+"experiments/scenealigner/lens_structure_report.py" = ["E402"]
+"experiments/scenealigner/make_report.py" = ["E402"]
+"experiments/scenealigner/motion_frames.py" = ["E402"]
+"experiments/scenealigner/run_experiment.py" = ["E402"]
+"experiments/scenealigner/temporal_report.py" = ["E402"]

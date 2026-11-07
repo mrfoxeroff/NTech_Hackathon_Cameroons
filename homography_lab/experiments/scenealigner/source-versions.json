@@ -1,0 +1,26 @@
+[
+  {
+    "name": "SceneAligner",
+    "revision": "65f91bec1202ada2806a80f7f67cb18ee52c9012",
+    "remote": "https://github.com/Cornell-VAILab/SceneAligner.git",
+    "clean": true
+  },
+  {
+    "name": "Pi3",
+    "revision": "6acdeb033d337e90b9df7a77b0c8929231083f16",
+    "remote": "https://github.com/yyfz/Pi3.git",
+    "clean": true
+  },
+  {
+    "name": "GeoCalib",
+    "revision": "3ee7ec3411160fea5f3ac32377e53137e9119824",
+    "remote": "https://github.com/cvg/GeoCalib.git",
+    "clean": true
+  },
+  {
+    "name": "dinov3",
+    "revision": "83318a8767dc346d5e11a70521860e0da2e1099b",
+    "remote": "https://github.com/facebookresearch/dinov3.git",
+    "clean": true
+  }
+]

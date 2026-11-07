@@ -1,0 +1,22 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Совместная привязка через движение</title><style>
+body{font:17px/1.55 system-ui,sans-serif;max-width:1120px;margin:36px auto;padding:0 22px;color:#17212d;background:#f8fafc}
+h1{font-size:30px;line-height:1.2}h2{font-size:22px}img{width:100%;height:auto;background:white;border:1px solid #dbe2ea;border-radius:10px;margin:12px 0}
+.notice{padding:18px 22px;background:#fff3cf;border-left:5px solid #bd8600;border-radius:8px}table{border-collapse:collapse;background:white;width:100%}
+td,th{text-align:left;padding:10px 16px;border-bottom:1px solid #dde4ed}.metric{font-size:28px;font-weight:700}small{color:#526274}
+</style><h1>Совместная привязка камер через движение людей</h1>
+<div class="notice"><b>Расчёт выполнен, гипотеза не принята для рабочего трекинга.</b><br>
+Камеры удаётся согласовать между собой, но правильное место на плане остаётся неоднозначным. Дополнительная проверка относительной геометрии также не пройдена.</div>
+<h2>Межкамерное согласование cam_1 — cam_2</h2>
+<div class="metric">176.8 → 4.7 пикселя схемы</div>
+<p>Медианное расхождение 8 автоматически предложенных пар из других эпизодов.
+Это согласованность проекций, а не измеренная ошибка положения людей и не подтверждение их личностей.</p>
+<img src="motion-before-after.png" alt="Сравнение независимой и совместной проекции">
+<h2>Правильность места на плане — отдельная проверка</h2>
+<table><tr><th>Камера</th><th>До, медиана ошибки</th><th>Совместная гипотеза</th></tr><tr><td>cam_1</td><td>176.0</td><td>41.5</td></tr><tr><td>cam_2</td><td>7.4</td><td>45.7</td></tr><tr><td>cam_3</td><td>152.4</td><td>152.4</td></tr></table>
+<p>Пиксели схемы по старым контрольным JSON. Для камеры 2 точность ухудшилась; приближение точек друг к другу не означает правильную привязку к помещению.</p>
+<img src="absolute-map-errors.png" alt="Ошибки абсолютного места">
+<h2>Что получила система из кадров</h2><img src="observations-contact.png" alt="Наблюдения тела и предложенные опоры стоп">
+<p>В пилоте обработаны камеры 1–3. Для камеры 3 надёжной связи по движению недостаточно.
+Записи 4–5 в этом прогоне не обрабатывались. Готовый трекинг и его ID не изменены.</p>
+<small>Полный протокол: provenance.json. Численные результаты: evaluation-final.json. Контрольные JSON не передавались в расчёт привязки.</small></html>

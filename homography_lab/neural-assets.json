@@ -1,0 +1,13 @@
+{
+  "checkpoint": {
+    "file": "neural_weights/C3Po.pth",
+    "bytes": 10236696215,
+    "sha256": "e37e8e3805d530cd69a2ed07682ad66464520818c5ed099d30573335a78fd095",
+    "source": "https://drive.google.com/file/d/1RhfDKI8Ztwjb-1R0XQpLMqs0Xs4Ax52B/view"
+  },
+  "C3Po_repository": "https://github.com/c3po-correspondence/C3Po",
+  "C3Po_commit": "21254a078435451e99d2feabd5db9334c02d8483",
+  "floor_model": "nvidia/segformer-b0-finetuned-ade-512-512",
+  "device": "cpu",
+  "manual_landmarks_used": false
+}

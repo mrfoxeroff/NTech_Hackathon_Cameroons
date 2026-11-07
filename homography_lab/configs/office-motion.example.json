@@ -1,0 +1,62 @@
+{
+  "timeline_origin": "2026-10-08T17:38:39",
+  "sample_fps": 4,
+  "clock_templates": "../experiments/scenealigner/assets/office/clock-templates",
+  "cameras": {
+    "cam_1": {
+      "video": "../../data/video/camera_new_1.mkv",
+      "floor_mask": "../experiments/scenealigner/assets/office/floor/cam_1.png"
+    },
+    "cam_2": {
+      "video": "../../data/video/camera_new_2.mkv",
+      "floor_mask": "../experiments/scenealigner/assets/office/floor/cam_2.png"
+    },
+    "cam_3": {
+      "video": "../../data/video/camera_new_3.mkv",
+      "floor_mask": "../experiments/scenealigner/assets/office/floor/cam_3.png"
+    }
+  },
+  "windows": [
+    {
+      "id": "initial",
+      "start": 0,
+      "end": 40,
+      "split": "train"
+    },
+    {
+      "id": "group",
+      "start": 170,
+      "end": 210,
+      "split": "train"
+    },
+    {
+      "id": "dark",
+      "start": 260,
+      "end": 290,
+      "split": "holdout"
+    },
+    {
+      "id": "blue",
+      "start": 530,
+      "end": 555,
+      "split": "holdout"
+    },
+    {
+      "id": "late",
+      "start": 890,
+      "end": 915,
+      "split": "holdout"
+    }
+  ],
+  "semantic_sample_times_sec": [
+    5,
+    20,
+    175,
+    185,
+    202
+  ],
+  "not_processed_cameras": {
+    "cam_4": "OSD format not validated",
+    "cam_5": "outside initial pilot"
+  }
+}

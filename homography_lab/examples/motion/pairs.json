@@ -1,0 +1,3242 @@
+{
+  "manual_plan_landmarks_used": false,
+  "global_track_IDs_used": false,
+  "holdout_pairing_uses_geometry": false,
+  "method": "latent_training_associations_with_independent_holdout_pairing",
+  "edges": {
+    "cam_1-cam_2": {
+      "accepted": false,
+      "train_supported": true,
+      "method": "gravity_constrained_floor_similarity_RANSAC",
+      "train_pairs": 33,
+      "holdout_pairs": 8,
+      "manual_plan_landmarks_used": false,
+      "global_track_IDs_used": false,
+      "floor_similarity": [
+        [
+          -1.2036516197698188,
+          -0.1901139922534438,
+          0.664322654996059
+        ],
+        [
+          0.1901139922534438,
+          -1.2036516197698188,
+          -2.680210764899292
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "ideal_a_to_b": [
+        [
+          -1.5766253604470855,
+          2.346449947454953,
+          1741.8560989098378
+        ],
+        [
+          -0.34091417075532643,
+          0.9264000416722799,
+          780.9635186241846
+        ],
+        [
+          -0.0004177407346498425,
+          0.0017249935883506724,
+          0.014315443042730592
+        ]
+      ],
+      "train_inliers": 23,
+      "train_inlier_fraction": 0.696969696969697,
+      "supporting_trajectory_segments": 10,
+      "train_median_symmetric_px": 47.18194156662535,
+      "train_p95_symmetric_px": 87.1977396217982,
+      "training_inlier_keys": [
+        [
+          [
+            "cam_1-group-0180-2",
+            "cam_2-group-0180-2"
+          ],
+          [
+            "cam_1:group:1",
+            "cam_2:group:4"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0180-1",
+            "cam_2-group-0180-1"
+          ],
+          [
+            "cam_1:group:3",
+            "cam_2:group:2"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0181-0",
+            "cam_2-group-0181-0"
+          ],
+          [
+            "cam_1:group:1",
+            "cam_2:group:4"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0181-3",
+            "cam_2-group-0181-3"
+          ],
+          [
+            "cam_1:group:3",
+            "cam_2:group:1"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0182-2",
+            "cam_2-group-0182-2"
+          ],
+          [
+            "cam_1:group:1",
+            "cam_2:group:4"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0182-2",
+            "cam_2-group-0182-2"
+          ],
+          [
+            "cam_1:group:3",
+            "cam_2:group:1"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0183-0",
+            "cam_2-group-0183-0"
+          ],
+          [
+            "cam_1:group:3",
+            "cam_2:group:1"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0184-3",
+            "cam_2-group-0184-3"
+          ],
+          [
+            "cam_1:group:3",
+            "cam_2:group:1"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0185-0",
+            "cam_2-group-0185-0"
+          ],
+          [
+            "cam_1:group:3",
+            "cam_2:group:1"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0189-1",
+            "cam_2-group-0189-1"
+          ],
+          [
+            "cam_1:group:1",
+            "cam_2:group:6"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0189-1",
+            "cam_2-group-0189-1"
+          ],
+          [
+            "cam_1:group:3",
+            "cam_2:group:1"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0190-3",
+            "cam_2-group-0190-3"
+          ],
+          [
+            "cam_1:group:1",
+            "cam_2:group:6"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0192-3",
+            "cam_2-group-0192-3"
+          ],
+          [
+            "cam_1:group:1",
+            "cam_2:group:6"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0193-0",
+            "cam_2-group-0193-0"
+          ],
+          [
+            "cam_1:group:1",
+            "cam_2:group:6"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0193-1",
+            "cam_2-group-0193-1"
+          ],
+          [
+            "cam_1:group:3",
+            "cam_2:group:1"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0194-3",
+            "cam_2-group-0194-3"
+          ],
+          [
+            "cam_1:group:3",
+            "cam_2:group:1"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0196-3",
+            "cam_2-group-0196-3"
+          ],
+          [
+            "cam_1:group:10",
+            "cam_2:group:1"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0197-3",
+            "cam_2-group-0197-3"
+          ],
+          [
+            "cam_1:group:1",
+            "cam_2:group:8"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0197-3",
+            "cam_2-group-0197-3"
+          ],
+          [
+            "cam_1:group:10",
+            "cam_2:group:9"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0197-3",
+            "cam_2-group-0197-3"
+          ],
+          [
+            "cam_1:group:11",
+            "cam_2:group:12"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0199-0",
+            "cam_2-group-0199-0"
+          ],
+          [
+            "cam_1:group:11",
+            "cam_2:group:12"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0195-1",
+            "cam_2-group-0195-1"
+          ],
+          [
+            "cam_1:group:9",
+            "cam_2:group:10"
+          ]
+        ],
+        [
+          [
+            "cam_1-group-0195-2",
+            "cam_2-group-0195-2"
+          ],
+          [
+            "cam_1:group:8",
+            "cam_2:group:7"
+          ]
+        ]
+      ],
+      "holdout": {
+        "pairs": 8,
+        "median_symmetric_px": 82.71271870614575,
+        "p95_symmetric_px": 230.95765978728411,
+        "median_diagonal_fraction": 0.025528616884612887,
+        "p95_diagonal_fraction": 0.07128322832940868
+      },
+      "reason": "relative_geometry_does_not_generalize",
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "training_identity_resolution": "relative_geometry_hypotheses_one_to_one_per_frame",
+      "relative_hypotheses": [
+        {
+          "support": 33,
+          "median_floor_error": 0.07026948123321149,
+          "matrix": [
+            [
+              -1.1332314901440355,
+              -0.1597545598331216,
+              0.6747903139840851
+            ],
+            [
+              0.1597545598331216,
+              -1.1332314901440355,
+              -2.6226011529485516
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "cam_1-cam_3": {
+      "accepted": false,
+      "train_supported": false,
+      "method": "gravity_constrained_floor_similarity_RANSAC",
+      "train_pairs": 0,
+      "holdout_pairs": 0,
+      "manual_plan_landmarks_used": false,
+      "global_track_IDs_used": false,
+      "reason": "insufficient_training_pairs",
+      "cameras": [
+        "cam_1",
+        "cam_3"
+      ],
+      "training_identity_resolution": "relative_geometry_hypotheses_one_to_one_per_frame",
+      "relative_hypotheses": []
+    },
+    "cam_2-cam_3": {
+      "accepted": false,
+      "train_supported": false,
+      "method": "gravity_constrained_floor_similarity_RANSAC",
+      "train_pairs": 7,
+      "holdout_pairs": 2,
+      "manual_plan_landmarks_used": false,
+      "global_track_IDs_used": false,
+      "reason": "insufficient_training_pairs",
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "training_identity_resolution": "relative_geometry_hypotheses_one_to_one_per_frame",
+      "relative_hypotheses": [
+        {
+          "support": 7,
+          "median_floor_error": 0.057522649386995986,
+          "matrix": [
+            [
+              -0.6665207929598483,
+              0.43843002967991646,
+              2.564814110524569
+            ],
+            [
+              -0.43843002967991646,
+              -0.6665207929598483,
+              -1.0418971746684935
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "support": 6,
+          "median_floor_error": 0.03482027981649127,
+          "matrix": [
+            [
+              -0.6374856292625772,
+              0.34417804674135555,
+              2.3111355330070436
+            ],
+            [
+              -0.34417804674135555,
+              -0.6374856292625772,
+              -1.1494966710131405
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 179.75,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:2"
+      ],
+      "frame_ids": [
+        "cam_1-group-0179-3",
+        "cam_2-group-0179-3"
+      ],
+      "points": [
+        [
+          362.3999096354147,
+          1095.567532019146
+        ],
+        [
+          2261.7984576644512,
+          931.5403122838306
+        ]
+      ],
+      "ground": [
+        [
+          -0.5275272868083715,
+          -0.8528001273054674
+        ],
+        [
+          1.43015687250109,
+          -1.8186249934476335
+        ]
+      ],
+      "appearance_cosine": 0.6736372397388086,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9838602840900421,
+        0.922217458486557
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 180.5,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:4"
+      ],
+      "frame_ids": [
+        "cam_1-group-0180-2",
+        "cam_2-group-0180-2"
+      ],
+      "points": [
+        [
+          1182.953340083121,
+          1381.0252051534221
+        ],
+        [
+          1758.8986341989673,
+          848.7613077974946
+        ]
+      ],
+      "ground": [
+        [
+          0.0750389153252534,
+          -0.6870117836448687
+        ],
+        [
+          0.6909331157196568,
+          -1.8626322119523515
+        ]
+      ],
+      "appearance_cosine": 0.5456747386660914,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9714303314685822,
+        0.8928696811199188
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 180.25,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:2"
+      ],
+      "frame_ids": [
+        "cam_1-group-0180-1",
+        "cam_2-group-0180-1"
+      ],
+      "points": [
+        [
+          499.5949649585576,
+          1241.970138709835
+        ],
+        [
+          2176.444858830131,
+          904.156858554152
+        ]
+      ],
+      "ground": [
+        [
+          -0.38951328085367654,
+          -0.7393240918323322
+        ],
+        [
+          1.3055116960503186,
+          -1.8617026944904647
+        ]
+      ],
+      "appearance_cosine": 0.6372052207579249,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9737066626548767,
+        0.7586233913898468
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 181.0,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:4"
+      ],
+      "frame_ids": [
+        "cam_1-group-0181-0",
+        "cam_2-group-0181-0"
+      ],
+      "points": [
+        [
+          1378.1753697468187,
+          1387.3132680494718
+        ],
+        [
+          1621.3575450966205,
+          874.2854043824434
+        ]
+      ],
+      "ground": [
+        [
+          0.20461317393504427,
+          -0.6952647981546026
+        ],
+        [
+          0.4973999586282292,
+          -1.7603272591360566
+        ]
+      ],
+      "appearance_cosine": 0.5064449642509882,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9591011106967926,
+        0.9383044242858887
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 181.75,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0181-3",
+        "cam_2-group-0181-3"
+      ],
+      "points": [
+        [
+          1109.9385740198857,
+          1387.595053343932
+        ],
+        [
+          1846.4053834485117,
+          841.6551093848858
+        ]
+      ],
+      "ground": [
+        [
+          0.027972147838028847,
+          -0.6766712708843813
+        ],
+        [
+          0.8221616791364396,
+          -1.9108076174149327
+        ]
+      ],
+      "appearance_cosine": 0.6004151448453934,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9746918082237244,
+        0.7551098167896271
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 182.5,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:4"
+      ],
+      "frame_ids": [
+        "cam_1-group-0182-2",
+        "cam_2-group-0182-2"
+      ],
+      "points": [
+        [
+          1976.13243874026,
+          1179.1602757136625
+        ],
+        [
+          1219.1328076455238,
+          968.6216382369233
+        ]
+      ],
+      "ground": [
+        [
+          0.7018687116246792,
+          -0.9346893365899525
+        ],
+        [
+          0.04135378282333588,
+          -1.484799378405996
+        ]
+      ],
+      "appearance_cosine": 0.4165958683229533,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9800840020179749,
+        0.9788299798965454
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 182.5,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0182-2",
+        "cam_2-group-0182-2"
+      ],
+      "points": [
+        [
+          1389.6940499729315,
+          1366.210601396664
+        ],
+        [
+          1686.878770498573,
+          874.6721077992202
+        ]
+      ],
+      "ground": [
+        [
+          0.21299582697642233,
+          -0.7130911050999145
+        ],
+        [
+          0.5805470376743311,
+          -1.777065142294207
+        ]
+      ],
+      "appearance_cosine": 0.5756491748371954,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9284947216510773,
+        0.9331299364566803
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 183.0,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:4"
+      ],
+      "frame_ids": [
+        "cam_1-group-0183-0",
+        "cam_2-group-0183-0"
+      ],
+      "points": [
+        [
+          2061.238979796347,
+          1139.2051620821483
+        ],
+        [
+          1098.9809222994452,
+          985.647165561926
+        ]
+      ],
+      "ground": [
+        [
+          0.79687015381822,
+          -0.988838319112568
+        ],
+        [
+          -0.07464351055951857,
+          -1.4347785980216008
+        ]
+      ],
+      "appearance_cosine": 0.36508518531345424,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9507399797439575,
+        0.9835781753063202
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 183.0,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0183-0",
+        "cam_2-group-0183-0"
+      ],
+      "points": [
+        [
+          1554.5776235589515,
+          1296.9191928410212
+        ],
+        [
+          1559.8822360055462,
+          902.1502613471858
+        ]
+      ],
+      "ground": [
+        [
+          0.33391049060812306,
+          -0.7836646786031072
+        ],
+        [
+          0.4138944684496831,
+          -1.6825548578706424
+        ]
+      ],
+      "appearance_cosine": 0.5410596254130436,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9507611095905304,
+        0.8834802508354187
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 184.75,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0184-3",
+        "cam_2-group-0184-3"
+      ],
+      "points": [
+        [
+          1831.4255011877417,
+          1052.4106665110353
+        ],
+        [
+          1276.1945404267044,
+          1109.0788166596496
+        ]
+      ],
+      "ground": [
+        [
+          0.6042149946759492,
+          -1.0645360236357235
+        ],
+        [
+          0.1005925542401193,
+          -1.268322093231805
+        ]
+      ],
+      "appearance_cosine": 0.4288533854711358,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9775248467922211,
+        0.995879590511322
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 185.0,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0185-0",
+        "cam_2-group-0185-0"
+      ],
+      "points": [
+        [
+          1868.128379496487,
+          998.7154316314334
+        ],
+        [
+          1269.4363589799573,
+          1131.2191630060124
+        ]
+      ],
+      "ground": [
+        [
+          0.6553618727157042,
+          -1.1376918000378458
+        ],
+        [
+          0.09485031893510862,
+          -1.2358018629853862
+        ]
+      ],
+      "appearance_cosine": 0.4278165070863713,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9818779230117798,
+        0.9834931492805481
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 188.75,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0188-3",
+        "cam_2-group-0188-3"
+      ],
+      "points": [
+        [
+          1794.2234288082318,
+          811.705348226848
+        ],
+        [
+          1351.8424298183495,
+          1378.868976628107
+        ]
+      ],
+      "ground": [
+        [
+          0.6419523539008245,
+          -1.4004422109161725
+        ],
+        [
+          0.16162784587938647,
+          -0.9427081407238966
+        ]
+      ],
+      "appearance_cosine": 0.46217588338612564,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.8040656447410583,
+        0.9876188337802887
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 189.25,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:6"
+      ],
+      "frame_ids": [
+        "cam_1-group-0189-1",
+        "cam_2-group-0189-1"
+      ],
+      "points": [
+        [
+          1433.1633940813858,
+          1328.6829781228391
+        ],
+        [
+          1637.0704560266588,
+          886.1308931300553
+        ]
+      ],
+      "ground": [
+        [
+          0.24447436428979508,
+          -0.7473256067868473
+        ],
+        [
+          0.5125352991819384,
+          -1.7370696298667865
+        ]
+      ],
+      "appearance_cosine": 0.5654385482590243,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9852186143398285,
+        0.7682022452354431
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 189.25,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0189-1",
+        "cam_2-group-0189-1"
+      ],
+      "points": [
+        [
+          1782.7891976698713,
+          916.6409391608582
+        ],
+        [
+          1349.994322207112,
+          1291.9885209615052
+        ]
+      ],
+      "ground": [
+        [
+          0.5956010719234293,
+          -1.2363316275647283
+        ],
+        [
+          0.16234681954194025,
+          -1.039223589264322
+        ]
+      ],
+      "appearance_cosine": 0.4596372022461381,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9384123086929321,
+        0.9904058277606964
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 190.75,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:6"
+      ],
+      "frame_ids": [
+        "cam_1-group-0190-3",
+        "cam_2-group-0190-3"
+      ],
+      "points": [
+        [
+          1443.403605254264,
+          1529.5040994735975
+        ],
+        [
+          1568.1640384194811,
+          828.9646461330292
+        ]
+      ],
+      "ground": [
+        [
+          0.24322922064811728,
+          -0.5907742876076123
+        ],
+        [
+          0.44630886478208365,
+          -1.8552151186631571
+        ]
+      ],
+      "appearance_cosine": 0.5459274420120288,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9624474048614502,
+        0.9126710295677185
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 191.75,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:6"
+      ],
+      "frame_ids": [
+        "cam_1-group-0191-3",
+        "cam_2-group-0191-3"
+      ],
+      "points": [
+        [
+          1452.2559307697736,
+          1617.866395911962
+        ],
+        [
+          1567.7695161243362,
+          809.2556300796592
+        ]
+      ],
+      "ground": [
+        [
+          0.24556660028591604,
+          -0.5292182177252472
+        ],
+        [
+          0.4525646164191213,
+          -1.9055968874293694
+        ]
+      ],
+      "appearance_cosine": 0.4853386073437034,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9463089108467102,
+        0.9743423163890839
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 192.75,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:6"
+      ],
+      "frame_ids": [
+        "cam_1-group-0192-3",
+        "cam_2-group-0192-3"
+      ],
+      "points": [
+        [
+          1477.3251660484975,
+          1469.4550946291847
+        ],
+        [
+          1578.4573086534583,
+          832.1686646300925
+        ]
+      ],
+      "ground": [
+        [
+          0.26810631072830104,
+          -0.6370037853565376
+        ],
+        [
+          0.4583515690542389,
+          -1.8501565249061287
+        ]
+      ],
+      "appearance_cosine": 0.5174848856116803,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9751750528812408,
+        0.9481950998306274
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 193.0,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:6"
+      ],
+      "frame_ids": [
+        "cam_1-group-0193-0",
+        "cam_2-group-0193-0"
+      ],
+      "points": [
+        [
+          1447.1430520295626,
+          1413.3323612287036
+        ],
+        [
+          1589.620822300406,
+          827.6788933202695
+        ]
+      ],
+      "ground": [
+        [
+          0.25042761578027056,
+          -0.6788497727108577
+        ],
+        [
+          0.47429025130482405,
+          -1.8647153465334847
+        ]
+      ],
+      "appearance_cosine": 0.5303914856534296,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9939092695713043,
+        0.9050208926200867
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 193.25,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0193-1",
+        "cam_2-group-0193-1"
+      ],
+      "points": [
+        [
+          1767.4268461720621,
+          1164.8581926309898
+        ],
+        [
+          1365.3372118049683,
+          1019.5583287108477
+        ]
+      ],
+      "ground": [
+        [
+          0.5206956895090109,
+          -0.9296262610362616
+        ],
+        [
+          0.1865392441282364,
+          -1.42133180300326
+        ]
+      ],
+      "appearance_cosine": 0.5141013851318937,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9930301904678345,
+        0.9847192168235779
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 194.75,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0194-3",
+        "cam_2-group-0194-3"
+      ],
+      "points": [
+        [
+          1543.0877378535656,
+          1197.1198059989963
+        ],
+        [
+          1544.8947592632362,
+          953.2118969410267
+        ]
+      ],
+      "ground": [
+        [
+          0.3343273503378753,
+          -0.8758516010641985
+        ],
+        [
+          0.3837928128099944,
+          -1.5740641849061228
+        ]
+      ],
+      "appearance_cosine": 0.5620243914371811,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9643111228942871,
+        0.7663697004318237
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 195.0,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0195-0",
+        "cam_2-group-0195-0"
+      ],
+      "points": [
+        [
+          1567.4917175498633,
+          1210.9164713727575
+        ],
+        [
+          1581.9964169403536,
+          908.7692430284279
+        ]
+      ],
+      "ground": [
+        [
+          0.35183532066568646,
+          -0.8645823470877608
+        ],
+        [
+          0.4380989708077299,
+          -1.6734127348989927
+        ]
+      ],
+      "appearance_cosine": 0.5704096827989608,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9806341528892517,
+        0.9054853022098541
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 196.75,
+      "track_ids": [
+        "cam_1:group:10",
+        "cam_2:group:1"
+      ],
+      "frame_ids": [
+        "cam_1-group-0196-3",
+        "cam_2-group-0196-3"
+      ],
+      "points": [
+        [
+          1419.2640645010126,
+          1560.824454674379
+        ],
+        [
+          1559.7542297209893,
+          782.7503905422453
+        ]
+      ],
+      "ground": [
+        [
+          0.2267242149520205,
+          -0.5672875059253399
+        ],
+        [
+          0.4514315054492879,
+          -1.9743331789937832
+        ]
+      ],
+      "appearance_cosine": 0.5744620181586094,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.8468036949634552,
+        0.9639017283916473
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 197.75,
+      "track_ids": [
+        "cam_1:group:1",
+        "cam_2:group:8"
+      ],
+      "frame_ids": [
+        "cam_1-group-0197-3",
+        "cam_2-group-0197-3"
+      ],
+      "points": [
+        [
+          352.9950581859571,
+          1159.9880471074111
+        ],
+        [
+          2241.7521730038998,
+          905.625872631009
+        ]
+      ],
+      "ground": [
+        [
+          -0.5128464400560797,
+          -0.793394208069015
+        ],
+        [
+          1.42917147045914,
+          -1.8841994962754236
+        ]
+      ],
+      "appearance_cosine": 0.5749846262206677,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9144709706306458,
+        0.9634673297405243
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 197.75,
+      "track_ids": [
+        "cam_1:group:10",
+        "cam_2:group:9"
+      ],
+      "frame_ids": [
+        "cam_1-group-0197-3",
+        "cam_2-group-0197-3"
+      ],
+      "points": [
+        [
+          1926.5415122887875,
+          1487.9926802849868
+        ],
+        [
+          1306.0163267736766,
+          812.8204296893074
+        ]
+      ],
+      "ground": [
+        [
+          0.5849136718693728,
+          -0.6423956669762481
+        ],
+        [
+          0.13026525614501439,
+          -1.824482156144163
+        ]
+      ],
+      "appearance_cosine": 0.4546814239298427,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9904550611972809,
+        0.9352503418922424
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 197.75,
+      "track_ids": [
+        "cam_1:group:11",
+        "cam_2:group:12"
+      ],
+      "frame_ids": [
+        "cam_1-group-0197-3",
+        "cam_2-group-0197-3"
+      ],
+      "points": [
+        [
+          1439.4002295401829,
+          1570.0120401852696
+        ],
+        [
+          1586.6910188822562,
+          821.1032041881721
+        ]
+      ],
+      "ground": [
+        [
+          0.23919264390515416,
+          -0.561733573499762
+        ],
+        [
+          0.4729125875271549,
+          -1.8806194269704621
+        ]
+      ],
+      "appearance_cosine": 0.5603222922875158,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.7753064334392548,
+        0.9407454133033752
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 198.0,
+      "track_ids": [
+        "cam_1:group:10",
+        "cam_2:group:9"
+      ],
+      "frame_ids": [
+        "cam_1-group-0198-0",
+        "cam_2-group-0198-0"
+      ],
+      "points": [
+        [
+          2081.087566111119,
+          1520.8190497670298
+        ],
+        [
+          1261.6854408613976,
+          808.1265659776781
+        ]
+      ],
+      "ground": [
+        [
+          0.6985018104757765,
+          -0.6205464915959611
+        ],
+        [
+          0.07851525345025981,
+          -1.824774573081861
+        ]
+      ],
+      "appearance_cosine": 0.4695548532469018,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9017380774021149,
+        0.9668653905391693
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 198.75,
+      "track_ids": [
+        "cam_1:group:11",
+        "cam_2:group:12"
+      ],
+      "frame_ids": [
+        "cam_1-group-0198-3",
+        "cam_2-group-0198-3"
+      ],
+      "points": [
+        [
+          1879.5815844274894,
+          1516.4123386168528
+        ],
+        [
+          1400.539317356649,
+          824.5024114635113
+        ]
+      ],
+      "ground": [
+        [
+          0.5445055976599028,
+          -0.6182314265668308
+        ],
+        [
+          0.24104641679443828,
+          -1.820415579474211
+        ]
+      ],
+      "appearance_cosine": 0.525327813726756,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9421973526477814,
+        0.884068638086319
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 199.0,
+      "track_ids": [
+        "cam_1:group:11",
+        "cam_2:group:12"
+      ],
+      "frame_ids": [
+        "cam_1-group-0199-0",
+        "cam_2-group-0199-0"
+      ],
+      "points": [
+        [
+          1887.8755195151693,
+          1498.0711844401894
+        ],
+        [
+          1335.7745522117036,
+          844.8239036028442
+        ]
+      ],
+      "ground": [
+        [
+          0.553847244626313,
+          -0.6329622794018617
+        ],
+        [
+          0.1637911664461169,
+          -1.7568752104579417
+        ]
+      ],
+      "appearance_cosine": 0.513276363427469,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9875625967979431,
+        0.9881618916988373
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 200.5,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:6"
+      ],
+      "frame_ids": [
+        "cam_1-group-0200-2",
+        "cam_2-group-0200-2"
+      ],
+      "points": [
+        [
+          451.2397152826593,
+          1094.5328613588415
+        ],
+        [
+          2216.8126438306444,
+          922.9553688729882
+        ]
+      ],
+      "ground": [
+        [
+          -0.4639068531083446,
+          -0.8638781148065555
+        ],
+        [
+          1.3557311363782953,
+          -1.825076697949189
+        ]
+      ],
+      "appearance_cosine": 0.6026942482071311,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9787414968013763,
+        0.9633634388446808
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 201.25,
+      "track_ids": [
+        "cam_1:group:3",
+        "cam_2:group:6"
+      ],
+      "frame_ids": [
+        "cam_1-group-0201-1",
+        "cam_2-group-0201-1"
+      ],
+      "points": [
+        [
+          271.4057742101502,
+          1101.1651734034717
+        ],
+        [
+          2280.8693472198506,
+          946.369510743099
+        ]
+      ],
+      "ground": [
+        [
+          -0.5914769650916162,
+          -0.837057800057441
+        ],
+        [
+          1.4457513689104438,
+          -1.7851178502498306
+        ]
+      ],
+      "appearance_cosine": 0.5909385944441208,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9385088980197906,
+        0.9586344063282013
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 195.245,
+      "track_ids": [
+        "cam_1:group:9",
+        "cam_2:group:10"
+      ],
+      "frame_ids": [
+        "cam_1-group-0195-1",
+        "cam_2-group-0195-1"
+      ],
+      "points": [
+        [
+          696.3518482076704,
+          1503.9731476090324
+        ],
+        [
+          1991.2755606679452,
+          798.7403010453602
+        ]
+      ],
+      "ground": [
+        [
+          -0.21575942727603123,
+          -0.5613672027619228
+        ],
+        [
+          1.1006575406463917,
+          -2.0980646561020695
+        ]
+      ],
+      "appearance_cosine": 0.454773462020383,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9203530550003052,
+        0.8517197072505951
+      ],
+      "time_difference_sec": 0.009999999999990905
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 195.49,
+      "track_ids": [
+        "cam_1:group:8",
+        "cam_2:group:7"
+      ],
+      "frame_ids": [
+        "cam_1-group-0195-2",
+        "cam_2-group-0195-2"
+      ],
+      "points": [
+        [
+          372.4953613281248,
+          1372.7603759765627
+        ],
+        [
+          2140.2275390625,
+          868.1122436523439
+        ]
+      ],
+      "ground": [
+        [
+          -0.43988903641963123,
+          -0.6249704866130881
+        ],
+        [
+          1.2861902111107095,
+          -1.9510428173280798
+        ]
+      ],
+      "appearance_cosine": 0.48922542856712475,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.7142456769943237,
+        0.6335111558437347
+      ],
+      "time_difference_sec": 0.020000000000010232
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "initial",
+      "split": "train",
+      "timestamp_sec": 2.0,
+      "track_ids": [
+        "cam_1:initial:1",
+        "cam_2:initial:1"
+      ],
+      "frame_ids": [
+        "cam_1-initial-0002-0",
+        "cam_2-initial-0002-0"
+      ],
+      "points": [
+        [
+          1934.5722442016454,
+          1484.4560752024427
+        ],
+        [
+          1346.8168353308897,
+          808.0608480740221
+        ]
+      ],
+      "ground": [
+        [
+          0.5917423990228633,
+          -0.6455396291510591
+        ],
+        [
+          0.17857901508163537,
+          -1.8464491803599414
+        ]
+      ],
+      "appearance_cosine": 0.4208862068860212,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9638909995555878,
+        0.9783648550510406
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "blue",
+      "split": "holdout",
+      "timestamp_sec": 538.25,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.45735978847263536,
+      "appearance_margin": 1.4573597884726355,
+      "track_ids": [
+        "cam_1:blue:4",
+        "cam_2:blue:2"
+      ],
+      "points": [
+        [
+          1956.5867917488315,
+          1435.9956437397436
+        ],
+        [
+          1181.9801346341073,
+          819.1651760150373
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-blue-0538-1",
+        "cam_2-blue-0538-1"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.8668268620967865,
+        0.9621488749980927
+      ],
+      "track_pair_support": 4
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "blue",
+      "split": "holdout",
+      "timestamp_sec": 538.5,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.47000026648582066,
+      "appearance_margin": 1.4700002664858207,
+      "track_ids": [
+        "cam_1:blue:4",
+        "cam_2:blue:2"
+      ],
+      "points": [
+        [
+          1837.29471287343,
+          1400.3944855126258
+        ],
+        [
+          1259.0965753554901,
+          844.4613973516068
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-blue-0538-2",
+        "cam_2-blue-0538-2"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9139994382858276,
+        0.9820723533630371
+      ],
+      "track_pair_support": 4
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "blue",
+      "split": "holdout",
+      "timestamp_sec": 538.75,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.47555714756131,
+      "appearance_margin": 1.47555714756131,
+      "track_ids": [
+        "cam_1:blue:4",
+        "cam_2:blue:2"
+      ],
+      "points": [
+        [
+          1674.412480932356,
+          1372.5587344257447
+        ],
+        [
+          1372.3221292624373,
+          871.3159691284541
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-blue-0538-3",
+        "cam_2-blue-0538-3"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9638679623603821,
+        0.7430759370326996
+      ],
+      "track_pair_support": 4
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "blue",
+      "split": "holdout",
+      "timestamp_sec": 539.0,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.49667181347442735,
+      "appearance_margin": 1.4966718134744275,
+      "track_ids": [
+        "cam_1:blue:4",
+        "cam_2:blue:2"
+      ],
+      "points": [
+        [
+          1572.1430703130982,
+          1336.7589601129746
+        ],
+        [
+          1493.5186701189245,
+          886.1845051950401
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-blue-0539-0",
+        "cam_2-blue-0539-0"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.8200079798698425,
+        0.9460321664810181
+      ],
+      "track_pair_support": 4
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 267.0,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.6235665142321298,
+      "appearance_margin": 0.13519339825837906,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          367.3004126759454,
+          1200.052317015121
+        ],
+        [
+          2218.3115236015688,
+          908.8929618344396
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0267-0",
+        "cam_2-dark-0267-0"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9668611586093903,
+        0.9468993544578552
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 267.25,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.6167226971339295,
+      "appearance_margin": 0.11337414935555645,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          416.1445060286924,
+          1221.2856535111205
+        ],
+        [
+          2189.3849194283007,
+          881.6855513349827
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0267-1",
+        "cam_2-dark-0267-1"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9597294926643372,
+        0.9806630909442902
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 267.5,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.6334408590435772,
+      "appearance_margin": 0.11965316720420649,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          504.38669639420266,
+          1239.7648076704033
+        ],
+        [
+          2145.5264637421055,
+          901.3708555234178
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0267-2",
+        "cam_2-dark-0267-2"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9718681871891022,
+        0.6071706116199493
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 267.75,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.6311179670692283,
+      "appearance_margin": 0.10208186315645551,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          632.9964795993942,
+          1343.828171859799
+        ],
+        [
+          2136.0465071617705,
+          890.874495784379
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0267-3",
+        "cam_2-dark-0267-3"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9833764731884003,
+        0.6903722882270813
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 268.0,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.6436555930004745,
+      "appearance_margin": 0.0995058530955455,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          689.1895932021895,
+          1352.9050402579849
+        ],
+        [
+          2099.3320281349575,
+          833.1669201844385
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0268-0",
+        "cam_2-dark-0268-0"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9815461933612823,
+        0.6111434698104858
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 269.25,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.6097496553405359,
+      "appearance_margin": 0.16430218886012865,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          1175.0931396484373,
+          1294.51611328125
+        ],
+        [
+          1852.5527343749995,
+          851.8079833984375
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0269-1",
+        "cam_2-dark-0269-1"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9605229198932648,
+        0.7852044701576233
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 269.5,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.6058731687201377,
+      "appearance_margin": 0.16737910526284216,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          1208.0792236328127,
+          1276.1348876953127
+        ],
+        [
+          1727.0617675781245,
+          871.3272094726562
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0269-2",
+        "cam_2-dark-0269-2"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9763723909854889,
+        0.7124115824699402
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 269.75,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5827847196106783,
+      "appearance_margin": 0.17609760275076325,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          1357.6650012781597,
+          1291.7317647629113
+        ],
+        [
+          1724.4275031044365,
+          878.8877149169565
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0269-3",
+        "cam_2-dark-0269-3"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9091804921627045,
+        0.7505188882350922
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 270.0,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5584482217769455,
+      "appearance_margin": 0.1517124367320537,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          1349.2930943358378,
+          1300.0237294366004
+        ],
+        [
+          1678.002337634873,
+          902.1455376547535
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0270-0",
+        "cam_2-dark-0270-0"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9530608654022217,
+        0.804551512002945
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 270.25,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5365796508073991,
+      "appearance_margin": 0.13306820369685912,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          1354.5184538756482,
+          1312.8193622965123
+        ],
+        [
+          1670.5899460648288,
+          878.025819950392
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0270-1",
+        "cam_2-dark-0270-1"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9897697269916534,
+        0.8504012227058411
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 270.75,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.53016619480914,
+      "appearance_margin": 0.10500627619116676,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          1323.2815268916627,
+          1319.8659202760002
+        ],
+        [
+          1686.503301882054,
+          880.4002531102249
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0270-3",
+        "cam_2-dark-0270-3"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9846191704273224,
+        0.7222834229469299
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 271.0,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5331360832117036,
+      "appearance_margin": 0.11119392332205363,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          1302.2361451919153,
+          1307.2546584453617
+        ],
+        [
+          1698.9204221155762,
+          872.8843402543134
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0271-0",
+        "cam_2-dark-0271-0"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.8534698188304901,
+        0.853569895029068
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 271.25,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5355974136799887,
+      "appearance_margin": 0.1172000619740921,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          1227.9489746093748,
+          1374.3253173828125
+        ],
+        [
+          1762.4077148437495,
+          862.1647949218751
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0271-1",
+        "cam_2-dark-0271-1"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9602633118629456,
+        0.7308818101882935
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 271.75,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5182961093921512,
+      "appearance_margin": 0.1170590976826027,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          1051.675775502314,
+          1345.4729734817142
+        ],
+        [
+          1827.8388770831111,
+          857.7864733894904
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0271-3",
+        "cam_2-dark-0271-3"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9180008172988892,
+        0.7245801091194153
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_1",
+        "cam_2"
+      ],
+      "window": "dark",
+      "split": "holdout",
+      "timestamp_sec": 272.25,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5485412987286402,
+      "appearance_margin": 0.07549404942968496,
+      "track_ids": [
+        "cam_1:dark:3",
+        "cam_2:dark:3"
+      ],
+      "points": [
+        [
+          932.0524291992186,
+          1358.1813964843752
+        ],
+        [
+          1839.2054443359375,
+          890.6067504882814
+        ]
+      ],
+      "frame_ids": [
+        "cam_1-dark-0272-1",
+        "cam_2-dark-0272-1"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9604465067386627,
+        0.7038202881813049
+      ],
+      "track_pair_support": 15
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 177.0,
+      "track_ids": [
+        "cam_2:group:1",
+        "cam_3:group:2"
+      ],
+      "frame_ids": [
+        "cam_2-group-0177-0",
+        "cam_3-group-0177-0"
+      ],
+      "points": [
+        [
+          2417.1482104186603,
+          881.0417923753699
+        ],
+        [
+          1753.6420442538986,
+          1506.472347806386
+        ]
+      ],
+      "ground": [
+        [
+          1.8737041826789957,
+          -2.0512555991763284
+        ],
+        [
+          0.39615398534674495,
+          -0.5534551217492393
+        ]
+      ],
+      "appearance_cosine": 0.5749600224597957,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9800323247909546,
+        0.9575268030166626
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 178.0,
+      "track_ids": [
+        "cam_2:group:1",
+        "cam_3:group:2"
+      ],
+      "frame_ids": [
+        "cam_2-group-0178-0",
+        "cam_3-group-0178-0"
+      ],
+      "points": [
+        [
+          2290.421488986299,
+          878.2467866742101
+        ],
+        [
+          2036.1902169606851,
+          1595.2864676797362
+        ]
+      ],
+      "ground": [
+        [
+          1.5763314494653666,
+          -1.9905735515220344
+        ],
+        [
+          0.6484443455748963,
+          -0.41649292500655394
+        ]
+      ],
+      "appearance_cosine": 0.5702595463248616,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9469397366046906,
+        0.6907972097396851
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 193.0,
+      "track_ids": [
+        "cam_2:group:7",
+        "cam_3:group:10"
+      ],
+      "frame_ids": [
+        "cam_2-group-0193-0",
+        "cam_3-group-0193-0"
+      ],
+      "points": [
+        [
+          2429.7681782867903,
+          881.6343325933916
+        ],
+        [
+          1793.323801689676,
+          1565.2058206658667
+        ]
+      ],
+      "ground": [
+        [
+          1.9053731865599135,
+          -2.0568197248599516
+        ],
+        [
+          0.4229312020164433,
+          -0.4916149380244369
+        ]
+      ],
+      "appearance_cosine": 0.5676640565662356,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9562296271324158,
+        0.9444671273231506
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 199.75,
+      "track_ids": [
+        "cam_2:group:6",
+        "cam_3:group:12"
+      ],
+      "frame_ids": [
+        "cam_2-group-0199-3",
+        "cam_3-group-0199-3"
+      ],
+      "points": [
+        [
+          2149.222953606882,
+          801.4563043035998
+        ],
+        [
+          2082.766430010802,
+          1731.657922941998
+        ]
+      ],
+      "ground": [
+        [
+          1.4042695853359304,
+          -2.172792865276755
+        ],
+        [
+          0.6716836340325052,
+          -0.26670287750946925
+        ]
+      ],
+      "appearance_cosine": 0.4177069725322158,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9767835438251495,
+        0.903668999671936
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 200.5,
+      "track_ids": [
+        "cam_2:group:8",
+        "cam_3:group:12"
+      ],
+      "frame_ids": [
+        "cam_2-group-0200-2",
+        "cam_3-group-0200-2"
+      ],
+      "points": [
+        [
+          2363.865653240229,
+          883.1283253291635
+        ],
+        [
+          1886.484091359085,
+          1678.7110652120227
+        ]
+      ],
+      "ground": [
+        [
+          1.7360471634578614,
+          -2.0134253745993735
+        ],
+        [
+          0.4903169917182365,
+          -0.3677339390555447
+        ]
+      ],
+      "appearance_cosine": 0.5999754066599672,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9869107604026794,
+        0.9573244750499725
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 201.75,
+      "track_ids": [
+        "cam_2:group:6",
+        "cam_3:group:14"
+      ],
+      "frame_ids": [
+        "cam_2-group-0201-3",
+        "cam_3-group-0201-3"
+      ],
+      "points": [
+        [
+          2325.4581291623645,
+          941.3822015328436
+        ],
+        [
+          2161.03480711201,
+          1504.5738427956844
+        ]
+      ],
+      "ground": [
+        [
+          1.5436209919744006,
+          -1.8161194398246574
+        ],
+        [
+          0.8155681597595629,
+          -0.47831438971898077
+        ]
+      ],
+      "appearance_cosine": 0.6052736165569184,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9701480567455292,
+        0.9776601195335388
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "group",
+      "split": "train",
+      "timestamp_sec": 202.75,
+      "track_ids": [
+        "cam_2:group:6",
+        "cam_3:group:14"
+      ],
+      "frame_ids": [
+        "cam_2-group-0202-3",
+        "cam_3-group-0202-3"
+      ],
+      "points": [
+        [
+          2426.091584917773,
+          930.8920316295746
+        ],
+        [
+          1852.6653408917819,
+          1469.5310053282221
+        ]
+      ],
+      "ground": [
+        [
+          1.7880216119111718,
+          -1.8913264056469163
+        ],
+        [
+          0.490763492390526,
+          -0.578271832024925
+        ]
+      ],
+      "appearance_cosine": 0.6114561714324358,
+      "appearance_margin": null,
+      "foot_confidences": [
+        0.9421393871307373,
+        0.9779139161109924
+      ],
+      "time_difference_sec": 0.0
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "blue",
+      "split": "holdout",
+      "timestamp_sec": 542.25,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5028738400082797,
+      "appearance_margin": 1.5028738400082797,
+      "track_ids": [
+        "cam_2:blue:2",
+        "cam_3:blue:4"
+      ],
+      "points": [
+        [
+          2290.7783348940943,
+          886.946278183826
+        ],
+        [
+          1981.1751767317533,
+          1698.0140476405459
+        ]
+      ],
+      "frame_ids": [
+        "cam_2-blue-0542-1",
+        "cam_3-blue-0542-1"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9907457530498505,
+        0.7561118900775909
+      ],
+      "track_pair_support": 5
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "blue",
+      "split": "holdout",
+      "timestamp_sec": 542.5,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5048646559489777,
+      "appearance_margin": 1.5048646559489778,
+      "track_ids": [
+        "cam_2:blue:2",
+        "cam_3:blue:4"
+      ],
+      "points": [
+        [
+          2326.187149384444,
+          899.3413668805913
+        ],
+        [
+          1919.036545423413,
+          1705.5951531358958
+        ]
+      ],
+      "frame_ids": [
+        "cam_2-blue-0542-2",
+        "cam_3-blue-0542-2"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9205576479434967,
+        0.6745166778564453
+      ],
+      "track_pair_support": 5
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "blue",
+      "split": "holdout",
+      "timestamp_sec": 542.75,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5119196404828936,
+      "appearance_margin": 1.5119196404828936,
+      "track_ids": [
+        "cam_2:blue:2",
+        "cam_3:blue:4"
+      ],
+      "points": [
+        [
+          2355.017007851792,
+          898.7996574072837
+        ],
+        [
+          1784.0856148274606,
+          1655.8960888635822
+        ]
+      ],
+      "frame_ids": [
+        "cam_2-blue-0542-3",
+        "cam_3-blue-0542-3"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9287129640579224,
+        0.9912507832050323
+      ],
+      "track_pair_support": 5
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "blue",
+      "split": "holdout",
+      "timestamp_sec": 543.0,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5347740155164942,
+      "appearance_margin": 1.5347740155164942,
+      "track_ids": [
+        "cam_2:blue:2",
+        "cam_3:blue:4"
+      ],
+      "points": [
+        [
+          2393.0239461037218,
+          893.6222994782153
+        ],
+        [
+          1734.717719232101,
+          1663.8455016345206
+        ]
+      ],
+      "frame_ids": [
+        "cam_2-blue-0543-0",
+        "cam_3-blue-0543-0"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9632366299629211,
+        0.9667139947414398
+      ],
+      "track_pair_support": 5
+    },
+    {
+      "cameras": [
+        "cam_2",
+        "cam_3"
+      ],
+      "window": "blue",
+      "split": "holdout",
+      "timestamp_sec": 543.5,
+      "time_difference_sec": 0.0,
+      "appearance_cosine": 0.5325388504020752,
+      "appearance_margin": 1.5325388504020752,
+      "track_ids": [
+        "cam_2:blue:2",
+        "cam_3:blue:4"
+      ],
+      "points": [
+        [
+          2445.8512047317427,
+          894.9609270871533
+        ],
+        [
+          1447.136456107106,
+          1726.4008614011686
+        ]
+      ],
+      "frame_ids": [
+        "cam_2-blue-0543-2",
+        "cam_3-blue-0543-2"
+      ],
+      "sizes": [
+        [
+          2592,
+          1944
+        ],
+        [
+          2592,
+          1944
+        ]
+      ],
+      "foot_confidences": [
+        0.9492009580135345,
+        0.6043033301830292
+      ],
+      "track_pair_support": 5
+    }
+  ],
+  "training_proposals": 349
+}

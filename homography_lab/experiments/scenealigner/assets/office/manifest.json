@@ -1,0 +1,169 @@
+{
+  "description": "Frozen automatic proposals and camera estimates for the office pilot; not manual calibration",
+  "files": {
+    "automatic-candidates.json": {
+      "bytes": 422041,
+      "sha256": "a5e00a20e5ca86b319599809d66c1e324762786b8a8fa42c377a9e066a2aafe8"
+    },
+    "lenses.json": {
+      "bytes": 7051,
+      "sha256": "5e26b41aed5857368a2335282f37d25aff2a31b8dd806db6986414a6c4d6d822"
+    },
+    "plan-walls.png": {
+      "bytes": 9191,
+      "sha256": "bf16227772adc35323e28c10d6344c731c08f15077e1bbc67ef79d8df2faa434"
+    },
+    "plan.jpg": {
+      "bytes": 103532,
+      "sha256": "a1dfd42b263cbec05a00d109e67b8a730602b8b4dbcfca426a04a584e1b068a5"
+    },
+    "README.md": {
+      "bytes": 1451,
+      "sha256": "ddffc2054f934a89907f238b5720038f2060edb2537747dcc67455a3c734453b"
+    },
+    "source-manifest.json": {
+      "bytes": 3277,
+      "sha256": "af2b5b32109746f29f8209ad577b6342954e2263be71ea1e42bf31bab95be8cc"
+    },
+    "clock-templates/cam2_0.luma.png": {
+      "bytes": 27145,
+      "sha256": "389fd1d7e645a39e0a708e30e633621594901b0b8f7d7b1e6c46f3bc20e6d55e"
+    },
+    "clock-templates/cam2_0.png": {
+      "bytes": 73479,
+      "sha256": "981450eeeaa37b44996dd3c6e4dce1043b307776710f44a16058445ef2b9966f"
+    },
+    "clock-templates/cam2_1190.luma.png": {
+      "bytes": 27314,
+      "sha256": "8777e204376784e09fbc75c699ea087a75db3c2c55ec09b62bf666d06c99b254"
+    },
+    "clock-templates/cam2_1190.png": {
+      "bytes": 73759,
+      "sha256": "8bd2a9b795a6eb587f1b5263e773cd9afe618873dc8617713867ec34024d6d1a"
+    },
+    "clock-templates/cam2_175.luma.png": {
+      "bytes": 26989,
+      "sha256": "59d1a9504379c91245ffe5fd4a671f26ecedea3f845451825e02295f5a38c6b3"
+    },
+    "clock-templates/cam2_175.png": {
+      "bytes": 73947,
+      "sha256": "24ebab550479809f903030dd225168217c58b74c723757103239416aab507125"
+    },
+    "clock-templates/cam2_225.luma.png": {
+      "bytes": 27829,
+      "sha256": "ed483d1d87d203bb2c9bcc403a5f98b2f7e33c311ec4babfa72fb63f9137aa38"
+    },
+    "clock-templates/cam2_225.png": {
+      "bytes": 74613,
+      "sha256": "709a9304a431e8117c0ef885a088a1fa8dfc86fb6d5f5b47dcaff5fb119ad0cc"
+    },
+    "clock-templates/cam2_236.luma.png": {
+      "bytes": 26681,
+      "sha256": "584410c7998b140bc69ba339e6b1564c06d0a49f49a388110e7043599048c82f"
+    },
+    "clock-templates/cam2_236.png": {
+      "bytes": 72459,
+      "sha256": "8afe9fd48c7899b450d5ebd8248588ff89a12f5ba00919377ecb91b8b705674e"
+    },
+    "clock-templates/cam2_273.luma.png": {
+      "bytes": 27116,
+      "sha256": "5528a358852579108e177c395fa3a5a05f8b5a0b760d7f4993b1d6cd8530b21f"
+    },
+    "clock-templates/cam2_273.png": {
+      "bytes": 72629,
+      "sha256": "9f9e0354193d4c04f093c2d900905ee7d43c1e777a13d3a0d944430c6639c56e"
+    },
+    "clock-templates/cam2_535.luma.png": {
+      "bytes": 27199,
+      "sha256": "959e4e6c02073c7ad004726da4ed0e74e16a7bab8b0322309fbd4e0e04b2085c"
+    },
+    "clock-templates/cam2_535.png": {
+      "bytes": 73545,
+      "sha256": "b633cd3223d387f9185b0582610f85e65c83ec0c9fff58cf02a2bd6cbf28ef35"
+    },
+    "clock-templates/cam2_900.luma.png": {
+      "bytes": 27767,
+      "sha256": "e3c7af0f6f3001902e5dad5a53f83b2f1a138f48e4701adce441003d25131622"
+    },
+    "clock-templates/cam2_900.png": {
+      "bytes": 74228,
+      "sha256": "261118dba18866e9188edc6c05faecd7ed80a7bcac671feb47ca32e09ad0a4c3"
+    },
+    "clock-templates/error-cam1-178.2.luma.png": {
+      "bytes": 33628,
+      "sha256": "b231b04b6e0842bbef1f0478b5477705868938ddac140c17d06c9dbb8810a6bb"
+    },
+    "clock-templates/error-cam1-178.2.png": {
+      "bytes": 87267,
+      "sha256": "7006f83bdfac096f9bae8ab51ce0598cb2f6d682172f35c73c25dcba794ac6de"
+    },
+    "clock-templates/error-cam1-482.luma.png": {
+      "bytes": 34233,
+      "sha256": "3d326358f9a7cfab604e0c7081a4758427cf07801399bfae51aa46fffc994d7c"
+    },
+    "clock-templates/error-cam1-482.png": {
+      "bytes": 88994,
+      "sha256": "5966c1363dbec69bae6526dc1b263cc62997e021ee8f1df2a437f595f8849e1e"
+    },
+    "clock-templates/error-cam1-483.luma.png": {
+      "bytes": 33831,
+      "sha256": "d920131e9e1c3aa602a7f11fa9956411b0c07ab141f4753b3275560b7b92101c"
+    },
+    "clock-templates/error-cam1-483.png": {
+      "bytes": 88175,
+      "sha256": "3021be1153e4f5327490a86af9277828c333b8bdd6425bd27bba8844be3f90ec"
+    },
+    "clock-templates/error-cam1-484.5.luma.png": {
+      "bytes": 34144,
+      "sha256": "3af6bb59bfe720c9bec1dfc86cf307e3615f29a9c235d3c5b813f43a8674ef71"
+    },
+    "clock-templates/error-cam1-484.5.png": {
+      "bytes": 89094,
+      "sha256": "f2cec3b8f0c9db21b223c00e2b7bdff4399fd5945f7d9394bec1095c7edf0940"
+    },
+    "clock-templates/error-cam2-666.4.luma.png": {
+      "bytes": 27484,
+      "sha256": "7d56c5159c9172b1792af2d4da5a5384c88d2fad9f348fbefc830e34cb50f9b8"
+    },
+    "clock-templates/error-cam2-666.4.png": {
+      "bytes": 74516,
+      "sha256": "b9c53b6616ccf73b58b29ca9827f59915172d22d875c1d3bee8eec6b3e4fe0b9"
+    },
+    "clock-templates/error-cam2-80.5.luma.png": {
+      "bytes": 27665,
+      "sha256": "b18ec32b641ca25b664111df69ff4fe20627bc83a1f3971dfd95a191b1dd44ba"
+    },
+    "clock-templates/error-cam2-80.5.png": {
+      "bytes": 75405,
+      "sha256": "0168faaa86ecd88cdc340fefcd1f7e21e62e3ad3961155be129f832013b708bc"
+    },
+    "clock-templates/error-cam2-9.5.luma.png": {
+      "bytes": 27787,
+      "sha256": "b9be58b9c7fb6850f28750d0ce63d1bd2995f4bf6ec5f66509ad79ceecc3dae2"
+    },
+    "clock-templates/error-cam2-9.5.png": {
+      "bytes": 74782,
+      "sha256": "9580b3b5aa5a53af8728c8bfe10ae81852f1a0ad2c0b4159b67aa21518dd8745"
+    },
+    "floor/cam_1.png": {
+      "bytes": 19001,
+      "sha256": "07eeb58b0e10ae5fa9e5a72619f604d0370b9fd8847e2a7756f598a60655b19c"
+    },
+    "floor/cam_2.png": {
+      "bytes": 15714,
+      "sha256": "1d13305f7c0166f7c360e76588b38ef8cf62eddd869538abe767d0e83ae15cbb"
+    },
+    "floor/cam_3.png": {
+      "bytes": 18257,
+      "sha256": "811a741c3ec68bd04d0743de888f5da1830d2054f7673d3ed83d2a96bbe80ba9"
+    },
+    "floor/cam_4.png": {
+      "bytes": 13698,
+      "sha256": "eb707e1888458c8139dab5f7dc548ac9fd41649eccd71056eeb97e0ca6530073"
+    },
+    "floor/cam_5.png": {
+      "bytes": 16228,
+      "sha256": "ed5f04028f2dc44b2c756cf7d01578525da790f630d6fc4ccce2e2a0c76f49c0"
+    }
+  }
+}

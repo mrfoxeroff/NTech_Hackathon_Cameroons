@@ -1,0 +1,10 @@
+{
+  "run": "motion-joint-final",
+  "kind": "historical_pilot_before_portable_packaging",
+  "frames": 1876,
+  "train_frames": 928,
+  "holdout_frames": 948,
+  "absolute_location_verified": false,
+  "automatic_deployment_ready": false,
+  "video_inference_executed_for_offline_demo": false
+}

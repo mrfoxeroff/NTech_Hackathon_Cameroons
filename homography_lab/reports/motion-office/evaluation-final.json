@@ -1,0 +1,303 @@
+{
+  "evaluation_only": true,
+  "manual_reference_used_for_inference": false,
+  "pairs_are_proposals_not_person_ID_ground_truth": true,
+  "reference_limitation": "Existing approximate manual JSON, not surveyed people locations.",
+  "motion": {
+    "cam_1-cam_2": {
+      "independent_baseline": {
+        "pairs": 8,
+        "unprojectable_pairs": 0,
+        "median_px": 176.76576421112014,
+        "p95_px": 179.69633842817885,
+        "median_scale_invariant_diagonal_fraction": 0.6123009124577683,
+        "p95_scale_invariant_diagonal_fraction": 0.633613568228165
+      },
+      "joint_proposal": {
+        "pairs": 8,
+        "unprojectable_pairs": 0,
+        "median_px": 4.667901326204298,
+        "p95_px": 10.697687165232377,
+        "median_scale_invariant_diagonal_fraction": 0.014123434488476153,
+        "p95_scale_invariant_diagonal_fraction": 0.021803519739114312
+      },
+      "relative_edge_accepted": false
+    },
+    "cam_1-cam_3": {
+      "independent_baseline": {
+        "pairs": 0,
+        "unprojectable_pairs": 0,
+        "median_px": null,
+        "p95_px": null,
+        "median_scale_invariant_diagonal_fraction": null,
+        "p95_scale_invariant_diagonal_fraction": null
+      },
+      "joint_proposal": {
+        "pairs": 0,
+        "unprojectable_pairs": 0,
+        "median_px": null,
+        "p95_px": null,
+        "median_scale_invariant_diagonal_fraction": null,
+        "p95_scale_invariant_diagonal_fraction": null
+      },
+      "relative_edge_accepted": false
+    },
+    "cam_2-cam_3": {
+      "independent_baseline": {
+        "pairs": 2,
+        "unprojectable_pairs": 0,
+        "median_px": 176.88567223640342,
+        "p95_px": 177.2485881594982,
+        "median_scale_invariant_diagonal_fraction": 0.6006356587593513,
+        "p95_scale_invariant_diagonal_fraction": 0.6074604552640412
+      },
+      "joint_proposal": {
+        "pairs": 2,
+        "unprojectable_pairs": 0,
+        "median_px": 190.7808227341747,
+        "p95_px": 191.92214926744322,
+        "median_scale_invariant_diagonal_fraction": 0.45629680420732177,
+        "p95_scale_invariant_diagonal_fraction": 0.46170975466606184
+      },
+      "relative_edge_accepted": false
+    }
+  },
+  "absolute_map": {
+    "cam_1": {
+      "baseline": {
+        "reference_points": 6,
+        "evaluated_reference_inliers": 5,
+        "excluded_reference_outliers": 1,
+        "errors_px": [
+          178.1775604340776,
+          161.03806400962065,
+          153.17210844030834,
+          146.55420640301048,
+          175.98358338877387,
+          180.57350072580928
+        ],
+        "median_error_px": 175.98358338877387,
+        "p95_error_px": 180.09431266746296,
+        "fraction_within_10px": 0.0,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      },
+      "joint_proposal": {
+        "reference_points": 6,
+        "evaluated_reference_inliers": 5,
+        "excluded_reference_outliers": 1,
+        "errors_px": [
+          55.19709820034937,
+          41.46904577201563,
+          5.358645307594718,
+          41.49498580969273,
+          33.73469080718166,
+          52.27012806825536
+        ],
+        "median_error_px": 41.49498580969273,
+        "p95_error_px": 54.61170417393057,
+        "fraction_within_10px": 0.2,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      }
+    },
+    "cam_2": {
+      "baseline": {
+        "reference_points": 9,
+        "evaluated_reference_inliers": 8,
+        "excluded_reference_outliers": 1,
+        "errors_px": [
+          11.684410170880863,
+          6.909389788219467,
+          24.077448835180014,
+          5.9510174214542975,
+          4.998681506186334,
+          5.489836400482071,
+          7.853672624176854,
+          9.245232786516455,
+          10.077872107133762
+        ],
+        "median_error_px": 7.38153120619816,
+        "p95_error_px": 19.739885302675305,
+        "fraction_within_10px": 0.625,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      },
+      "joint_proposal": {
+        "reference_points": 9,
+        "evaluated_reference_inliers": 8,
+        "excluded_reference_outliers": 1,
+        "errors_px": [
+          64.73028470322156,
+          56.4410863898374,
+          80.65607433177412,
+          43.86331381423978,
+          34.30333360385743,
+          41.946366667937674,
+          47.63070234405331,
+          57.319482247326214,
+          5.018594048486431
+        ],
+        "median_error_px": 45.747008079146546,
+        "p95_error_px": 75.08204796178072,
+        "fraction_within_10px": 0.125,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      }
+    },
+    "cam_3": {
+      "baseline": {
+        "reference_points": 13,
+        "evaluated_reference_inliers": 10,
+        "excluded_reference_outliers": 3,
+        "errors_px": [
+          157.8106577175598,
+          149.6106956848098,
+          98.99750308801609,
+          89.42730897578814,
+          92.16233081960058,
+          112.54194771530096,
+          207.13128327918702,
+          173.5732566862426,
+          118.93158605001511,
+          169.35954444334772,
+          177.42865509978097,
+          155.28023409243553,
+          null
+        ],
+        "median_error_px": 152.44546488862267,
+        "p95_error_px": 192.030171312362,
+        "fraction_within_10px": 0.0,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      },
+      "joint_proposal": {
+        "reference_points": 13,
+        "evaluated_reference_inliers": 10,
+        "excluded_reference_outliers": 3,
+        "errors_px": [
+          157.8106577175598,
+          149.6106956848098,
+          98.99750308801609,
+          89.42730897578814,
+          92.16233081960058,
+          112.54194771530096,
+          207.13128327918702,
+          173.5732566862426,
+          118.93158605001511,
+          169.35954444334772,
+          177.42865509978097,
+          155.28023409243553,
+          null
+        ],
+        "median_error_px": 152.44546488862267,
+        "p95_error_px": 192.030171312362,
+        "fraction_within_10px": 0.0,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      }
+    },
+    "cam_4": {
+      "baseline": {
+        "reference_points": 9,
+        "evaluated_reference_inliers": 9,
+        "excluded_reference_outliers": 0,
+        "errors_px": [
+          250.95048643840897,
+          238.6480856268952,
+          250.21320313759392,
+          250.16341740318265,
+          237.68672925032956,
+          237.60667488933353,
+          243.54053291319295,
+          247.38513353747624,
+          227.15906280553273
+        ],
+        "median_error_px": 243.54053291319295,
+        "p95_error_px": 250.65557311808294,
+        "fraction_within_10px": 0.0,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      },
+      "joint_proposal": {
+        "reference_points": 9,
+        "evaluated_reference_inliers": 9,
+        "excluded_reference_outliers": 0,
+        "errors_px": [
+          250.95048643840897,
+          238.6480856268952,
+          250.21320313759392,
+          250.16341740318265,
+          237.68672925032956,
+          237.60667488933353,
+          243.54053291319295,
+          247.38513353747624,
+          227.15906280553273
+        ],
+        "median_error_px": 243.54053291319295,
+        "p95_error_px": 250.65557311808294,
+        "fraction_within_10px": 0.0,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      }
+    },
+    "cam_5": {
+      "baseline": {
+        "reference_points": 11,
+        "evaluated_reference_inliers": 8,
+        "excluded_reference_outliers": 3,
+        "errors_px": [
+          417.5674751995041,
+          401.50720106447585,
+          389.9864918989876,
+          401.67845699707283,
+          319.043773987137,
+          287.6628573399911,
+          265.71358718372363,
+          203.17876643245594,
+          181.67568993020382,
+          132.29708826923886,
+          109.66655000260042
+        ],
+        "median_error_px": 296.58262916572176,
+        "p95_error_px": 412.00631882865315,
+        "fraction_within_10px": 0.0,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      },
+      "joint_proposal": {
+        "reference_points": 11,
+        "evaluated_reference_inliers": 8,
+        "excluded_reference_outliers": 3,
+        "errors_px": [
+          417.5674751995041,
+          401.50720106447585,
+          389.9864918989876,
+          401.67845699707283,
+          319.043773987137,
+          287.6628573399911,
+          265.71358718372363,
+          203.17876643245594,
+          181.67568993020382,
+          132.29708826923886,
+          109.66655000260042
+        ],
+        "median_error_px": 296.58262916572176,
+        "p95_error_px": 412.00631882865315,
+        "fraction_within_10px": 0.0,
+        "unprojectable_reference_inliers": 0,
+        "reference_kind": "existing_manual_JSON_correspondences_not_independent_survey",
+        "landmarks_used_for_inference": false
+      }
+    }
+  }
+}

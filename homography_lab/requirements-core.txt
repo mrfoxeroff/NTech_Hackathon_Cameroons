@@ -1,0 +1,8 @@
+# Offline geometry replay, manual calibration UI and the portable test suite.
+numpy==2.3.5
+scipy==1.18.1
+opencv-python==4.13.0.90
+Pillow==11.3.0
+matplotlib==3.10.8
+av==17.1.0
+pytest>=8,<10

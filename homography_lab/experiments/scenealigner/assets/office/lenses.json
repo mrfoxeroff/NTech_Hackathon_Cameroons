@@ -1,0 +1,332 @@
+{
+  "method": "GeoCalib_distorted_simple_divisional",
+  "manual_landmarks_used": false,
+  "source": "archive/scenealigner/inputs/office-five",
+  "cameras": {
+    "cam_1": {
+      "model": "simple_divisional",
+      "K": [
+        [
+          1835.788818359375,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          1835.788818359375,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "new_K": [
+        [
+          1559.6441650390625,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          1559.6441650390625,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "k1": -0.207964226603508,
+      "size": [
+        2592,
+        1944
+      ],
+      "rectified_size": [
+        2592,
+        1944
+      ],
+      "estimation_source": "neural_image_fields_no_manual_coordinates",
+      "gravity": [
+        -0.14792171120643616,
+        0.7254724502563477,
+        0.6721673607826233
+      ],
+      "border_invertible_fraction": 1.0,
+      "field_expansion": 1.1770561828892132,
+      "valid_rectified_fraction": 0.9079817450337855,
+      "input_sha256": "653bad185976fd0977baa57c74b1776914a97cfc3288eec84eb5a1cd34ff9bd1",
+      "focal_uncertainty": [
+        220.79934692382812
+      ],
+      "roll_uncertainty": [
+        0.030822301283478737
+      ],
+      "pitch_uncertainty": [
+        0.20515833795070648
+      ]
+    },
+    "cam_2": {
+      "model": "simple_divisional",
+      "K": [
+        [
+          1794.8001708984375,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          1794.8001708984375,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "new_K": [
+        [
+          1279.091064453125,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          1279.091064453125,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "k1": -0.37502172589302063,
+      "size": [
+        2592,
+        1944
+      ],
+      "rectified_size": [
+        2592,
+        1944
+      ],
+      "estimation_source": "neural_image_fields_no_manual_coordinates",
+      "gravity": [
+        -0.11773692816495895,
+        0.8231508731842041,
+        0.5554823279380798
+      ],
+      "border_invertible_fraction": 1.0,
+      "field_expansion": 1.40318410116814,
+      "valid_rectified_fraction": 0.8098031534191942,
+      "input_sha256": "b3123ee55cf40439c37c2ed2a6927b1c92091d24c70f820bf67653bb36496c98",
+      "focal_uncertainty": [
+        216.39808654785156
+      ],
+      "roll_uncertainty": [
+        0.026619669049978256
+      ],
+      "pitch_uncertainty": [
+        0.13586194813251495
+      ]
+    },
+    "cam_3": {
+      "model": "simple_divisional",
+      "K": [
+        [
+          1600.3902587890625,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          1600.3900146484375,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "new_K": [
+        [
+          889.105712890625,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          889.1055908203125,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "k1": -0.6970548629760742,
+      "size": [
+        2592,
+        1944
+      ],
+      "rectified_size": [
+        2592,
+        1944
+      ],
+      "estimation_source": "neural_image_fields_no_manual_coordinates",
+      "gravity": [
+        -0.03944369778037071,
+        0.7622023820877075,
+        0.6461359858512878
+      ],
+      "border_invertible_fraction": 1.0,
+      "field_expansion": 1.8,
+      "valid_rectified_fraction": 0.8975789704313367,
+      "input_sha256": "be4d91dfc955fb3cde2974f8e12d511eab6bcfada2ba493282bba15975787f5d",
+      "focal_uncertainty": [
+        132.91236877441406
+      ],
+      "roll_uncertainty": [
+        0.02244594879448414
+      ],
+      "pitch_uncertainty": [
+        0.16688939929008484
+      ]
+    },
+    "cam_4": {
+      "model": "simple_divisional",
+      "K": [
+        [
+          1555.3446044921875,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          1555.3446044921875,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "new_K": [
+        [
+          884.0693969726562,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          884.0693969726562,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "k1": -0.42203545570373535,
+      "size": [
+        2592,
+        1944
+      ],
+      "rectified_size": [
+        2592,
+        1944
+      ],
+      "estimation_source": "neural_image_fields_no_manual_coordinates",
+      "gravity": [
+        -0.04850294068455696,
+        0.838952362537384,
+        0.5420392155647278
+      ],
+      "border_invertible_fraction": 1.0,
+      "field_expansion": 1.7593014999167484,
+      "valid_rectified_fraction": 0.6944206294772138,
+      "input_sha256": "795217bd52c05f6854847b681f03cc84dd15841166953b5ed7e0fb5f125b24ac",
+      "focal_uncertainty": [
+        200.52809143066406
+      ],
+      "roll_uncertainty": [
+        0.025549527257680893
+      ],
+      "pitch_uncertainty": [
+        0.13709010183811188
+      ]
+    },
+    "cam_5": {
+      "model": "simple_divisional",
+      "K": [
+        [
+          1555.060546875,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          1555.0606689453125,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "new_K": [
+        [
+          863.9225463867188,
+          0.0,
+          1296.0
+        ],
+        [
+          0.0,
+          863.922607421875,
+          972.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "k1": -0.4592030942440033,
+      "size": [
+        2592,
+        1944
+      ],
+      "rectified_size": [
+        2592,
+        1944
+      ],
+      "estimation_source": "neural_image_fields_no_manual_coordinates",
+      "gravity": [
+        0.04891125485301018,
+        0.808983325958252,
+        0.585793137550354
+      ],
+      "border_invertible_fraction": 1.0,
+      "field_expansion": 1.8,
+      "valid_rectified_fraction": 0.7171601524792969,
+      "input_sha256": "15a26bec0629ba4b399b8aeb572cce319fbb989654e2c0fbdc2d168d13ec6c5d",
+      "focal_uncertainty": [
+        171.6744384765625
+      ],
+      "roll_uncertainty": [
+        0.027896227315068245
+      ],
+      "pitch_uncertainty": [
+        0.1975034773349762
+      ]
+    }
+  }
+}

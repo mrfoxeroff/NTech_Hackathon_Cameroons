@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+runs/
+/vendor/
+/neural_deps/
+/neural_weights/
+/.venv-scene/
+/experiments/scenealigner/cache/
+/experiments/scenealigner/inputs/
+/experiments/scenealigner/runs/

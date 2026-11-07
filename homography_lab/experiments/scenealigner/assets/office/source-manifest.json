@@ -1,0 +1,94 @@
+{
+  "manual_landmarks_used": false,
+  "cameras": {
+    "cam_1": {
+      "background_method": "reuse_previous_temporal_median",
+      "reused_from": "archive/inputs/views/cam_1.jpg",
+      "source_video": "archive/camera_new_1.mkv",
+      "video_sha256": "744331b88aadaf56a83540d3081f22f11cf207ee93b62bacf03972c679814dc5",
+      "image_sha256": "653bad185976fd0977baa57c74b1776914a97cfc3288eec84eb5a1cd34ff9bd1"
+    },
+    "cam_2": {
+      "background_method": "reuse_previous_temporal_median",
+      "reused_from": "archive/inputs/views/cam_2.jpg",
+      "source_video": "archive/camera_new_2.mkv",
+      "video_sha256": "6839e486dd14c70b948f5f8e120d3cb339c45a1a26dd1baa496200704fef59c4",
+      "image_sha256": "b3123ee55cf40439c37c2ed2a6927b1c92091d24c70f820bf67653bb36496c98"
+    },
+    "cam_3": {
+      "sample_media_seconds": [
+        12.037999999999998,
+        200.03300000000002,
+        388.062,
+        576.087,
+        764.089,
+        952.111,
+        1140.146
+      ],
+      "camera_motion_detected": false,
+      "relative_image_motion": [
+        2.8900512935913793e-05,
+        7.083029173917054e-06,
+        2.0512347626034088e-05,
+        3.251441554094863e-05,
+        6.5635491852731655e-06,
+        2.5114455663629323e-05
+      ],
+      "background_method": "temporal_median",
+      "stable_pixel_fraction": 0.9551857884976883,
+      "source_video": "archive/camera_new_3.mkv",
+      "video_sha256": "f90f08498e306b3e75b07489a253ebdfcbb5f3373b73478b086bd5d7ef9a8873",
+      "image_sha256": "be4d91dfc955fb3cde2974f8e12d511eab6bcfada2ba493282bba15975787f5d"
+    },
+    "cam_4": {
+      "sample_media_seconds": [
+        12.001,
+        200.01600000000002,
+        388.036,
+        576.0509999999999,
+        764.066,
+        952.031,
+        1140.047
+      ],
+      "camera_motion_detected": false,
+      "relative_image_motion": [
+        2.9958978823362665e-05,
+        4.671213207687275e-05,
+        5.882644439121954e-05,
+        1.9261024403195723e-05,
+        3.4059727987116377e-05,
+        5.018784244311412e-05
+      ],
+      "background_method": "temporal_median",
+      "stable_pixel_fraction": 0.9862843649977138,
+      "source_video": "archive/camera_new_4.mkv",
+      "video_sha256": "8ede342c3d0d98ab912e98c1a31ef5458ca04a8329b882634b277d7c4634bef2",
+      "image_sha256": "795217bd52c05f6854847b681f03cc84dd15841166953b5ed7e0fb5f125b24ac"
+    },
+    "cam_5": {
+      "sample_media_seconds": [
+        12.030999999999999,
+        200.023,
+        388.02500000000003,
+        576.062,
+        764.064,
+        952.08,
+        1140.109
+      ],
+      "camera_motion_detected": false,
+      "relative_image_motion": [
+        3.916800068076526e-05,
+        9.50605796846822e-05,
+        3.0001139534159376e-05,
+        5.738168912654905e-05,
+        5.1472589031991664e-05,
+        5.808279782845618e-05
+      ],
+      "background_method": "temporal_median",
+      "stable_pixel_fraction": 0.9803738870471981,
+      "source_video": "archive/camera_new_5.mkv",
+      "video_sha256": "6e3dd8bb2bb0c7b640b79b7a2c85f54d8346e930e9d89f55d86cf20f43aa4be5",
+      "image_sha256": "15a26bec0629ba4b399b8aeb572cce319fbb989654e2c0fbdc2d168d13ec6c5d"
+    }
+  }
+}
