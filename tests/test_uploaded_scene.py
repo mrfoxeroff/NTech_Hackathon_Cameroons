@@ -1,17 +1,55 @@
+import json
+from types import SimpleNamespace
+
 import cv2
 import numpy as np
 import pytest
 
 from homography_lab.experiments.scenealigner.motion_export import exportable_calibrations
+from local_tracking.pipeline import file_hash
 from mtmc.floor_projection import floor_point
 from tools.upload_clock import align_videos, parse_stamp, sampled_anchors
 from tools.upload_geometry import (
+    localize,
     marker_calibration,
     markers,
     motion_matches,
     motion_overlaps,
+    office_overlaps,
     transfer_to_plan,
 )
+
+
+def test_office_geometry_follows_the_recording_hash_and_requires_the_matching_plan(tmp_path, monkeypatch):
+    plan = tmp_path / "office.jpg"
+    assert cv2.imwrite(str(plan), np.full((320, 400), 255, np.uint8))
+    other_plan = tmp_path / "other.jpg"
+    assert cv2.imwrite(str(other_plan), np.full((320, 400), 127, np.uint8))
+    files = [tmp_path / f"upload_{n}.mkv" for n in range(3)]
+    for n, path in enumerate(files):
+        path.write_bytes(bytes([n]))
+    known = [{"cameras": {f"cam_{n}": {"source_sha256": file_hash(files[n])} for n in (1, 2)}}]
+    for n, x_offset in ((1, 10), (2, 30)):
+        (tmp_path / f"cam_{n}_calibration.json").write_text(
+            json.dumps(
+                {
+                    "camera_size": [400, 320],
+                    "plan_size": [400, 320],
+                    "homography": [[1, 0, x_offset], [0, 1, 0], [0, 0, 1]],
+                }
+            ),
+            encoding="utf-8",
+        )
+    monkeypatch.setattr("tools.upload_geometry.ROOT", tmp_path)
+    monkeypatch.setattr("tools.upload_geometry.probe_video", lambda _: SimpleNamespace(width=400, height=320))
+    videos = dict(zip(("camera_1", "camera_2", "camera_3"), (files[2], files[0], files[1]), strict=True))
+
+    calibrations, size = localize(plan, videos, known_maps=known)
+    assert set(calibrations) == {"camera_1", "camera_3"}
+    assert floor_point((100, 100), calibrations["camera_1"], size) == (130, 100)
+    assert floor_point((100, 100), calibrations["camera_3"], size) == (110, 100)
+    assert office_overlaps(calibrations, [["camera_1", "camera_2"]]) == [["camera_1", "camera_3"]]
+    assert localize(other_plan, videos, known_maps=known)[0] == {}
 
 
 def test_osd_uses_date_and_preserves_media_gap_as_separate_axis(tmp_path, monkeypatch):

@@ -1,4 +1,4 @@
-"""Process uploaded recordings without using office-specific geometry."""
+"""Process uploaded recordings with source-verified plan anchors."""
 
 import argparse
 import json
@@ -10,7 +10,13 @@ from local_tracking.pipeline import load_model, process_camera, runtime_info
 from mtmc.import_local_tracking import IntelEncoder, import_outputs
 from tools.export_web_session import export_session, read_json, repair_associations, rows
 from tools.upload_clock import DEFAULT_ROI, align_videos
-from tools.upload_geometry import extend_calibrations, localize, motion_matches, motion_overlaps
+from tools.upload_geometry import (
+    extend_calibrations,
+    localize,
+    motion_matches,
+    motion_overlaps,
+    office_overlaps,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -28,7 +34,7 @@ def run_project(plan, sources, output, *, roi=DEFAULT_ROI, lab_report=None, prog
     progress("Синхронизация по времени на видео")
     epoch, anchors = align_videos(videos, roi, known)
     progress("Автоматическая привязка камер к плану")
-    calibrated, size = localize(plan, videos, lab_report)
+    calibrated, size = localize(plan, videos, lab_report, known_maps=known)
     settings = Settings(
         "uploaded_scene",
         output / "local",
@@ -54,11 +60,12 @@ def run_project(plan, sources, output, *, roi=DEFAULT_ROI, lab_report=None, prog
     progress("Сопоставление ID между камерами")
     global_root = output / "global"
     config = read_json(ROOT / "mtmc/camera_graph.stable.json")
+    office_graph = read_json(ROOT / "configs/web-camera-graph.json")
     config.pop("excluded_image_rects", None)
     config.update(
         overlap_pairs=[],
         reappearance_memory_ms=60000,
-        lifecycle=read_json(ROOT / "configs/web-camera-graph.json")["lifecycle"],
+        lifecycle=office_graph["lifecycle"],
     )
     import_outputs(inputs, global_root, encoder, config)
     matches = motion_matches(rows(global_root / "observations.jsonl")) if calibrated else {}
@@ -67,7 +74,9 @@ def run_project(plan, sources, output, *, roi=DEFAULT_ROI, lab_report=None, prog
         source = read_json(path / "manifest.json")["source"]
         video_sizes[name] = (source["width"], source["height"])
     calibrated = extend_calibrations(matches, calibrated, video_sizes, size)
-    overlaps = motion_overlaps(matches, calibrated, size)
+    motion_pairs = motion_overlaps(matches, calibrated, size)
+    office_pairs = office_overlaps(calibrated, office_graph["overlap_pairs"])
+    overlaps = [list(pair) for pair in sorted({tuple(pair) for pair in motion_pairs + office_pairs})]
     manifest = read_json(global_root / "manifest.json")
     manifest["settings"].update(
         overlap_pairs=overlaps, overlap_requires_map=overlaps, geometry_repair_pairs=[]
@@ -77,7 +86,8 @@ def run_project(plan, sources, output, *, roi=DEFAULT_ROI, lab_report=None, prog
     localization = {
         "calibrated_cameras": {name: value["method"] for name, value in calibrated.items()},
         "unlocalized_cameras": [name for name in videos if name not in calibrated],
-        "motion_validated_overlaps": overlaps,
+        "motion_validated_overlaps": motion_pairs,
+        "office_verified_overlaps": office_pairs,
     }
     write_json(output / "localization.json", localization | {"calibrations": calibrated})
     progress("Сборка синхронного плеера")

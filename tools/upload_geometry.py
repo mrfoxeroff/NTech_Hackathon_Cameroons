@@ -15,6 +15,9 @@ from homography_lab.geometry import warp
 from local_tracking.pipeline import file_hash
 from local_tracking.video import probe_video
 from mtmc.floor_projection import floor_point
+from tools.export_web_session import load_calibration
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def markers(image):
@@ -79,10 +82,48 @@ def lab_calibrations(path, plan, videos, plan_size):
     return calibrations
 
 
-def localize(plan_path, videos, report=None):
+def office_calibrations(plan_path, videos, plan_size, known_maps):
+    if file_hash(plan_path) != file_hash(ROOT / "office.jpg"):
+        return {}
+    by_digest = {
+        entry["source_sha256"]: camera
+        for bundle in known_maps
+        for camera, entry in bundle["cameras"].items()
+    }
+    calibrated = {}
+    for name, path in videos.items():
+        camera = by_digest.get(file_hash(path))
+        if camera is None:
+            continue
+        video = probe_video(path)
+        source = {"width": video.width, "height": video.height}
+        matrix = load_calibration(ROOT, camera, source, plan_size)
+        calibrated[name] = {
+            "camera_size": [video.width, video.height],
+            "plan_size": list(plan_size),
+            "homography": matrix.tolist(),
+            "method": "verified_office_calibration",
+            "office_camera": camera.replace("cam_", "camera_", 1),
+        }
+    return calibrated
+
+
+def office_overlaps(calibrated, verified_pairs):
+    verified = {frozenset(pair) for pair in verified_pairs}
+    office_cameras = {name: data["office_camera"] for name, data in calibrated.items() if "office_camera" in data}
+    return [
+        [left, right]
+        for left, right in combinations(sorted(office_cameras), 2)
+        if frozenset((office_cameras[left], office_cameras[right])) in verified
+    ]
+
+
+def localize(plan_path, videos, report=None, *, known_maps=()):
     plan = read_image(plan_path)
     size = plan.shape[1::-1]
-    calibrated = lab_calibrations(report, plan_path, videos, size) if report else {}
+    calibrated = office_calibrations(plan_path, videos, size, known_maps)
+    if report:
+        calibrated.update(lab_calibrations(report, plan_path, videos, size))
     target = markers(plan) if len(calibrated) < len(videos) else {}
     if len(target) >= 3:
         for name, video in videos.items():
