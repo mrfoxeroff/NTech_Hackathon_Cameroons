@@ -18,7 +18,14 @@
     .videos-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: 1; min-height: 0; }
     .video-slot { display: flex; flex-direction: column; background: #090d16; border-radius: 8px; overflow: hidden; border: 1px solid #475569; }
     .slot-header { padding: 6px 10px; background: #334155; display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
-    video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+    .video-stage { flex: 1; min-height: 0; position: relative; background: #000; }
+    video, .video-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    video { object-fit: contain; }
+    .video-stage canvas { pointer-events: none; }
+    .controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    #status { color: #fbbf24; font-size: 13px; }
+    #status:empty { display: none; }
+    .id-card { color: inherit; text-align: left; }
 
     .map-container { flex: 1; position: relative; background: #090d16; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
     canvas { max-width: 100%; max-height: 100%; }
@@ -56,23 +63,29 @@
         <div class="video-slot">
           <div class="slot-header">
             <span id="slot1Title">Слот 1: Cam 1</span>
-            <select id="slot1Select" onchange="manualCamChange(1, this.value)"></select>
+            <select id="slot1Select"></select>
           </div>
-          <video id="video1" muted></video>
+          <div class="video-stage">
+            <video id="video1" muted playsinline preload="auto"></video>
+            <canvas id="overlay1" aria-hidden="true"></canvas>
+          </div>
         </div>
         <div class="video-slot">
           <div class="slot-header">
             <span id="slot2Title">Слот 2: Cam 2</span>
-            <select id="slot2Select" onchange="manualCamChange(2, this.value)"></select>
+            <select id="slot2Select"></select>
           </div>
-          <video id="video2" muted></video>
+          <div class="video-stage">
+            <video id="video2" muted playsinline preload="auto"></video>
+            <canvas id="overlay2" aria-hidden="true"></canvas>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="panel">
       <div style="display:flex; justify-content:space-between; font-size:13px;">
-        <strong>2D План офиса: <span style="color:#38bdf8;">━━ Наблюдаемый путь</span> | <span style="color:#94a3b8;">┅┅ Пропуск детекции</span></strong>
+        <strong>2D План офиса: <span style="color:#38bdf8;">━━ Наблюдаемый путь</span> | <span style="color:#94a3b8;">┅┅ Приблизительный участок</span></strong>
       </div>
       <div class="map-container">
         <canvas id="mapCanvas" width="700" height="450"></canvas>
@@ -82,9 +95,15 @@
 
   <!-- Блок 1: Timeline -->
   <div class="timeline-bar">
-    <button class="btn" id="playBtn" onclick="togglePlay()">▶ Play</button>
+    <button class="btn" id="playBtn" type="button" disabled>▶ Play</button>
     <span id="timeLabel" style="font-family:monospace; font-size:15px; width:130px;">t = 00:00.0</span>
-    <input type="range" id="timeline" min="0" max="100" step="0.04" value="0">
+    <input type="range" id="timeline" min="0" max="100" step="0.001" value="0" aria-label="Время записи" disabled>
+  </div>
+
+  <div class="controls">
+    <label for="trackSelect">Перейти к треку</label>
+    <select id="trackSelect" disabled><option value="">Все треки</option></select>
+    <span id="status" role="status"></span>
   </div>
 
   <!-- Блок 2: Активные ID в момент t + Паспорт выбранного трека -->
@@ -96,199 +115,6 @@
     </div>
   </div>
 
-<script>
-  // Демо-данные на случай, если JSON от команды еще не готов (потом заменишь на fetch('/static/tracks_metadata.json'))
-  const metadata = {
-    duration_sec: 60.0,
-    total_unique_tracks: 3,
-    cameras: { "cam_1": "cam1.mp4", "cam_2": "cam2.mp4", "cam_3": "cam3.mp4" },
-    tracks_summary: {
-      "7": {
-        id: 7, start_time: 2.0, end_time: 38.5, cameras_visited: ["cam_1", "cam_2"], color: "#38bdf8",
-        camera_segments: [{cam: "cam_1", start: 2.0, end: 18.0}, {cam: "cam_2", start: 16.5, end: 38.5}],
-        map_path: [
-          {t: 2.0, x: 80, y: 120, status: "observed", cams: ["cam_1"]},
-          {t: 10.0, x: 240, y: 150, status: "observed", cams: ["cam_1"]},
-          {t: 18.0, x: 350, y: 180, status: "observed", cams: ["cam_1", "cam_2"]},
-          {t: 24.0, x: 430, y: 240, status: "missed", cams: []},
-          {t: 27.0, x: 480, y: 290, status: "observed", cams: ["cam_2"]},
-          {t: 38.5, x: 610, y: 360, status: "observed", cams: ["cam_2"]}
-        ]
-      },
-      "8": {
-        id: 8, start_time: 12.0, end_time: 50.0, cameras_visited: ["cam_2", "cam_3"], color: "#f43f5e",
-        camera_segments: [{cam: "cam_2", start: 12.0, end: 30.0}, {cam: "cam_3", start: 31.0, end: 50.0}],
-        map_path: [
-          {t: 12.0, x: 580, y: 100, status: "observed", cams: ["cam_2"]},
-          {t: 30.0, x: 400, y: 210, status: "observed", cams: ["cam_2"]},
-          {t: 31.0, x: 380, y: 250, status: "missed", cams: []},
-          {t: 50.0, x: 180, y: 380, status: "observed", cams: ["cam_3"]}
-        ]
-      }
-    }
-  };
-
-  let currentTime = 0;
-  let selectedId = null;
-  let isPlaying = false;
-  let timer = null;
-
-  const v1 = document.getElementById('video1');
-  const v2 = document.getElementById('video2');
-  const timeline = document.getElementById('timeline');
-  const canvas = document.getElementById('mapCanvas');
-  const ctx = canvas.getContext('2d');
-
-  function formatTime(sec) {
-    const m = Math.floor(sec / 60).toString().padStart(2, '0');
-    const s = (sec % 60).toFixed(1).padStart(4, '0');
-    return `${m}:${s}`;
-  }
-
-  function init() {
-    document.getElementById('totalTracksBadge').innerText = `Всего уникальных сквозных треков: ${metadata.total_unique_tracks}`;
-    timeline.max = metadata.duration_sec;
-
-    const camKeys = Object.keys(metadata.cameras);
-    [1, 2].forEach(slot => {
-      const sel = document.getElementById(`slot${slot}Select`);
-      camKeys.forEach((cam, idx) => {
-        const opt = document.createElement('option');
-        opt.value = cam; opt.innerText = cam.toUpperCase();
-        if (idx === slot - 1) opt.selected = true;
-        sel.appendChild(opt);
-      });
-    });
-    updateUI(0);
-  }
-
-  timeline.addEventListener('input', (e) => {
-    currentTime = parseFloat(e.target.value);
-    v1.currentTime = currentTime;
-    v2.currentTime = currentTime;
-    updateUI(currentTime);
-  });
-
-  function togglePlay() {
-    isPlaying = !isPlaying;
-    document.getElementById('playBtn').innerText = isPlaying ? "⏸ Pause" : "▶ Play";
-    if (isPlaying) {
-      v1.play().catch(()=>{}); v2.play().catch(()=>{});
-      timer = setInterval(() => {
-        currentTime += 0.1;
-        if (currentTime > metadata.duration_sec) currentTime = 0;
-        timeline.value = currentTime;
-        updateUI(currentTime);
-      }, 100);
-    } else {
-      v1.pause(); v2.pause();
-      clearInterval(timer);
-    }
-  }
-
-  // Главная функция состояния f(t, id)
-  function updateUI(t) {
-    document.getElementById('timeLabel').innerText = `t = ${formatTime(t)}`;
-    const container = document.getElementById('activeIdsContainer');
-    container.innerHTML = '';
-
-    const activeTracks = Object.values(metadata.tracks_summary).filter(
-      tr => t >= tr.start_time && t <= tr.end_time
-    );
-
-    activeTracks.forEach(tr => {
-      const card = document.createElement('div');
-      card.className = 'id-card' + (selectedId === tr.id ? ' selected' : '');
-      card.innerHTML = `
-        <div style="font-weight:700; color:${tr.color}">ID #${tr.id} (${tr.cameras_visited.join(' → ')})</div>
-        <div class="time-range">⏱ Начало: ${formatTime(tr.start_time)} | Конец: ${formatTime(tr.end_time)}</div>
-      `;
-      card.onclick = () => { selectedId = (selectedId === tr.id) ? null : tr.id; updateUI(currentTime); };
-      container.appendChild(card);
-    });
-
-    if (selectedId && metadata.tracks_summary[selectedId]) {
-      const tr = metadata.tracks_summary[selectedId];
-      document.getElementById('trackPassport').innerHTML = `
-        <strong>Паспорт сквозного трека ID #${tr.id}</strong><br>
-        • Время жизни: <b>${formatTime(tr.start_time)} — ${formatTime(tr.end_time)}</b><br>
-        • Пройденные камеры: <b>${tr.cameras_visited.join(' → ')}</b>
-      `;
-      if (document.getElementById('autoSwitchCam').checked) autoSelectCamerasForTrack(tr, t);
-    } else {
-      document.getElementById('trackPassport').innerHTML = `<em>Выберите ID в списке (или показаны все активные в момент t)...</em>`;
-    }
-
-    drawMap(t, activeTracks);
-  }
-
-  // Умное переключение 2 слотов камер при переходе объекта между камерами
-  function autoSelectCamerasForTrack(track, t) {
-    const segs = track.camera_segments;
-    let activeCams = segs.filter(s => t >= s.start && t <= s.end).map(s => s.cam);
-    if (activeCams.length === 1) {
-      // Если виден на одной, во 2-й слот ставим следующую (или предыдущую) камеру по маршруту трека
-      const nextSeg = segs.find(s => s.start > t) || segs.find(s => s.end < t);
-      if (nextSeg && nextSeg.cam !== activeCams[0]) activeCams.push(nextSeg.cam);
-    }
-    if (activeCams[0]) setSlotCam(1, activeCams[0]);
-    if (activeCams[1]) setSlotCam(2, activeCams[1]);
-  }
-
-  function setSlotCam(slotNum, camId) {
-    const sel = document.getElementById(`slot${slotNum}Select`);
-    if (sel.value !== camId) {
-      sel.value = camId;
-      document.getElementById(`slot${slotNum}Title`).innerText = `Слот ${slotNum}: ${camId.toUpperCase()}`;
-      const videoEl = document.getElementById(`video${slotNum}`);
-      videoEl.src = metadata.cameras[camId];
-      videoEl.currentTime = currentTime;
-    }
-  }
-
-  function manualCamChange(slotNum, camId) {
-    document.getElementById('autoSwitchCam').checked = false;
-    setSlotCam(slotNum, camId);
-  }
-
-  // Отрисовка 2D-карты (Сплошная линия — виден, Пунктир — короткий пропуск детекции)
-  function drawMap(t, activeTracks) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Сетка плана помещения (заменится на картинку плана офиса)
-    ctx.strokeStyle = "#1e293b"; ctx.lineWidth = 1;
-    for (let x = 0; x < canvas.width; x += 50) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke(); }
-    for (let y = 0; y < canvas.height; y += 50) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke(); }
-
-    const tracksToDraw = selectedId ? [metadata.tracks_summary[selectedId]] : activeTracks;
-
-    tracksToDraw.forEach(tr => {
-      if (!tr) return;
-      const pts = tr.map_path.filter(p => p.t <= t);
-      if (pts.length === 0) return;
-
-      for (let i = 1; i < pts.length; i++) {
-        ctx.beginPath();
-        ctx.strokeStyle = tr.color;
-        ctx.lineWidth = 3;
-        // Если статус missed — рисуем пунктиром!
-        ctx.setLineDash(pts[i].status === "missed" ? [6, 6] : []);
-        ctx.moveTo(pts[i - 1].x, pts[i - 1].y);
-        ctx.lineTo(pts[i].x, pts[i].y);
-        ctx.stroke();
-      }
-      ctx.setLineDash([]);
-
-      // Текущая позиция человека в момент t
-      const lastPt = pts[pts.length - 1];
-      ctx.fillStyle = tr.color;
-      ctx.beginPath(); ctx.arc(lastPt.x, lastPt.y, 7, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = "#fff"; ctx.font = "bold 12px sans-serif";
-      ctx.fillText(`ID ${tr.id}`, lastPt.x + 10, lastPt.y + 4);
-    });
-  }
-
-  init();
-</script>
+<script src="/static/player.js" defer></script>
 </body>
 </html>
