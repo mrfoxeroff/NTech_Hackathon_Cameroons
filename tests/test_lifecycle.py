@@ -1,5 +1,7 @@
-from mtmc.associate import DEFAULTS, Observation
-from mtmc.lifecycle import review_lifecycle
+from dataclasses import replace
+
+from mtmc.associate import DEFAULTS, Observation, split_tracklets
+from mtmc.lifecycle import evidence, review_lifecycle
 
 
 def fragment(ident, height, length):
@@ -51,3 +53,24 @@ def test_confirmed_ids_require_lifetime_and_consistent_contour_support():
         "short_distant",
         "weak_distant_contour",
     ]
+
+
+def test_matching_silhouettes_join_two_local_ids_at_their_shared_frame():
+    before = [replace(obs, reid=(1, 0)) for obs in fragment(1, 200, 4)]
+    after = [
+        replace(
+            obs,
+            time=before[-1].time + i * 120,
+            frame=before[-1].frame + i,
+            bbox=(100, 100, 200, 270),
+            reid=(1, 0),
+        )
+        for i, obs in enumerate(fragment(2, 200, 4))
+    ]
+    a, b = split_tracklets(before + after, 350)
+    silhouette = [[115, 105], [180, 105], [180, 235], [115, 235]]
+    details = {obs: {"silhouette_polygons": [silhouette]} for obs in (before[-1], after[0])}
+    config = DEFAULTS | {"stitch_motion_window_ms": 100, "reappearance_memory_ms": 60000}
+    assert evidence(a, b, set(), details, config)[1] == "same_mask_boundary"
+    details[after[0]] = {"silhouette_polygons": [[[187, 105], [199, 105], [199, 235], [187, 235]]]}
+    assert evidence(a, b, set(), details, config) is None

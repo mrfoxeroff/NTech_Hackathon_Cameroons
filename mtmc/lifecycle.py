@@ -9,6 +9,7 @@ import cv2
 import numpy as np
 
 from .associate import local_candidate, split_tracklets, synchronized_pairs, upper_anchor
+from .doorways import restore_door_returns
 from .reconnect import aligned_points, return_score, similarity
 
 
@@ -164,6 +165,23 @@ def evidence(a, b, overlaps, details, config):
     if b.first.time < a.first.time:
         a, b = b, a
     if a.first.camera == b.first.camera:
+        gap = b.first.time - a.last.time
+        if (
+            -150 <= gap <= 0
+            and not a.last.exit_after
+            and a.last.source_segment == b.first.source_segment
+            and a.last.time < b.last.time
+            and min(len(a.observations), len(b.observations)) >= 4
+        ):
+            shared = list(synchronized_pairs(a.observations, b.observations, 0))
+            look = similarity(a.reid, b.reid)
+            if (
+                1 <= len(shared) <= 2
+                and look is not None
+                and look >= 0.68
+                and all(p.frame == q.frame and mask_duplicate(p, q, details) for p, q in shared)
+            ):
+                return 1.35 + 0.3 * look, "same_mask_boundary"
         score = local_candidate(a, b, config)
         if score is not None and score >= 0.59:
             return 0.8 + score, "local_motion"
@@ -200,7 +218,11 @@ def conflicts(left, right, overlaps, details, tolerance):
             elif frozenset((a.first.camera, b.first.camera)) not in overlaps:
                 return None
             else:
-                ds = [d for _, _, d in aligned_points(a, b, tolerance)]
+                ds = [
+                    d
+                    for p, q, d in aligned_points(a, b, tolerance)
+                    if all(details[o].get("footpoint_status") == "observed" for o in (p, q))
+                ]
                 if len(ds) >= 4 and median(ds) > 35 and min(ds) > 23:
                     return None
     return duplicates
@@ -298,8 +320,9 @@ def review_lifecycle(groups, details, config):
         if not joined:
             break
 
+    restored, door_links = restore_door_returns(list(current.values()), config)
     confirmed, tentative, isolated = [], [], []
-    for group in current.values():
+    for group in restored:
         cameras = {o.camera for o in group}
         periods = visibility_runs(group, config["visibility_gap_ms"])
         span = max(run[-1].time - run[0].time for run in periods)
@@ -348,4 +371,8 @@ def review_lifecycle(groups, details, config):
                 else:
                     kept.extend(run)
             confirmed.append(kept)
-    return confirmed, pending, {"links": links, "tentative": tentative, "isolated": isolated}
+    return (
+        confirmed,
+        pending,
+        {"links": links, "door_returns": door_links, "tentative": tentative, "isolated": isolated},
+    )

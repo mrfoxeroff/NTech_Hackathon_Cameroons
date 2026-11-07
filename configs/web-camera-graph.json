@@ -1,5 +1,13 @@
 {
   "reappearance_memory_ms": 60000,
+  "door_return_zones": {
+    "side_room": {"camera_4": [218, 350, 246, 388]},
+    "hall_lower_left": {"camera_5": [274, 511, 298, 546], "camera_3": [287, 507, 311, 547]},
+    "hall_right": {"camera_5": [317, 452, 340, 481]},
+    "hall_middle": {"camera_3": [282, 337, 307, 378]},
+    "games_room_access": {"camera_1": [176, 106, 221, 139], "camera_2": [181, 108, 228, 143]},
+    "games_room_corridor": {"camera_3": [255, 161, 281, 191]}
+  },
   "foreground_reid_cameras": ["camera_5"],
   "standalone_camera_min_observations": {"camera_5": 4},
   "lifecycle": {
