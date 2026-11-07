@@ -2,17 +2,25 @@
   "note": "Files are external assets; not committed to Git.",
   "files": [
     {
+      "file": "person-office-v2.pt",
+      "path": "weights/person-office-v2.pt",
+      "bytes": 20517796,
+      "sha256": "992d3d7d68004e5c39f4498c27cff9dcae3fc3cbba3f0ca9704ab803ba3fbf53"
+    },
+    {
       "file": "osnet_x0_25_msmt17.pth",
       "bytes": 9336983,
       "sha256": "cf55163d78fc44c62c82f85ab62d39f10438679b5abe8c698ae08cfa84aa6e18"
     },
     {
       "file": "person-reidentification-retail-0288.bin",
+      "path": "mtmc/weights/person-reidentification-retail-0288.bin",
       "bytes": 728052,
       "sha256": "6496b8d51741703c9e9c7f6474cb96c60de1856d7b4fd77235e48cea146066a5"
     },
     {
       "file": "person-reidentification-retail-0288.xml",
+      "path": "mtmc/weights/person-reidentification-retail-0288.xml",
       "bytes": 450664,
       "sha256": "30f452b2ed2763f7bf429eea23f8f243ad0e7f3cdd7226db6888f1660efb3424"
     },

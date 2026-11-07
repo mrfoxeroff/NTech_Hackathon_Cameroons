@@ -1,5 +1,8 @@
 # NTech Hackathon — сквозной трекинг людей
 
+Этот документ описывает исходный процесс ветки Dima для двух камер.
+Запуск общего проекта на пяти камерах описан в [корневом README](../README.md).
+
 Ветка `Dima`: локальная детекция и сегментация людей, трекинг внутри камеры,
 ReID-признаки и собственное межкамерное сопоставление с глобальными ID.
 Поддерживаются проверка часов записей, устранение локальных дублей и уточнение
@@ -28,7 +31,7 @@ ReID-признаки и собственное межкамерное сопо�
 
 ```powershell
 py -3.10 -m venv mtmc/.venv
-& './mtmc/.venv/Scripts/python.exe' -m pip install -r requirements.txt
+& './mtmc/.venv/Scripts/python.exe' -m pip install -r mtmc/requirements-legacy.txt
 & './mtmc/.venv/Scripts/python.exe' -m pytest -c mtmc/pytest.ini mtmc -q
 ```
 
