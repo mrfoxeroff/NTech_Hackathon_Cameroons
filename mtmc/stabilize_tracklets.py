@@ -5,7 +5,10 @@ All observations are retained. No person labels are used.
 
 import math
 
-from associate import Tracklet, summarize, synchronized_pairs, upper_anchor
+if __package__:
+    from .associate import Tracklet, summarize, synchronized_pairs, upper_anchor
+else:
+    from associate import Tracklet, summarize, synchronized_pairs, upper_anchor
 
 
 def cosine(a, b):

@@ -65,6 +65,30 @@ def test_duplicate_camera_ids_rejected(settings):
         settings.validate()
 
 
+def test_selected_cameras_do_not_require_unselected_recordings(tmp_path):
+    (tmp_path / "present.mkv").touch()
+    config = tmp_path / "cameras.yaml"
+    config.write_text(
+        yaml.safe_dump(
+            {
+                "recording_id": "test",
+                "output_root": "output",
+                "model": "model.pt",
+                "cameras": [
+                    {"camera_id": "camera_1", "video": "present.mkv"},
+                    {"camera_id": "camera_2", "video": "missing.mkv"},
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    assert [camera.camera_id for camera in load_settings(config, camera_ids={"camera_1"}).cameras] == [
+        "camera_1"
+    ]
+    with pytest.raises(ValueError, match="Video does not exist: .*missing.mkv"):
+        load_settings(config)
+
+
 def test_missing_video_rejected(settings):
     settings.cameras[0].video = Path("missing-source-video.mkv")
     with pytest.raises(ValueError, match="does not exist"):

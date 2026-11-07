@@ -146,7 +146,7 @@ def tracker_parameters(settings: Settings) -> dict:
     }
 
 
-def load_settings(path: Path) -> Settings:
+def load_settings(path: Path, *, camera_ids: set[str] | None = None) -> Settings:
     path = path.resolve()
     raw = yaml.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict):
@@ -169,6 +169,11 @@ def load_settings(path: Path) -> Settings:
             "occluder_polygons",
         }:
             raise ValueError("Invalid camera mapping or unknown camera field")
+    if camera_ids is not None:
+        missing = camera_ids - {safe_id(camera.get("camera_id")) for camera in camera_values}
+        if missing:
+            raise ValueError(f"Cameras missing from configuration: {', '.join(sorted(missing))}")
+        camera_values = [camera for camera in camera_values if camera.get("camera_id") in camera_ids]
     cameras = [
         CameraConfig(
             camera_id=c["camera_id"],

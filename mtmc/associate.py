@@ -445,7 +445,10 @@ def associate(observations, settings):
     handoffs = {tuple(route) for route in config["continuous_handoffs"]}
     tracklets = split_tracklets(observations, config["max_local_gap_ms"])
     if config["merge_local_duplicates"]:
-        from stabilize_tracklets import merge_duplicates
+        if __package__:
+            from .stabilize_tracklets import merge_duplicates
+        else:
+            from stabilize_tracklets import merge_duplicates
         tracklets = merge_duplicates(tracklets, config)
     if config["stitch_local_fragments"]:
         tracklets = stitch_local(tracklets, config)

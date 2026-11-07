@@ -15,7 +15,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.12"]
+dev = ["pytest>=8", "ruff>=0.12", "httpx>=0.28,<1"]
+demo = ["fastapi==0.162.0", "uvicorn==0.54.0", "openvino==2026.4.1"]
 
 [project.scripts]
 local-tracking = "local_tracking.cli:main"

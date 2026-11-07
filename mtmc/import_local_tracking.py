@@ -5,11 +5,14 @@ import json
 import math
 from pathlib import Path
 
-from associate import DEFAULTS, Observation, associate, export_tracks, unit
 from local_tracking.artifacts import write_json
 from local_tracking.pipeline import file_hash
 from local_tracking.validate import validate_output
 
+if __package__:
+    from .associate import DEFAULTS, Observation, associate, export_tracks, unit
+else:
+    from associate import DEFAULTS, Observation, associate, export_tracks, unit
 
 UPSTREAM_COMMIT = "00853f1242037ed4833eab3dd98cab8604e2d84a"
 
@@ -65,7 +68,8 @@ def convert_observation(frame, observation, manifest, root, segment):
         "artifact_root": str(root.resolve()),
         **{key: observation.get(key) for key in (
             "mask_ref", "mask_origin_px", "mask_size", "crop_ref", "crop_quality", "border_flags",
-            "footpoint_px", "footpoint_method", "touches_frame_bottom")},
+            "footpoint_px", "footpoint_status", "footpoint_method", "touches_frame_bottom",
+            "bbox_stabilized_xyxy")},
     }
     # Recover source PTS only when the exported media clock and stream time base exist.
     time_base = manifest["source"].get("time_base")
@@ -164,11 +168,13 @@ def import_outputs(inputs, output, encoder, settings=None, min_quality=0.05, run
         raise ValueError("Inputs must share recording_id and timeline_origin")
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
-    report = {"stage": "local_import", "status": "running", "upstream_commit": UPSTREAM_COMMIT,
+    report = {"stage": "local_import", "status": "running", "importer_baseline_commit": UPSTREAM_COMMIT,
               "recording_id": next(iter(recordings)), "timeline_origin": next(iter(origins)),
               "min_crop_quality": min_quality, "settings": settings,
               "reid": getattr(encoder, "provenance", {"name": "injected_encoder"}),
               "cameras": {}, "timestamp_validation": "Structural validation only; physical alignment not certified"}
+    if not __package__:
+        report["upstream_commit"] = UPSTREAM_COMMIT
     write_json(output / "manifest.json", report)
     try:
         with ((output / "observations.jsonl").open("x", encoding="utf-8") as observations,
@@ -181,6 +187,7 @@ def import_outputs(inputs, output, encoder, settings=None, min_quality=0.05, run
                 report["cameras"][camera] = {"input": str(root), "validation": validation, "stats": stats,
                     "frames_sha256": file_hash(root / "frames.jsonl"),
                     "source_sha256": manifest.get("source_sha256"),
+                    "weights_sha256": manifest.get("weights_sha256"),
                     "clock_anchors": manifest.get("clock_anchors", []),
                     "time_offset_sec": manifest["time_offset_sec"]}
                 segment = 0

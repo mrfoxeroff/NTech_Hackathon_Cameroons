@@ -29,7 +29,7 @@ ReID-признаки и собственное межкамерное сопо�
 ```powershell
 py -3.10 -m venv mtmc/.venv
 & './mtmc/.venv/Scripts/python.exe' -m pip install -r requirements.txt
-& './mtmc/.venv/Scripts/python.exe' -m pytest -c mtmc/pytest.ini -q
+& './mtmc/.venv/Scripts/python.exe' -m pytest -c mtmc/pytest.ini mtmc -q
 ```
 
 Версии зависимостей записаны из рабочего окружения. Чистая установка через
@@ -44,7 +44,7 @@ py -3.10 -m venv mtmc/.venv
 | `osnet_x0_25_msmt17.pth` | [OSNet, веса MSMT17](https://huggingface.co/kaiyangzhou/osnet/tree/main) |
 | `torchreid_osnet.py` | [Архитектура Torchreid OSNet](https://github.com/KaiyangZhou/deep-person-reid/blob/master/torchreid/models/osnet.py), сохранить под указанным именем |
 
-Контрольные суммы использованных локальных файлов: [model-assets.json](model-assets.json).
+Контрольные суммы использованных локальных файлов: [model-assets.json](../model-assets.json).
 Условия использования внешнего кода и моделей задаются их источниками.
 
 ## Запуск
@@ -68,10 +68,10 @@ py -3.10 -m venv mtmc/.venv
 Для произвольной записи: настроить YAML по образцу
 `mtmc/local_stage.example.yaml`, запустить `mtmc/local_stage.py process`, затем
 передать локальные результаты в `mtmc/import_local_tracking.py --associate`.
-Проверенный пример и описание форматов: [интеграция локального этапа](mtmc/INTEGRATION_MISHA.md).
-Код основного межкамерного алгоритма: [associate.py](mtmc/associate.py).
+Проверенный пример и описание форматов: [интеграция локального этапа](INTEGRATION_MISHA.md).
+Код основного межкамерного алгоритма: [associate.py](associate.py).
 Геометрическое уточнение двух камер и резервный OSNet:
-[refine_cross_camera.py](mtmc/refine_cross_camera.py).
+[refine_cross_camera.py](refine_cross_camera.py).
 
 Результат содержит `assignments.jsonl`, `tracks.json` и `tracks.csv`.
 Глобальный ID назначается наблюдению по ключу камера / локальный ID / кадр.
@@ -90,6 +90,6 @@ py -3.10 -m venv mtmc/.venv
 Синхронизация основана на экранных часах, аппаратная кадровая точность не подтверждена.
 На полных записях последнее исправление ID ещё не проверено.
 
-Подробности: [описание алгоритма](mtmc/README.md),
-[исправление ID](mtmc/IDENTITY_REPAIR.md),
-[проверка синхронизации](mtmc/sync-check/README.md).
+Подробности: [описание алгоритма](README.md),
+[исправление ID](IDENTITY_REPAIR.md),
+[проверка синхронизации](sync-check/README.md).
