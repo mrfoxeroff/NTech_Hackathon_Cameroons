@@ -1,0 +1,42 @@
+{
+  "sync_tolerance_ms": 180,
+  "visibility_gap_ms": 350,
+  "reid_min_similarity": 0.3,
+  "max_brightness_difference": 0.32,
+  "overlap_pairs": [
+    [
+      "cam_1",
+      "cam_2"
+    ]
+  ],
+  "stitch_local_fragments": true,
+  "contextual_appearance": true,
+  "resolve_group_conflicts": true,
+  "joint_overlap_matching": true,
+  "temporal_evidence_ranking": true,
+  "merge_local_duplicates": true,
+  "excluded_image_rects": {
+    "cam_1": [
+      [
+        0,
+        880,
+        190,
+        1050
+      ],
+      [
+        690,
+        1850,
+        910,
+        1944
+      ]
+    ],
+    "cam_2": [
+      [
+        1400,
+        210,
+        1725,
+        585
+      ]
+    ]
+  }
+}

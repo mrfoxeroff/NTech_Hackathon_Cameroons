@@ -1,0 +1,13 @@
+{
+  "overlap_pairs": [["cam_a", "cam_b"]],
+  "continuous_handoffs": [["cam_a", "door_a", "cam_b", "door_b"]],
+  "sync_tolerance_ms": 100,
+  "min_overlap_pairs": 3,
+  "max_local_gap_ms": 750,
+  "max_handoff_gap_ms": 400,
+  "visibility_gap_ms": 250,
+  "reid_min_similarity": 0.75,
+  "hsv_min_similarity": 0.9,
+  "min_score_margin": 0.05,
+  "max_map_distance": null
+}
