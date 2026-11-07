@@ -16,6 +16,8 @@ from local_tracking.artifacts import write_json
 from local_tracking.config import safe_id
 from local_tracking.pipeline import file_hash
 from local_tracking.video import iter_video
+from mtmc.associate import DEFAULTS, export_tracks
+from mtmc.identity_consistency import associate_consistently
 
 COLORS = ("#38bdf8", "#fb7185", "#4ade80", "#facc15", "#c084fc", "#fb923c")
 
@@ -38,7 +40,11 @@ def observation_key(row):
 def load_calibration(directory, camera, source, plan_size):
     number = camera.removeprefix("camera_").removeprefix("cam_")
     data = read_json(directory / f"cam_{number}_calibration.json")
-    if data["camera_size"] != [source["width"], source["height"]] or data["plan_size"] != list(plan_size):
+    if (
+        data["camera_size"] != [source["width"], source["height"]]
+        or data["plan_size"] != list(plan_size)
+        or data.get("lens_correction_applied")
+    ):
         raise ValueError(f"Calibration size mismatch for {camera}")
     matrix = np.asarray(data["homography"], dtype=float)
     if matrix.shape != (3, 3) or not np.isfinite(matrix).all() or np.linalg.matrix_rank(matrix) != 3:
@@ -97,17 +103,9 @@ def build_tracks(track_data, points, gap_sec):
     return result
 
 
-def render_camera(camera, local_root, manifest, annotations, path):
+def render_camera(camera, local_frames, manifest, annotations, path):
     source = manifest["source"]
     video = Path(source["path"])
-    if file_hash(video) != manifest["source_sha256"]:
-        raise ValueError(f"Source video changed for {camera}")
-    local_frames = [
-        (row["frame_index"], row["video_time_sec"], row["timestamp_sec"])
-        for row in rows(local_root / "frames.jsonl")
-    ]
-    if not local_frames:
-        raise ValueError(f"Missing source frames for {camera}")
     start = local_frames[0][2]
     width = min(1280, source["width"]) // 2 * 2
     height = round(source["height"] * width / source["width"] / 2) * 2
@@ -150,14 +148,64 @@ def render_camera(camera, local_root, manifest, annotations, path):
     return {"url": f"/media/{path.name}", "start": start, "end": coverage[-1][1], "coverage": coverage}
 
 
-def export_session(global_root, output, plan, calibrations):
+def package_camera(camera, frames, manifest, annotations, path):
+    source = manifest["source"]
+    video = Path(source["path"])
+    if file_hash(video) != manifest["source_sha256"]:
+        raise ValueError(f"Source video changed for {camera}")
+    with av.open(str(video)) as original:
+        stream = original.streams.video[0]
+        if (
+            stream.codec_context.name != "h264"
+            or stream.codec_context.has_b_frames
+            or source.get("first_frame_time_sec") is None
+        ):
+            return render_camera(camera, frames, manifest, annotations, path)
+        offset = round(source["first_frame_time_sec"] / stream.time_base)
+        with av.open(str(path), "w", options={"movflags": "+faststart"}) as output:
+            target = output.add_stream_from_template(stream)
+            for packet in original.demux(stream):
+                if packet.size == 0:
+                    continue
+                if packet.dts is None or packet.pts is None:
+                    raise ValueError(f"Cannot remux missing source timestamps for {camera}")
+                packet.pts -= offset
+                packet.dts -= offset
+                packet.stream = target
+                output.mux(packet)
+
+    overlay = path.with_name(camera + "_overlay.json")
+    write_json(
+        overlay,
+        {
+            "width": source["width"],
+            "height": source["height"],
+            "frames": [
+                [media, [[ident, *box] for ident, box in annotations.get(index, [])]]
+                for index, media, _ in frames
+            ],
+        },
+    )
+    coverage = []
+    for _, _, time in frames:
+        if not coverage or time - coverage[-1][1] > 0.35:
+            coverage.append([time, time])
+        coverage[-1][1] = time
+    return {
+        "url": f"/media/{path.name}",
+        "overlay_url": f"/media/{overlay.name}",
+        "start": coverage[0][0],
+        "end": coverage[-1][1],
+        "coverage": coverage,
+        "clock_anchors": manifest["clock_anchors"],
+        "time_offset_sec": manifest["time_offset_sec"],
+    }
+
+
+def session_sources(global_root, plan_size, calibrations):
     manifest = read_json(global_root / "manifest.json")
     if manifest["status"] != "complete":
         raise ValueError("Global run must be complete")
-    if output.exists():
-        raise FileExistsError(output)
-    with Image.open(plan) as image:
-        plan_size = image.size
     cameras = {}
     for camera, info in manifest["cameras"].items():
         safe_id(camera)
@@ -174,12 +222,71 @@ def export_session(global_root, output, plan, calibrations):
         cameras[camera] = (root, local, load_calibration(calibrations, camera, local["source"], plan_size))
     if not cameras:
         raise ValueError("Global run contains no cameras")
+    return manifest, cameras
+
+
+def repair_associations(global_root, plan, calibrations):
+    """Assign global IDs to a completed observation import."""
+    with Image.open(plan) as image:
+        size = image.size
+    manifest, cameras = session_sources(global_root, size, calibrations)
+    if (global_root / "assignments.jsonl").exists():
+        raise FileExistsError("Use a new import directory for repaired associations")
+    observations = list(rows(global_root / "observations.jsonl"))
+    groups, pending, report = associate_consistently(
+        observations, manifest["settings"], {camera: data[2] for camera, data in cameras.items()}, size
+    )
+    gap = (DEFAULTS | manifest["settings"])["visibility_gap_ms"]
+    with TemporaryDirectory(prefix=".association-", dir=global_root) as temporary:
+        staging = Path(temporary)
+        export_tracks(groups, staging, gap)
+        with (staging / "assignments.jsonl").open("a", encoding="utf-8") as stream:
+            for obs in pending:
+                stream.write(
+                    json.dumps(
+                        {
+                            "camera_id": obs.camera,
+                            "local_id": obs.local_id,
+                            "frame_index": obs.frame,
+                            "timestamp_ms": obs.time,
+                            "global_id": None,
+                            "status": "identity_uncertain",
+                        }
+                    )
+                    + "\n"
+                )
+        for name in ("tracks.json", "tracks.csv", "assignments.jsonl"):
+            (staging / name).replace(global_root / name)
+    manifest.update(total_tracks=len(groups), identity_consistency=report)
+    write_json(global_root / "manifest.json", manifest)
+    return report
+
+
+def export_session(global_root, output, plan, calibrations):
+    if output.exists():
+        raise FileExistsError(output)
+    with Image.open(plan) as image:
+        plan_size = image.size
+    manifest, cameras = session_sources(global_root, plan_size, calibrations)
+    frame_catalog = {}
+    for camera, (root, _, _) in cameras.items():
+        frame_catalog[camera] = [
+            (row["frame_index"], row["video_time_sec"], row["timestamp_sec"])
+            for row in rows(root / "frames.jsonl")
+        ]
+        if not frame_catalog[camera]:
+            raise ValueError(f"Missing source frames for {camera}")
+    frame_times = {
+        (camera, index): round(time * 1000)
+        for camera, frames in frame_catalog.items()
+        for index, _, time in frames
+    }
     assignments = {}
     for item in rows(global_root / "assignments.jsonl"):
         key = observation_key(item)
         if key in assignments:
             raise ValueError(f"Duplicate assignment: {key}")
-        assignments[key] = item["global_id"]
+        assignments[key] = (item["global_id"], item["timestamp_ms"])
     track_data = read_json(global_root / "tracks.json")
     valid_ids = {track["global_id"] for track in track_data["tracks"]}
     annotations = defaultdict(lambda: defaultdict(list))
@@ -187,7 +294,12 @@ def export_session(global_root, output, plan, calibrations):
     ranks = {}
     for row in rows(global_root / "observations.jsonl"):
         key = observation_key(row)
-        ident = assignments.pop(key)
+        ident, timestamp = assignments.pop(key)
+        if (
+            frame_times.get((row["camera_id"], row["frame_index"])) != timestamp
+            or row["timestamp_ms"] != timestamp
+        ):
+            raise ValueError(f"Assignment is out of sync with its source frame: {key}")
         if ident is None:
             continue
         if ident not in valid_ids:
@@ -215,8 +327,10 @@ def export_session(global_root, output, plan, calibrations):
         with Image.open(plan) as image:
             image.convert("RGB").save(bundle / "map.png")
         videos = {
-            camera: render_camera(camera, root, local, annotations[camera], bundle / f"{camera}.mp4")
-            for camera, (root, local, _) in cameras.items()
+            camera: package_camera(
+                camera, frame_catalog[camera], local, annotations[camera], bundle / f"{camera}.mp4"
+            )
+            for camera, (_, local, _) in cameras.items()
         }
         start = min(video["start"] for video in videos.values())
         end = max(video["end"] for video in videos.values())

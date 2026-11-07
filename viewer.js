@@ -10,8 +10,12 @@ const slots = [1, 2].map(number => ({
   video: element("video" + number),
   select: element("slot" + number + "Select"),
   title: element("slot" + number + "Title"),
+  overlay: element("overlay" + number),
   camera: null,
+  mediaTime: null,
+  boxes: null,
 }));
+const overlayCache = new Map();
 
 let metadata;
 let tracks = [];
@@ -33,6 +37,80 @@ function covered(slot) {
   return metadata.cameras[slot.camera].coverage.some(([start, end]) => currentTime >= start && currentTime <= end);
 }
 
+function lowerBound(rows, value, key) {
+  let lo = 0;
+  let hi = rows.length;
+  while (lo < hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    if (key(rows[mid]) < value) lo = mid + 1;
+    else hi = mid;
+  }
+  return lo;
+}
+
+function interpolateClock(anchors, value, from, to) {
+  const index = Math.max(0, Math.min(anchors.length - 2, lowerBound(anchors, value, row => row[from]) - 1));
+  const a = anchors[index];
+  const b = anchors[index + 1];
+  return a[to] + (value - a[from]) * (b[to] - a[to]) / (b[from] - a[from]);
+}
+
+function videoTime(camera, time) {
+  if (!camera.overlay_url) return time - camera.start;
+  const local = time - camera.time_offset_sec;
+  return camera.clock_anchors.length
+    ? interpolateClock(camera.clock_anchors, local, "timestamp_sec", "video_time_sec")
+    : local;
+}
+
+function commonTime(camera, time) {
+  if (!camera.overlay_url) return time + camera.start;
+  const mapped = camera.clock_anchors.length
+    ? interpolateClock(camera.clock_anchors, time, "video_time_sec", "timestamp_sec")
+    : time;
+  return mapped + camera.time_offset_sec;
+}
+
+function drawOverlay(slot, clear = false) {
+  const layer = slot.overlay;
+  const width = layer.clientWidth;
+  const height = layer.clientHeight;
+  if (!width || !height) return;
+  if (layer.width !== width || layer.height !== height) {
+    layer.width = width;
+    layer.height = height;
+  }
+  const drawing = layer.getContext("2d");
+  drawing.clearRect(0, 0, width, height);
+  if (clear || !slot.boxes || slot.mediaTime === null || slot.video.seeking || !covered(slot)) return;
+  const {frames} = slot.boxes;
+  const index = lowerBound(frames, slot.mediaTime, frame => frame[0]);
+  const before = frames[index - 1];
+  const after = frames[index];
+  const frame = !before || (after && after[0] - slot.mediaTime < slot.mediaTime - before[0]) ? after : before;
+  if (!frame || Math.abs(frame[0] - slot.mediaTime) > .16) return;
+  const camera = metadata.cameras[slot.camera];
+  if (Math.abs(commonTime(camera, slot.mediaTime) - currentTime) > .20) return;
+  const scale = Math.min(width / slot.boxes.width, height / slot.boxes.height);
+  const dx = (width - scale * slot.boxes.width) / 2;
+  const dy = (height - scale * slot.boxes.height) / 2;
+  drawing.font = "bold 13px sans-serif";
+  for (const [ident, x1, y1, x2, y2] of frame[1]) {
+    const track = metadata.tracks_summary[ident];
+    drawing.strokeStyle = drawing.fillStyle = track.color;
+    drawing.lineWidth = ident === selectedId ? 3 : 1.5;
+    const x = dx + x1 * scale;
+    const y = dy + y1 * scale;
+    drawing.strokeRect(x, y, (x2 - x1) * scale, (y2 - y1) * scale);
+    drawing.fillText("ID " + ident, x + 2, Math.max(dy + 13, y - 4));
+  }
+}
+
+function receiveVideoFrame(slot, mediaTime) {
+  slot.mediaTime = mediaTime;
+  drawOverlay(slot);
+}
+
 function syncSlot(slot, seek = false) {
   if (!slot.camera) return;
   const {video} = slot;
@@ -41,10 +119,18 @@ function syncSlot(slot, seek = false) {
   slot.title.textContent = slot.camera + (video.error ? " · ошибка видео" : available ? "" : " · нет кадра");
   video.style.visibility = available ? "visible" : "hidden";
   if (!available || !playing) video.pause();
-  if (!available || video.readyState < 1) return;
-  const target = Math.min(video.duration, currentTime - camera.start);
-  if (seek || (!video.seeking && Math.abs(video.currentTime - target) > 0.15)) {
+  if (!available || video.readyState < 1) {
+    drawOverlay(slot, true);
+    return;
+  }
+  const target = Math.max(0, Math.min(video.duration, videoTime(camera, currentTime)));
+  if (seek || (!video.seeking && Math.abs(video.currentTime - target) > 0.14)) {
+    drawOverlay(slot, true);
     video.currentTime = target;
+  }
+  if (camera.overlay_url) {
+    const rate = (videoTime(camera, currentTime + .04) - target) / .04;
+    video.playbackRate = Math.min(2, Math.max(.5, rate));
   }
   if (playing && video.paused && !video.seeking) video.play().catch(() => {});
 }
@@ -53,8 +139,26 @@ function setSlotCam(number, camera) {
   const slot = slots[number - 1];
   if (slot.camera === camera || !metadata.cameras[camera]) return;
   slot.camera = camera;
+  slot.boxes = null;
+  slot.mediaTime = null;
   slot.select.value = camera;
   slot.video.src = metadata.cameras[camera].url;
+  drawOverlay(slot, true);
+  const url = metadata.cameras[camera].overlay_url;
+  if (url) {
+    if (!overlayCache.has(url)) overlayCache.set(url, fetch(url).then(response => {
+      if (!response.ok) throw new Error("Не удалось загрузить подписи " + camera);
+      return response.json();
+    }));
+    overlayCache.get(url).then(data => {
+      if (slot.camera !== camera) return;
+      slot.boxes = data;
+      drawOverlay(slot);
+    }).catch(error => {
+      element("sessionStatus").textContent = error.message;
+      overlayCache.delete(url);
+    });
+  }
   syncSlot(slot, true);
 }
 
@@ -98,11 +202,14 @@ function renderCards(active) {
     };
     container.append(card);
   }
-  const selected = metadata.tracks_summary[selectedId];
-  element("trackPassport").textContent = selected
-    ? "ID " + selected.id + " · " + formatTime(selected.start_time) + " — " + formatTime(selected.end_time)
-      + " · " + selected.cameras_visited.join(" → ")
-    : "Выберите ID, чтобы увидеть маршрут и привязать камеры.";
+}
+
+function positionAt(track) {
+  const index = lowerBound(track.map_path, currentTime, point => point.t);
+  const point = track.map_path[index]?.t === currentTime ? track.map_path[index] : track.map_path[index - 1];
+  return point && currentTime - point.t <= metadata.visibility_gap_sec
+    && visibleSegments(track).some(segment => segment.cam === point.cam && point.t >= segment.start - .12)
+    ? point : null;
 }
 
 function drawMap(active, selected) {
@@ -114,8 +221,8 @@ function drawMap(active, selected) {
     ctx.lineWidth = 2;
     for (const point of track.map_path) {
       if (point.t > currentTime) break;
-      if (previous) {
-        ctx.setLineDash(point.gap_before || point.status === "estimated" || previous.status === "estimated" ? [5, 5] : []);
+      if (previous && !point.gap_before) {
+        ctx.setLineDash(point.status === "estimated" || previous.status === "estimated" ? [5, 5] : []);
         ctx.beginPath();
         ctx.moveTo(previous.x, previous.y);
         ctx.lineTo(point.x, point.y);
@@ -124,24 +231,32 @@ function drawMap(active, selected) {
       previous = point;
     }
     ctx.setLineDash([]);
-    if (previous && visibleSegments(track).length && currentTime - previous.t <= metadata.visibility_gap_sec) {
+    const point = positionAt(track);
+    if (point) {
       ctx.beginPath();
-      ctx.arc(previous.x, previous.y, 5, 0, Math.PI * 2);
+      ctx.arc(point.x, point.y, 5, 0, Math.PI * 2);
       ctx.fill();
       ctx.font = "bold 12px sans-serif";
-      ctx.fillText("ID " + track.id, previous.x + 8, previous.y + 4);
+      ctx.fillText("ID " + track.id, point.x + 8, point.y + 4);
     }
   }
 }
 
 function render() {
   timeline.value = currentTime;
-  element("timeLabel").textContent = "t = " + formatTime(currentTime);
+  element("timeLabel").textContent = "t = " + formatTime(currentTime) + " / " + formatTime(metadata.end_time);
   const active = tracks.filter(track => visibleSegments(track).length);
   const selected = metadata.tracks_summary[selectedId];
   renderCards(active);
+  const passport = selected
+    ? "ID " + selected.id + " · " + formatTime(selected.start_time) + " — " + formatTime(selected.end_time)
+      + " · " + selected.cameras_visited.join(" → ")
+      + (visibleSegments(selected).length && !positionAt(selected) ? " · Позиция на плане неизвестна" : "")
+    : "Выберите ID, чтобы увидеть маршрут и привязать камеры.";
+  if (element("trackPassport").textContent !== passport) element("trackPassport").textContent = passport;
   if (selected && element("autoSwitchCam").checked) selectCameras(selected);
   drawMap(active, selected);
+  slots.forEach(slot => drawOverlay(slot));
 }
 
 function seek(time) {
@@ -200,8 +315,21 @@ async function init() {
     for (const slot of slots) {
       for (const camera of cameras) slot.select.add(new Option(camera, camera));
       slot.video.addEventListener("loadedmetadata", () => syncSlot(slot, true));
-      slot.video.addEventListener("seeked", () => syncSlot(slot));
+      slot.video.addEventListener("seeked", () => {
+        if (!slot.video.requestVideoFrameCallback) receiveVideoFrame(slot, slot.video.currentTime);
+        syncSlot(slot);
+        drawOverlay(slot);
+      });
       slot.video.addEventListener("error", () => syncSlot(slot));
+      if (slot.video.requestVideoFrameCallback) {
+        const onFrame = (_, frame) => {
+          receiveVideoFrame(slot, frame.mediaTime);
+          slot.video.requestVideoFrameCallback(onFrame);
+        };
+        slot.video.requestVideoFrameCallback(onFrame);
+      } else {
+        slot.video.addEventListener("timeupdate", () => receiveVideoFrame(slot, slot.video.currentTime));
+      }
       setSlotCam(slot.number, cameras[(slot.number - 1) % cameras.length]);
     }
     timeline.oninput = () => seek(Number(timeline.value));

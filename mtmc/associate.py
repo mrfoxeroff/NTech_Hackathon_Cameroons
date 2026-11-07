@@ -176,6 +176,7 @@ DEFAULTS = {
     "hsv_min_similarity": 0.90,
     "min_score_margin": 0.05,
     "max_map_distance": None,
+    "allow_geometry_only": True,
     "max_brightness_difference": None,
     "overlap_pairs": [],
     "continuous_handoffs": [],
@@ -329,7 +330,9 @@ def candidate(a, b, overlaps, handoffs, config):
             return None
         spatial = 1 - distance / spatial_limit
     visual = appearance(a, b, config)
-    if visual == -1.0 or (visual is None and (spatial is None or mode == "handoff")):
+    if visual == -1.0 or (visual is None and (
+        spatial is None or mode == "handoff" or not config["allow_geometry_only"]
+    )):
         return None
     scores = [score for score in (visual, spatial) if score is not None]
     score = sum(scores) / len(scores)

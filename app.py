@@ -21,7 +21,11 @@ def create_app(session_root):
             data = json.loads((session_root / "session.json").read_text(encoding="utf-8"))
             if data["schema_version"] != "1.0" or not data["cameras"]:
                 raise ValueError("Unsupported session schema")
-            urls = [data["map"]["url"], *(camera["url"] for camera in data["cameras"].values())]
+            urls = [data["map"]["url"]]
+            for camera in data["cameras"].values():
+                urls.append(camera["url"])
+                if "overlay_url" in camera:
+                    urls.append(camera["overlay_url"])
             if any(not url.startswith("/media/") for url in urls):
                 raise ValueError("Expected local media URLs")
             names = {url.removeprefix("/media/") for url in urls}
@@ -55,7 +59,7 @@ def create_app(session_root):
     return server
 
 
-app = create_app(os.environ.get("NTECH_SESSION_DIR", ROOT / "outputs_demo/session"))
+app = create_app(os.environ.get("NTECH_SESSION_DIR", ROOT / "outputs_full/session"))
 
 
 if __name__ == "__main__":
